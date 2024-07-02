@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Rainer-777 Spaik](https://up.htmlacademy.ru/react/16/user/2500183).
-* Наставник: `Неизвестно`.
+* Наставник: [Yulia Volkova](https://htmlacademy.ru/profile/julie_volkova).
 
 ---
 
