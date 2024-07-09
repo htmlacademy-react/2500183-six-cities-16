@@ -34,7 +34,7 @@ function Main({offersCount}: MainProps): JSX.Element {
               <PlacesSorting/>
 
               <div className="cities__places-list places__list tabs__content">
-                {PlaceCardOffers.map(() => <PlaceCard className='cities__card' key={crypto.randomUUID()} />)}
+                {PlaceCardOffers.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
               </div>
             </section>
             <div className="cities__right-section">
