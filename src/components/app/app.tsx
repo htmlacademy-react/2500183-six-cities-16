@@ -1,4 +1,4 @@
-import Main from '../../pages/main-page';
+import Main from '../../pages/main';
 
 type AppProps = {
   offersCount: number;
@@ -9,6 +9,5 @@ function App({offersCount}: AppProps): JSX.Element {
     <Main offersCount={offersCount} />
   );
 }
-
 
 export default App;
