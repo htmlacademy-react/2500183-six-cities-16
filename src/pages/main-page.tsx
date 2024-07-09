@@ -1,5 +1,7 @@
 import Header from '../components/app/header';
 import CitiesList from '../components/app/cities-list';
+import CitiesMap from '../components/app/cities-map';
+import PlacesSorting from '../components/app/places-sorting';
 
 const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];// вынести в константу!!!
 
@@ -26,21 +28,9 @@ function Main({offersCount}: MainProps): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offersCount} places to stay in Amsterdam</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
-                </ul>
-              </form>
+
+              <PlacesSorting/>
+
               <div className="cities__places-list places__list tabs__content">
                 <article className="cities__card place-card">
                   <div className="cities__image-wrapper place-card__image-wrapper">
@@ -113,7 +103,9 @@ function Main({offersCount}: MainProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+
+              <CitiesMap/>
+
             </div>
           </div>
         </div>
