@@ -1,21 +1,19 @@
+type Location = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+}
+
 type PlaceCardProps = {
   id: string;
   title: string;
   type: string;
   price: number;
   city: {
-  name: string;
-  location: {
-  latitude: number;
-  longitude: number;
-  zoom: number;
+    name: string;
+    location: Location;
   };
-  };
-  location: {
-  latitude: number;
-  longitude: number;
-  zoom: number;
-  };
+  location: Location;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
