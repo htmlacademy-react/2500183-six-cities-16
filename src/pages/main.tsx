@@ -4,8 +4,7 @@ import CitiesMap from '../components/app/cities-map';
 import PlacesSorting from '../components/app/places-sorting';
 import PlaceCard from '../components/place-card';
 import { PlaceCardOffers } from '../mock/place-card-offers';
-
-const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];// вынести в константу!!!
+import { CITIES } from '../const';
 
 type MainProps = {
   offersCount: number;
