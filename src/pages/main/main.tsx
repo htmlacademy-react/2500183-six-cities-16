@@ -1,11 +1,11 @@
-import Header from '../components/header/header';
-import CitiesItem from '../components/cities/cities-item';
-import CitiesMap from '../components/cities/cities-map';
-import PlacesSorting from '../components/places-sorting/places-sorting';
-import PlaceCard from '../components/place-card/place-card';
-import { placeCardOffers } from '../mock/place-card-offers';
-import { CITIES } from '../const';
-import { MainProps } from '../types/main-page/main-props';
+import Header from '../../components/header/header';
+import CitiesItem from '../../components/cities/cities-item';
+import CitiesMap from '../../components/cities/cities-map';
+import PlacesSorting from '../../components/places-sorting/places-sorting';
+import PlaceCard from '../../components/place-card/place-card';
+import { placeCardOffers } from '../../mock/place-card-offers';
+import { CITIES } from '../../const';
+import { MainProps } from '../../types/main-page/main-props';
 
 function Main({offersCount}: MainProps): JSX.Element {
   return (
