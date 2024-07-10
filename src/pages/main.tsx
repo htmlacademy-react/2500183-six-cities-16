@@ -5,10 +5,7 @@ import PlacesSorting from '../components/places-sorting/places-sorting';
 import PlaceCard from '../components/place-card/place-card';
 import { placeCardOffers } from '../mock/place-card-offers';
 import { CITIES } from '../const';
-
-type MainProps = {
-  offersCount: number;
-}
+import { MainProps } from '../types/main-page/main-props';
 
 function Main({offersCount}: MainProps): JSX.Element {
   return (
