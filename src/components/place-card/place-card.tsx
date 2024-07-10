@@ -23,7 +23,7 @@ type PlaceCardProps = {
   };
 
 function PlaceCard({className = 'cities__card', place} : {className : string; place:PlaceCardProps}): JSX.Element {
-  const {price, type, title, previewImage,rating } = place;
+  const {price, type, title, previewImage} = place;
   return (
     <article className={`${className} place-card`}>
       <div className="place-card__mark">
@@ -50,7 +50,7 @@ function PlaceCard({className = 'cities__card', place} : {className : string; pl
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
             <span style={{width: '80%'}}></span>
-            <span className="visually-hidden">{rating}</span>
+            <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
