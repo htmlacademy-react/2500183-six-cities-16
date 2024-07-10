@@ -1,4 +1,4 @@
-import HeaderLogo from '../components/header/header-logo';
+import HeaderLogo from '../../components/header/header-logo';
 
 function Login () : JSX.Element {
   return (

@@ -1,8 +1,8 @@
-import Header from '../components/header/header';
-import PlaceCard from '../components/place-card/place-card';
-import { placeCardOffers } from '../mock/place-card-offers';
-import OfferGallery from '../components/offer-page/offer-gallery';
-import OfferInsideList from '../components/offer-page/offer-inside-list';
+import Header from '../../components/header/header';
+import PlaceCard from '../../components/place-card/place-card';
+import { placeCardOffers } from '../../mock/place-card-offers';
+import OfferGallery from '../../components/offer-page/offer-gallery';
+import OfferInsideList from '../../components/offer-page/offer-inside-list';
 
 const PLACE_CARDS_COUNT = 1;
 
