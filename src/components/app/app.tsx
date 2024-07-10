@@ -1,6 +1,5 @@
 import Main from '../../pages/main';
 
-
 type AppProps = {
   offersCount: number;
 }
