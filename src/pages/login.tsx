@@ -1,4 +1,4 @@
-import HeaderLeft from '../components/app/header-left';
+import HeaderLogo from '../components/header/header-logo';
 
 function Login () : JSX.Element {
   return (
@@ -7,7 +7,7 @@ function Login () : JSX.Element {
         <div className="container">
           <div className="header__wrapper">
 
-            <HeaderLeft/>
+            <HeaderLogo/>
 
           </div>
         </div>

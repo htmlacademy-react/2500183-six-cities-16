@@ -1,4 +1,4 @@
-function HeaderLeft() : JSX.Element {
+function HeaderLogo() : JSX.Element {
   return (
     <div className="header__left">
       <a className="header__logo-link" href="main.html">
@@ -8,4 +8,4 @@ function HeaderLeft() : JSX.Element {
   );
 }
 
-export default HeaderLeft;
+export default HeaderLogo;

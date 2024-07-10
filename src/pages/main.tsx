@@ -1,8 +1,8 @@
-import Header from '../components/app/header';
-import CitiesList from '../components/app/cities-list';
-import CitiesMap from '../components/app/cities-map';
-import PlacesSorting from '../components/app/places-sorting';
-import PlaceCard from '../components/place-card';
+import Header from '../components/header/header';
+import CitiesList from '../components/cities/cities-list';
+import CitiesMap from '../components/cities/cities-map';
+import PlacesSorting from '../components/places-sorting/places-sorting';
+import PlaceCard from '../components/place-card/place-card';
 import { PlaceCardOffers } from '../mock/place-card-offers';
 import { CITIES } from '../const';
 
