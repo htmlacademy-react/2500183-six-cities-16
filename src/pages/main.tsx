@@ -1,5 +1,5 @@
 import Header from '../components/header/header';
-import CitiesList from '../components/cities/cities-list';
+import CitiesItem from '../components/cities/cities-item';
 import CitiesMap from '../components/cities/cities-map';
 import PlacesSorting from '../components/places-sorting/places-sorting';
 import PlaceCard from '../components/place-card/place-card';
@@ -20,7 +20,7 @@ function Main({offersCount}: MainProps): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CITIES.map((city) => <CitiesList city = {city} key = {city}/>)}
+              {CITIES.map((city) => <CitiesItem city = {city} key = {city}/>)}
             </ul>
           </section>
         </div>
