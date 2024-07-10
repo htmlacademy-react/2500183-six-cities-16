@@ -3,7 +3,7 @@ import CitiesItem from '../components/cities/cities-item';
 import CitiesMap from '../components/cities/cities-map';
 import PlacesSorting from '../components/places-sorting/places-sorting';
 import PlaceCard from '../components/place-card/place-card';
-import { PlaceCardOffers } from '../mock/place-card-offers';
+import { placeCardOffers } from '../mock/place-card-offers';
 import { CITIES } from '../const';
 
 type MainProps = {
@@ -33,7 +33,7 @@ function Main({offersCount}: MainProps): JSX.Element {
               <PlacesSorting/>
 
               <div className="cities__places-list places__list tabs__content">
-                {PlaceCardOffers.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
+                {placeCardOffers.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
               </div>
             </section>
             <div className="cities__right-section">

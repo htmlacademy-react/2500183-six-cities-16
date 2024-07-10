@@ -1,4 +1,4 @@
-const PlaceCardOffers = [
+const placeCardOffers = [
   {
     'id': 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
     'title': 'Nice, cozy, warm big bed apartment',
@@ -94,4 +94,4 @@ const PlaceCardOffers = [
 
 ] as const;
 
-export {PlaceCardOffers};
+export {placeCardOffers};
