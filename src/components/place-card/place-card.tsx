@@ -1,24 +1,4 @@
-type Location = {
-  latitude: number;
-  longitude: number;
-  zoom: number;
-}
-
-type PlaceCardProps = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: {
-    name: string;
-    location: Location;
-  };
-  location: Location;
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-  previewImage: string;
-  };
+import { PlaceCardProps } from '../../types/offer/offer';
 
 function PlaceCard({className = 'cities__card', place} : {className : string; place:PlaceCardProps}): JSX.Element {
   const {price, type, title, previewImage} = place;
