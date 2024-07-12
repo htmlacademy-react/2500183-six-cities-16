@@ -1,6 +1,5 @@
 import Header from '../../components/header/header';
 import CitiesItem from '../../components/cities/cities-item';
-import CitiesMap from '../../components/cities/cities-map';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceCard from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
@@ -36,7 +35,7 @@ function Main({offersCount}: MainProps): JSX.Element {
             </section>
             <div className="cities__right-section">
 
-            <Map className='cities__map'/>
+              <Map className='cities__map'/>
 
             </div>
           </div>
