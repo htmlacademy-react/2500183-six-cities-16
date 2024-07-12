@@ -3,6 +3,7 @@ import CitiesItem from '../../components/cities/cities-item';
 import CitiesMap from '../../components/cities/cities-map';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceCard from '../../components/place-card/place-card';
+import Map from '../../components/map/map';
 import { placeCardOffers } from '../../mock/place-card-offers';
 import { CITIES } from '../../const';
 import { MainProps } from '../../types/main-page/main-props';
@@ -35,7 +36,7 @@ function Main({offersCount}: MainProps): JSX.Element {
             </section>
             <div className="cities__right-section">
 
-              <CitiesMap/>
+            <Map className='cities__map'/>
 
             </div>
           </div>

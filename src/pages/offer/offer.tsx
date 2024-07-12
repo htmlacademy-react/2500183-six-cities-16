@@ -3,6 +3,7 @@ import PlaceCard from '../../components/place-card/place-card';
 import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferGallery from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
+import Map from '../../components/map/map';
 
 const PLACE_CARDS_COUNT = 1;
 
@@ -156,7 +157,7 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map"></section>
+          <Map className='offer__map'/>
         </section>
         <div className="container">
           <section className="near-places places">
