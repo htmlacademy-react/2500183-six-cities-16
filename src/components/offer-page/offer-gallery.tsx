@@ -1,24 +1,27 @@
+const mockImages = ['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'] as const;
+
+type imageSrcProps = {
+  imageSrc: string;
+}
+function OfferImage ({imageSrc} : imageSrcProps) : JSX.Element {
+  return (
+    <div className="offer__image-wrapper">
+      <img
+        className="offer__image"
+        src={imageSrc}
+        alt="Photo studio"
+      />
+    </div>
+  );
+}
+
+
 function OfferGallery () : JSX.Element {
   return (
     <div className="offer__gallery">
-      <div className="offer__image-wrapper">
-        <img className="offer__image" src="img/room.jpg" alt="Photo studio" />
-      </div>
-      <div className="offer__image-wrapper">
-        <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-      </div>
-      <div className="offer__image-wrapper">
-        <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio" />
-      </div>
-      <div className="offer__image-wrapper">
-        <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio" />
-      </div>
-      <div className="offer__image-wrapper">
-        <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio" />
-      </div>
-      <div className="offer__image-wrapper">
-        <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-      </div>
+      {mockImages.map((imageSrc) => (
+        <OfferImage imageSrc={imageSrc} key={crypto.randomUUID()} />
+      ))}
     </div>
   );
 }
