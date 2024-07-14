@@ -1,4 +1,4 @@
-import { mockInsideItem } from '../../const';
+const mockInsideItem = ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'] as const;
 
 type insideItemProps = {
   itemInside: string;

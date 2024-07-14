@@ -1,8 +1,9 @@
-import { mockImages } from '../../const';
+const mockImages = ['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'] as const;
 
 type imageSrcProps = {
   imageSrc: string;
 }
+
 function OfferImage ({imageSrc} : imageSrcProps) : JSX.Element {
   return (
     <div className="offer__image-wrapper">
