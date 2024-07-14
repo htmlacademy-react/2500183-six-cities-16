@@ -1,4 +1,4 @@
-const mockImages = ['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'] as const;
+import { mockImages } from '../../const';
 
 type imageSrcProps = {
   imageSrc: string;
@@ -14,7 +14,6 @@ function OfferImage ({imageSrc} : imageSrcProps) : JSX.Element {
     </div>
   );
 }
-
 
 function OfferGallery () : JSX.Element {
   return (
