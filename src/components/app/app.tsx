@@ -3,14 +3,8 @@ import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
-
-
-enum AppRoute {
-  MainPage = '/',
-  LoginPage = '/login',
-  FavoritesPage = '/favorites',
-  OfferPage = '/offer'
-}
+import Page404 from '../../pages/page404/page404';
+import { AppRoute } from '../../const';
 
 
 type AppProps = {
@@ -19,7 +13,6 @@ type AppProps = {
 
 function App({offersCount}: AppProps): JSX.Element {
   return (
-    //<Main offersCount={offersCount} />
     <BrowserRouter>
       <Routes>
         <Route
@@ -37,6 +30,10 @@ function App({offersCount}: AppProps): JSX.Element {
         <Route
           path={AppRoute.OfferPage}
           element={<Offer/>}
+        />
+        <Route
+          path= '*'
+          element={<Page404/>}
         />
 
       </Routes>
