@@ -8,7 +8,7 @@ enum AppRoute {
   MainPage = '/',
   LoginPage = '/login',
   FavoritesPage = '/favorites',
-  OfferPage = '/offer'
+  OfferPage = '/offer/:id'
 }
 
 export {Setting, CITIES, AppRoute};
