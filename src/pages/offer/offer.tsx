@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import PlaceCard from '../../components/place-card/place-card';
 import { placeCardOffers } from '../../mock/place-card-offers';
@@ -10,6 +11,9 @@ const PLACE_CARDS_COUNT = 1;
 function Offer(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>6 cities: offer</title>
+      </Helmet>
 
       <Header/>
 

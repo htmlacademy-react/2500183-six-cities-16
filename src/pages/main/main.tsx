@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import CitiesItem from '../../components/cities/cities-item';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -10,6 +11,10 @@ import { MainProps } from '../../types/main-page/main-props';
 function Main({offersCount}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 cities</title>
+      </Helmet>
+
       <Header/>
 
       <main className="page__main page__main--index">
