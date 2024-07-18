@@ -12,7 +12,7 @@ function Offer(): JSX.Element {
   return (
     <div className="page">
       <Helmet>
-        <title>6 cities: offer</title>
+        <title>6 cities: Offer</title>
       </Helmet>
 
       <Header/>
