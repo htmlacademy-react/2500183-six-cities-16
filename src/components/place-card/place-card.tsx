@@ -1,16 +1,18 @@
+import { Link } from 'react-router-dom';
 import { PlaceCardProps } from '../../types/offer/offer';
 
+
 function PlaceCard({className = 'cities__card', place} : {className : string; place:PlaceCardProps}): JSX.Element {
-  const {price, type, title, previewImage} = place;
+  const {price, type, title, previewImage, id} = place;
   return (
     <article className={`${className} place-card`}>
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to= {`offer/${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -32,7 +34,7 @@ function PlaceCard({className = 'cities__card', place} : {className : string; pl
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">Beautiful &amp; {title}</a>
+          <Link to= {`offer/${id}`}>Beautiful &amp; {title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
