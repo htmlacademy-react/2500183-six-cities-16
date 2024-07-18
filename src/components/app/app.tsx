@@ -5,7 +5,7 @@ import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
-import PrivateRoute from '../private-rout/private-rout';
+import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 
