@@ -7,20 +7,22 @@ import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
 import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { PlaceCardProps } from '../../types/offer/offer';
 
 
 type AppProps = {
   offersCount: number;
+  placesMock: PlaceCardProps[];
 }
 
-function App({offersCount}: AppProps): JSX.Element {
+function App({offersCount,placesMock}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main offersCount={offersCount}/>}
+            element={<Main offersCount={offersCount} placesMock={placesMock} />}
           />
           <Route
             path={AppRoute.LoginPage}

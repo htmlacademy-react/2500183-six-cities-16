@@ -4,11 +4,15 @@ import CitiesItem from '../../components/cities/cities-item';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceCard from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
-import { placeCardOffers } from '../../mock/place-card-offers';
 import { CITIES } from '../../const';
-import { MainProps } from '../../types/main-page/main-props';
+import { PlaceCardProps } from '../../types/offer/offer';
 
-function Main({offersCount}: MainProps): JSX.Element {
+type MainPageProps = {
+  offersCount: number;
+  placesMock: PlaceCardProps[];
+}
+
+function Main({offersCount, placesMock}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -35,7 +39,7 @@ function Main({offersCount}: MainProps): JSX.Element {
               <PlacesSorting/>
 
               <div className="cities__places-list places__list tabs__content">
-                {placeCardOffers.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
+                {placesMock.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
               </div>
             </section>
             <div className="cities__right-section">

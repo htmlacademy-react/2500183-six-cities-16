@@ -1,4 +1,5 @@
-const placeCardOffers = [
+import { PlaceCardProps } from '../types/offer/offer';
+const placeCardOffers : PlaceCardProps[] = [
   {
     'id': 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
     'title': 'Nice, cozy, warm big bed apartment',
@@ -92,6 +93,6 @@ const placeCardOffers = [
     'rating': 3.5
   },
 
-] as const;
+];
 
 export {placeCardOffers};
