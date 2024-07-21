@@ -11,18 +11,17 @@ import { PlaceCardProps } from '../../types/offer/offer';
 
 
 type AppProps = {
-  offersCount: number;
   placesMock: PlaceCardProps[];
 }
 
-function App({offersCount,placesMock}: AppProps): JSX.Element {
+function App({placesMock}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main offersCount={offersCount} placesMock={placesMock} />}
+            element={<Main placesMock={placesMock} />}
           />
           <Route
             path={AppRoute.LoginPage}

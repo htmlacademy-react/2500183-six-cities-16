@@ -8,11 +8,10 @@ import { CITIES } from '../../const';
 import { PlaceCardProps } from '../../types/offer/offer';
 
 type MainPageProps = {
-  offersCount: number;
   placesMock: PlaceCardProps[];
 }
 
-function Main({offersCount, placesMock}: MainPageProps): JSX.Element {
+function Main({placesMock}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -34,7 +33,7 @@ function Main({offersCount, placesMock}: MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+              <b className="places__found">{placesMock.length} places to stay in Amsterdam</b>
 
               <PlacesSorting/>
 
