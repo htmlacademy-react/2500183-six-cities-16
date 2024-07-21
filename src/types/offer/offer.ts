@@ -3,21 +3,23 @@ type Location = {
   longitude: number;
   zoom: number;
 }
+type City = {
+  name: string;
+  location: Location;
+}
 
 type PlaceCardProps = {
   id: string;
   title: string;
   type: string;
   price: number;
-  city: {
-    name: string;
-    location: Location;
-  };
+  city: City;
   location: Location;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
   previewImage: string;
 };
+
 
 export type {PlaceCardProps};
