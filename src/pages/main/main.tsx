@@ -4,7 +4,7 @@ import CitiesItem from '../../components/cities/cities-item';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceCard from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
-import { CITIES } from '../../const';
+import { CITIES, ACTIVE_CITY } from '../../const';
 import { PlaceCardProps } from '../../types/offer/offer';
 
 type MainPageProps = {
@@ -33,7 +33,7 @@ function Main({placesMock}: MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesMock.length} places to stay in Amsterdam</b>
+              <b className="places__found">{placesMock.length} places to stay in {ACTIVE_CITY}</b>
 
               <PlacesSorting/>
 
