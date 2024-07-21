@@ -4,6 +4,8 @@ const Setting = {
 
 const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'] as const;
 
+const ACTIVE_CITY = CITIES[3];
+
 enum AppRoute {
   MainPage = '/',
   LoginPage = '/login',
@@ -17,4 +19,4 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export {Setting, CITIES, AppRoute, AuthorizationStatus};
+export {Setting, CITIES, ACTIVE_CITY, AppRoute, AuthorizationStatus};
