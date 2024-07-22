@@ -30,8 +30,8 @@ function App({placesMock}: AppProps): JSX.Element {
           <Route
             path={AppRoute.FavoritesPage}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <Favorites />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <Favorites placesMock={placesMock} />
               </PrivateRoute>
             }
           />

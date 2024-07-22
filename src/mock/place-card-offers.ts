@@ -19,7 +19,7 @@ const placeCardOffers : PlaceCardProps[] = [
       'longitude': 2.342499,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': true,
     'rating': 2.4
   },
@@ -42,7 +42,7 @@ const placeCardOffers : PlaceCardProps[] = [
       'longitude': 2.330499,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': false,
     'rating': 4.8
   },
@@ -89,6 +89,29 @@ const placeCardOffers : PlaceCardProps[] = [
       'zoom': 16
     },
     'isFavorite': false,
+    'isPremium': false,
+    'rating': 3.5
+  },
+  {
+    'id': '5c8b793f-7651-4d77-b98b-7baeffc7f3a0',
+    'title': 'Penthouse, 4-5 rooms + 5 balconies',
+    'type': 'house',
+    'price': 595,
+    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/10.jpg',
+    'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.84461,
+      'longitude': 2.374499,
+      'zoom': 16
+    },
+    'isFavorite': true,
     'isPremium': false,
     'rating': 3.5
   },

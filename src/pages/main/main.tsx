@@ -38,7 +38,7 @@ function Main({placesMock}: MainPageProps): JSX.Element {
               <PlacesSorting/>
 
               <div className="cities__places-list places__list tabs__content">
-                {placesMock.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
+                {placesMock.map((offer) => <PlaceCard className='cities' place={offer} key={crypto.randomUUID()} />)}
               </div>
             </section>
             <div className="cities__right-section">

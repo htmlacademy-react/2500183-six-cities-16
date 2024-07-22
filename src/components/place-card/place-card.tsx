@@ -1,42 +1,54 @@
 import { Link } from 'react-router-dom';
 import { PlaceCardProps } from '../../types/offer/offer';
+import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
 
+const FAVORITE_CLASS_NAME = 'favorites';
+const OFFER_CLASS_NAME = 'offer';
 
-function PlaceCard({className = 'cities__card', place} : {className : string; place:PlaceCardProps}): JSX.Element {
-  const {price, type, title, previewImage, id} = place;
+function PlaceCard({className = 'cities', place} : {className : string; place:PlaceCardProps}): JSX.Element {
+  const {price, type, title, previewImage, id, rating, isFavorite, isPremium} = place;
+
+  const imgWidth = className === FAVORITE_CLASS_NAME ? 150 : 260 ;
+  const imgHeight = className === FAVORITE_CLASS_NAME ? 110 : 200;
+  const imgWidthBtn = className === OFFER_CLASS_NAME ? 31 : 18 ;
+  const imgHeightBtn = className === OFFER_CLASS_NAME ? 33 : 19;
+  const cardInfoClassName = className === FAVORITE_CLASS_NAME ? 'favorites__card-info' : '';
+  const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
+
   return (
-    <article className={`${className} place-card`}>
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className={`${className}__card place-card`}>
+      {isPremium ?
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div> : null }
+      <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <Link to= {`offer/${id}`}>
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={imgWidth} height={imgHeight} alt="Place image" />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={`${cardInfoClassName} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
+          <button className={`place-card__bookmark-button ${isFavoriteClassName} button`} type="button">
+            <svg className="place-card__bookmark-icon" width={imgWidthBtn} height={imgHeightBtn}>
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">To bookmarks</span>
+            <span className="visually-hidden">{isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
           </button>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
+            <span style={{ width: calculateRatingWidth(rating)}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
           <Link to= {`offer/${id}`}>Beautiful &amp; {title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{upFirstLetter(type)}</p>
       </div>
     </article>
   );
