@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import PlaceCard from '../../components/place-card/place-card';
 import { placeCardOffers } from '../../mock/place-card-offers';
@@ -9,6 +10,8 @@ import Map from '../../components/map/map';
 const PLACE_CARDS_COUNT = 1;
 
 function Offer(): JSX.Element {
+  const { id } = useParams<{ id: string }>();
+  console.log(id);
   return (
     <div className="page">
       <Helmet>
