@@ -6,12 +6,16 @@ import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferGallery from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import Map from '../../components/map/map';
+import { PlaceCardAllProps } from '../../types/offer/offer';
+import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 
 const PLACE_CARDS_COUNT = 1;
 
 function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  console.log(id);
+  const currentPlace: PlaceCardAllProps | undefined = placeCardAllOffers.find((place: PlaceCardAllProps) => place.id === id);
+  console.log(currentPlace);
+
   return (
     <div className="page">
       <Helmet>
