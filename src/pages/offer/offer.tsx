@@ -7,17 +7,20 @@ import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import Map from '../../components/map/map';
+import ReviewForm from '../../components/review-form/review-form';
 import { PlaceCardAllTypes } from '../../types/offer/offer';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 
 const PLACE_CARDS_COUNT = 1;
+const MIN_BEDROOMS_COUNT = 1;
+const MIN_ADULTS_COUNT = 1;
 
 function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const currentPlace: PlaceCardAllTypes | undefined = placeCardAllOffers.find((place: PlaceCardAllTypes) => place.id === id);
 
-  const { images, title, description } = currentPlace;
+  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults } = currentPlace;
 
   if (!currentPlace) {
     return <Page404 />;
@@ -42,14 +45,17 @@ function Offer(): JSX.Element {
           </div>
           <div className="offer__container container">
             <div className="offer__wrapper">
-              <div className="offer__mark">
-                <span>Premium</span>
-              </div>
+              {isPremium ?
+                <div className="offer__mark">
+                  <span>Premium</span>
+                </div> : null }
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
                   {title}
                 </h1>
-                <button className="offer__bookmark-button button" type="button">
+                <button className={`offer__bookmark-button  ${isFavorite ? 'offer__bookmark-button--active' : null} button`}
+                  type="button"
+                >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
@@ -68,10 +74,12 @@ function Offer(): JSX.Element {
                   Apartment
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
-                  3 Bedrooms
+                  {bedrooms}
+                  {bedrooms > MIN_BEDROOMS_COUNT ? ' bedrooms' : ' bedroom'}
                 </li>
                 <li className="offer__feature offer__feature--adults">
-                  Max 4 adults
+                Max {maxAdults}
+                  {maxAdults > MIN_ADULTS_COUNT ? ' adults' : ' adult'}
                 </li>
               </ul>
               <div className="offer__price">
@@ -130,52 +138,7 @@ function Offer(): JSX.Element {
                     </div>
                   </li>
                 </ul>
-                <form className="reviews__form form" action="#" method="post">
-                  <label className="reviews__label form__label" htmlFor="review">Your review</label>
-                  <div className="reviews__rating-form form__rating">
-                    <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
-                    <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" />
-                    <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" />
-                    <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio" />
-                    <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio" />
-                    <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-                  </div>
-                  <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
-                  <div className="reviews__button-wrapper">
-                    <p className="reviews__help">
-                      To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-                    </p>
-                    <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
-                  </div>
-                </form>
+                <ReviewForm />
               </section>
             </div>
           </div>
