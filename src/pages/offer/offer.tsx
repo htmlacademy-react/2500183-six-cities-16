@@ -8,12 +8,17 @@ import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import Map from '../../components/map/map';
 import { PlaceCardAllProps } from '../../types/offer/offer';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
+import Page404 from '../page404/page404';
 
 const PLACE_CARDS_COUNT = 1;
 
 function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const currentPlace: PlaceCardAllProps | undefined = placeCardAllOffers.find((place: PlaceCardAllProps) => place.id === id);
+
+  if (!currentPlace) {
+    return <Page404 />;
+  }
   console.log(currentPlace);
 
   return (
