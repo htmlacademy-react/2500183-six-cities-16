@@ -1,5 +1,3 @@
-const mockImages = ['img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'] as const;
-
 type imageSrcProps = {
   imageSrc: string;
 }
@@ -16,14 +14,4 @@ function OfferImage ({imageSrc} : imageSrcProps) : JSX.Element {
   );
 }
 
-function OfferGallery () : JSX.Element {
-  return (
-    <div className="offer__gallery">
-      {mockImages.map((imageSrc) => (
-        <OfferImage imageSrc={imageSrc} key={crypto.randomUUID()} />
-      ))}
-    </div>
-  );
-}
-
-export default OfferGallery;
+export default OfferImage;

@@ -1,6 +1,6 @@
-import { PlaceCardAllProps } from '../types/offer/offer';
+import { PlaceCardAllTypes } from '../types/offer/offer';
 
-const placeCardAllOffers : PlaceCardAllProps[] = [
+const placeCardAllOffers : PlaceCardAllTypes[] = [
   {
     'id': 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
     'title': 'Nice, cozy, warm big bed apartment',
@@ -141,7 +141,7 @@ const placeCardAllOffers : PlaceCardAllProps[] = [
       'isPro': false
     },
     'images': [
-      'img/room.jpg', 'img/apartment-01.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'
+      'img/room.jpg', 'img/apartment-01.jpg','img/studio-01.jpg', 'img/apartment-01.jpg'
     ],
     'maxAdults': 42
   },

@@ -27,7 +27,7 @@ type PlaceCardProps = {
   previewImage: string;
 };
 
-type PlaceCardAllProps = {
+type PlaceCardAllTypes = {
   id: string;
   title: string;
   type: string;
@@ -45,5 +45,5 @@ type PlaceCardAllProps = {
   maxAdults: number;
 };
 
-export type {PlaceCardProps,PlaceCardAllProps};
+export type {PlaceCardProps,PlaceCardAllTypes};
 

@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import PlaceCard from '../../components/place-card/place-card';
 import { placeCardOffers } from '../../mock/place-card-offers';
-import OfferGallery from '../../components/offer-page/offer-gallery';
+import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import Map from '../../components/map/map';
-import { PlaceCardAllProps } from '../../types/offer/offer';
+import { PlaceCardAllTypes } from '../../types/offer/offer';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 
@@ -14,12 +15,13 @@ const PLACE_CARDS_COUNT = 1;
 
 function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  const currentPlace: PlaceCardAllProps | undefined = placeCardAllOffers.find((place: PlaceCardAllProps) => place.id === id);
+  const currentPlace: PlaceCardAllTypes | undefined = placeCardAllOffers.find((place: PlaceCardAllTypes) => place.id === id);
+
+  const { images, title, description } = currentPlace;
 
   if (!currentPlace) {
     return <Page404 />;
   }
-  console.log(currentPlace);
 
   return (
     <div className="page">
@@ -32,7 +34,11 @@ function Offer(): JSX.Element {
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
-            <OfferGallery/>
+            <div className ="offer__gallery">
+              {images.map((srcImage : string) => (
+                <OfferImage imageSrc={srcImage} key={crypto.randomUUID()} />
+              ))}
+            </div>
           </div>
           <div className="offer__container container">
             <div className="offer__wrapper">
@@ -41,7 +47,7 @@ function Offer(): JSX.Element {
               </div>
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {title}
                 </h1>
                 <button className="offer__bookmark-button button" type="button">
                   <svg className="offer__bookmark-icon" width="31" height="33">
@@ -91,7 +97,7 @@ function Offer(): JSX.Element {
                 </div>
                 <div className="offer__description">
                   <p className="offer__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                    {description}
                   </p>
                   <p className="offer__text">
                     An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
