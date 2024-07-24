@@ -33,7 +33,7 @@ const placeCardAllOffers : PlaceCardAllProps[] = [
       'isPro': true
     },
     'images': [
-      'https://url-to-image/image.png'
+      'img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'
     ],
     'maxAdults': 5
   },
@@ -69,7 +69,7 @@ const placeCardAllOffers : PlaceCardAllProps[] = [
       'isPro': false
     },
     'images': [
-      'https://url-to-image/image.png'
+      'img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/studio-01.jpg'
     ],
     'maxAdults': 4
   },
@@ -105,7 +105,7 @@ const placeCardAllOffers : PlaceCardAllProps[] = [
       'isPro': true
     },
     'images': [
-      'https://url-to-image/image.png'
+      'img/room.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'
     ],
     'maxAdults': 4
   },
@@ -141,7 +141,7 @@ const placeCardAllOffers : PlaceCardAllProps[] = [
       'isPro': false
     },
     'images': [
-      'https://url-to-image/image.png'
+      'img/room.jpg', 'img/apartment-01.jpg', 'img/studio-01.jpg', 'img/apartment-01.jpg'
     ],
     'maxAdults': 42
   },
