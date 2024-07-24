@@ -20,11 +20,10 @@ function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const currentPlace: PlaceCardAllTypes | undefined = placeCardAllOffers.find((place: PlaceCardAllTypes) => place.id === id);
 
-  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults } = currentPlace;
-
   if (!currentPlace) {
     return <Page404 />;
   }
+  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults } = currentPlace;
 
   return (
     <div className="page">
