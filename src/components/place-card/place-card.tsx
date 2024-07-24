@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { PlaceCardProps } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
+import { useState } from 'react';
 
 const FAVORITE_CLASS_NAME = 'favorites';
 const OFFER_CLASS_NAME = 'offer';
@@ -15,6 +16,19 @@ function PlaceCard({className = 'cities', place} : {className : string; place:Pl
   const cardInfoClassName = className === FAVORITE_CLASS_NAME ? 'favorites__card-info' : '';
   const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
 
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+
+
+  const cardMouseOnHandler = (placeId: string): void => {
+    setActiveCard(placeId);
+  };
+
+  const cardMouseLeaveHandler = (): void => {
+    if(activeCard){
+      setActiveCard(null);
+    }
+  };
+
   return (
     <article className={`${className}__card place-card`}>
       {isPremium ?
@@ -22,7 +36,7 @@ function PlaceCard({className = 'cities', place} : {className : string; place:Pl
           <span>Premium</span>
         </div> : null }
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to= {`offer/${id}`}>
+        <Link to= {`offer/${id}`} onMouseEnter={() => cardMouseOnHandler(id)} onMouseLeave={cardMouseLeaveHandler}>
           <img className="place-card__image" src={previewImage} width={imgWidth} height={imgHeight} alt="Place image" />
         </Link>
       </div>
