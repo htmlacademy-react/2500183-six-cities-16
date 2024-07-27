@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { PlaceCardProps } from '../../types/offer/offer';
-import PlaceCard from '../../components/place-card/place-card';
+import PlaceList from '../../components/place-list/place-list';
 import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
 
 type FavoritePageProps = {
@@ -42,9 +42,7 @@ function Favorites ({placesMock}: FavoritePageProps) : JSX.Element {
                             </a>
                           </div>
                         </div>
-                        <div className="favorites__places">
-                          {cityOffers.map((offer) => <PlaceCard className='favorites' place={offer} key={crypto.randomUUID()} />)}
-                        </div>
+                        <PlaceList className={'favorites__places'} classNameCard={'favorites'} placesMock={cityOffers} />
                       </li>
                     );
                   })

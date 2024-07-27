@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
-import PlaceCard from '../../components/place-card/place-card';
+import PlaceList from '../../components/place-list/place-list';
 import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
@@ -12,7 +11,8 @@ import { PlaceCardAllTypes } from '../../types/offer/offer';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 
-const PLACE_CARDS_COUNT = 1;
+
+const PLACE_CARDS_COUNT = 2;
 const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 
@@ -146,9 +146,7 @@ function Offer(): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <div className="near-places__list places__list">
-              {placeCardOffers.slice(PLACE_CARDS_COUNT).map((offer) => <PlaceCard className='near-places'place={offer} key={crypto.randomUUID()} />)}
-            </div>
+            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={placeCardOffers.slice(PLACE_CARDS_COUNT)} />
           </section>
         </div>
       </main>

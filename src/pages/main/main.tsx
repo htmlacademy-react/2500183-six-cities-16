@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import CitiesItem from '../../components/cities/cities-item';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
-import PlaceCard from '../../components/place-card/place-card';
+import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
 import { CITIES, ACTIVE_CITY } from '../../const';
 import { PlaceCardProps } from '../../types/offer/offer';
@@ -37,9 +37,8 @@ function Main({placesMock}: MainPageProps): JSX.Element {
 
               <PlacesSorting/>
 
-              <div className="cities__places-list places__list tabs__content">
-                {placesMock.map((offer) => <PlaceCard className='cities' place={offer} key={crypto.randomUUID()} />)}
-              </div>
+              <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={placesMock} />
+
             </section>
             <div className="cities__right-section">
 
