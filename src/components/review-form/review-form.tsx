@@ -2,13 +2,13 @@ import { ChangeEvent, useState } from 'react';
 
 function ReviewForm(): JSX.Element {
   const [formData, setFormData] = useState({
-    raiting: 0,
+    rating: 0,
     review: ''
   });
 
   const raitingChangeHandler = ({target}: ChangeEvent<HTMLInputElement>) => {
     if (target.tagName === 'INPUT') {
-      setFormData({...formData, raiting: parseInt(target.value, 10)});
+      setFormData({...formData, rating: parseInt(target.value, 10)});
     }
   };
 
