@@ -5,7 +5,7 @@ const offerReviews : ReviewsT[] = [
     'id': 'b67ddfd5-b953-4a30-8c8d-bd083cd6b62a',
     'date': '2019-05-08T14:13:56.569Z',
     'user': {
-      'name': 'Oliver Conner',
+      'name': 'Max',
       'avatarUrl': 'img/avatar-max.jpg',
       'isPro': false
     },
@@ -27,7 +27,7 @@ const offerReviews : ReviewsT[] = [
     'id': 'b67ddfd5-b953-4a30-8c8d-bd083cd6b62a',
     'date': '2019-05-08T14:13:56.569Z',
     'user': {
-      'name': 'Oliver Conner',
+      'name': 'Angelina',
       'avatarUrl': 'img/avatar-angelina.jpg',
       'isPro': false
     },
