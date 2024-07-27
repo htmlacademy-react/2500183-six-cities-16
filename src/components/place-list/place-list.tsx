@@ -1,9 +1,9 @@
-import { PlaceCardProps } from '../../types/offer/offer';
+import { PlaceCardT } from '../../types/offer/offer';
 import PlaceCard from '../place-card/place-card';
 
 
 type PlaceListProps = {
-  placesMock: PlaceCardProps[];
+  placesMock: PlaceCardT[];
   className: string;
   classNameCard: string;
 }

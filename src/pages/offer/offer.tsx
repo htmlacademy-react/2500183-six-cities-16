@@ -7,7 +7,7 @@ import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import Map from '../../components/map/map';
 import ReviewForm from '../../components/review-form/review-form';
-import { PlaceCardAllTypes } from '../../types/offer/offer';
+import { PlaceCardAllT } from '../../types/offer/offer';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 
@@ -18,7 +18,7 @@ const MIN_ADULTS_COUNT = 1;
 
 function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  const currentPlace: PlaceCardAllTypes | undefined = placeCardAllOffers.find((place: PlaceCardAllTypes) => place.id === id);
+  const currentPlace: PlaceCardAllT | undefined = placeCardAllOffers.find((place: PlaceCardAllT) => place.id === id);
 
   if (!currentPlace) {
     return <Page404 />;

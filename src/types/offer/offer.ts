@@ -14,7 +14,7 @@ type Host = {
   isPro: boolean;
 }
 
-type PlaceCardProps = {
+type PlaceCardT = {
   id: string;
   title: string;
   type: string;
@@ -27,23 +27,14 @@ type PlaceCardProps = {
   previewImage: string;
 };
 
-type PlaceCardAllTypes = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: City;
-  location: Location;
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
+type PlaceCardAllT = Omit<PlaceCardT, 'previewImage'> & {
   description: string;
   bedrooms: number;
   goods: string[];
-  host:Host;
+  host: Host;
   images: string[];
   maxAdults: number;
-};
+  };
 
-export type {PlaceCardProps,PlaceCardAllTypes};
+export type {PlaceCardT,PlaceCardAllT};
 

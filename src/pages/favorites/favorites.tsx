@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import { PlaceCardProps } from '../../types/offer/offer';
+import { PlaceCardT } from '../../types/offer/offer';
 import PlaceList from '../../components/place-list/place-list';
 import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
 
 type FavoritePageProps = {
-  placesMock: PlaceCardProps[];
+  placesMock: PlaceCardT[];
 }
 
 function Favorites ({placesMock}: FavoritePageProps) : JSX.Element {

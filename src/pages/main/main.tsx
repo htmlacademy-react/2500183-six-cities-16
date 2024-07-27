@@ -5,10 +5,10 @@ import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
 import { CITIES, ACTIVE_CITY } from '../../const';
-import { PlaceCardProps } from '../../types/offer/offer';
+import { PlaceCardT } from '../../types/offer/offer';
 
 type MainPageProps = {
-  placesMock: PlaceCardProps[];
+  placesMock: PlaceCardT[];
 }
 
 function Main({placesMock}: MainPageProps): JSX.Element {
