@@ -1,5 +1,5 @@
-import { PlaceCardProps } from '../types/offer/offer';
-const placeCardOffers : PlaceCardProps[] = [
+import { PlaceCardT } from '../types/offer/offer';
+const placeCardOffers : PlaceCardT[] = [
   {
     'id': 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
     'title': 'Nice, cozy, warm big bed apartment',

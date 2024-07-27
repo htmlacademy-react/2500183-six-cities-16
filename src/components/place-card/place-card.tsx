@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
-import { PlaceCardProps } from '../../types/offer/offer';
+import { PlaceCardT } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
 import { useState } from 'react';
 
 const FAVORITE_CLASS_NAME = 'favorites';
 const OFFER_CLASS_NAME = 'offer';
 
-function PlaceCard({className = 'cities', place} : {className : string; place:PlaceCardProps}): JSX.Element {
+type PlaceCardProps = {
+  place: PlaceCardT;
+  className: string;
+}
+
+function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element {
   const {price, type, title, previewImage, id, rating, isFavorite, isPremium} = place;
 
   const imgWidth = className === FAVORITE_CLASS_NAME ? 150 : 260 ;
