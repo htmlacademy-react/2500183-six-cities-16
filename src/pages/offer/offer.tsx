@@ -15,6 +15,7 @@ import Page404 from '../page404/page404';
 const PLACE_CARDS_COUNT = 2;
 const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
+const RATING_WIDTH_STEP = 20;
 
 function Offer(): JSX.Element {
   const { id } = useParams<{ id: string }>();
@@ -23,7 +24,7 @@ function Offer(): JSX.Element {
   if (!currentPlace) {
     return <Page404 />;
   }
-  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults } = currentPlace;
+  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = currentPlace;
 
   return (
     <div className="page">
@@ -63,10 +64,10 @@ function Offer(): JSX.Element {
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{width: '80%'}}></span>
+                  <span style={{ width: `${Math.round(rating) * RATING_WIDTH_STEP}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">4.8</span>
+                <span className="offer__rating-value rating__value">{rating}</span>
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
@@ -82,24 +83,30 @@ function Offer(): JSX.Element {
                 </li>
               </ul>
               <div className="offer__price">
-                <b className="offer__price-value">&euro;120</b>
+                <b className="offer__price-value">&euro;{price}</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
-                <OfferInsideList/>
+                <OfferInsideList insideList = {goods}/>
               </div>
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
                 <div className="offer__host-user user">
-                  <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="offer__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                  <div className={`offer__avatar-wrapper ${host.isPro ? 'offer__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
+                    <img
+                      className="offer__avatar user__avatar"
+                      src={host.avatarUrl}
+                      width="74"
+                      height="74"
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="offer__user-name">
-                    Angelina
+                    {host.name}
                   </span>
                   <span className="offer__user-status">
-                    Pro
+                    {host.isPro ? 'Pro' : ''}
                   </span>
                 </div>
                 <div className="offer__description">

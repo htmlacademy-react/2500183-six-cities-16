@@ -25,11 +25,11 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Paris.',
     'bedrooms': 5,
     'goods': [
-      'Heating'
+      'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'
     ],
     'host': {
       'name': 'Oliver Conner',
-      'avatarUrl': 'https://url-to-image/image.png',
+      'avatarUrl': 'img/avatar-angelina.jpg',
       'isPro': true
     },
     'images': [
@@ -61,11 +61,11 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Paris2.',
     'bedrooms': 4,
     'goods': [
-      'Heating'
+      'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'
     ],
     'host': {
       'name': 'Oliver Conner',
-      'avatarUrl': 'https://url-to-image/image.png',
+      'avatarUrl': 'img/avatar-angelina.jpg',
       'isPro': false
     },
     'images': [
@@ -97,11 +97,11 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Paris3.',
     'bedrooms': 3,
     'goods': [
-      'Heating'
+      'Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'
     ],
     'host': {
       'name': 'Oliver Conner',
-      'avatarUrl': 'https://url-to-image/image.png',
+      'avatarUrl': 'img/avatar-angelina.jpg',
       'isPro': true
     },
     'images': [
@@ -133,11 +133,11 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam7.',
     'bedrooms': 3,
     'goods': [
-      'Heating'
+      'Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'
     ],
     'host': {
       'name': 'Oliver Conner',
-      'avatarUrl': 'https://url-to-image/image.png',
+      'avatarUrl': 'img/avatar-angelina.jpg',
       'isPro': false
     },
     'images': [
