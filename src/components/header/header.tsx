@@ -8,7 +8,9 @@ type HeaderProps = {
 }
 
 function Header({favoritesNumber} : HeaderProps) : JSX.Element {
-  const authorizationStatus = AuthorizationStatus.Auth;
+  const getAuthorizationStatus = () => AuthorizationStatus.Auth;
+  const authorizationStatus = getAuthorizationStatus();
+
   return (
     <header className="header">
       <div className="container">
