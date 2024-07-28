@@ -21,10 +21,11 @@ const RATING_WIDTH_STEP = 20;
 
 type OfferPageProps = {
   reviews: ReviewsT[];
+  favoritesNumber: number;
 }
 
 
-function Offer({reviews} : OfferPageProps): JSX.Element {
+function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const currentPlace: PlaceCardAllT | undefined = placeCardAllOffers.find((place: PlaceCardAllT) => place.id === id);
 
@@ -39,7 +40,7 @@ function Offer({reviews} : OfferPageProps): JSX.Element {
         <title>6 cities: Offer</title>
       </Helmet>
 
-      <Header/>
+      <Header favoritesNumber={favoritesNumber}/>
 
       <main className="page__main page__main--offer">
         <section className="offer">

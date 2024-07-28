@@ -7,9 +7,10 @@ import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
 
 type FavoritePageProps = {
   placesMock: PlaceCardT[];
+  favoritesNumber: number;
 }
 
-function Favorites ({placesMock}: FavoritePageProps) : JSX.Element {
+function Favorites ({placesMock, favoritesNumber}: FavoritePageProps) : JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const cityNames = favoriteOffers.reduce((newOffers: string[], offer) => {
     if (!(newOffers.includes(offer.city.name))) {
@@ -23,7 +24,7 @@ function Favorites ({placesMock}: FavoritePageProps) : JSX.Element {
       <Helmet>
         <title>6 cities: Favorites</title>
       </Helmet>
-      <Header/>
+      <Header favoritesNumber={favoritesNumber}/>
       <main className={`page__main page__main--favorites ${favoriteOffers.length ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
           <section className="favorites">

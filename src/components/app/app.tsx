@@ -16,14 +16,17 @@ type AppProps = {
   reviews: ReviewsT[];
 }
 
+
 function App({placesMock, reviews}: AppProps): JSX.Element {
+  const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
+  const favoritesNumber = favoriteOffers.length | 0;
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main placesMock={placesMock} />}
+            element={<Main placesMock={placesMock} favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path={AppRoute.LoginPage}
@@ -33,13 +36,13 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
             path={AppRoute.FavoritesPage}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <Favorites placesMock={placesMock} />
+                <Favorites placesMock={placesMock} favoritesNumber={favoritesNumber} />
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.OfferPage}
-            element={<Offer reviews={reviews}/>}
+            element={<Offer reviews={reviews} favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path= '*'
