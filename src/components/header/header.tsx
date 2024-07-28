@@ -1,12 +1,14 @@
 import {Link} from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus} from '../../const';
 import HeaderLogo from '../header/header-logo';
+import React from 'react';
 
 type HeaderProps = {
   favoritesNumber : number;
 }
 
 function Header({favoritesNumber} : HeaderProps) : JSX.Element {
+  const authorizationStatus = AuthorizationStatus.Auth;
   return (
     <header className="header">
       <div className="container">
@@ -18,13 +20,16 @@ function Header({favoritesNumber} : HeaderProps) : JSX.Element {
                 <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FavoritesPage}>
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  <span className="header__favorite-count">{favoritesNumber}</span>
+                  { authorizationStatus === AuthorizationStatus.Auth ?
+                    <React.Fragment>
+                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <span className="header__favorite-count">{favoritesNumber}</span>
+                    </React.Fragment> : null }
                 </Link>
               </li>
               <li className="header__nav-item">
                 <Link className="header__nav-link" to={AppRoute.LoginPage}>
-                  <span className="header__signout">Sign out</span>
+                  <span className="header__signout">{authorizationStatus === AuthorizationStatus.Auth ? 'Sign out' : 'Sign in' }</span>
                 </Link>
               </li>
             </ul>
