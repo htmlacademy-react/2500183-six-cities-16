@@ -35,13 +35,13 @@ function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element 
   };
 
   return (
-    <article className={`${className}__card place-card`}>
+    <article className={`${className}__card place-card`} onMouseEnter={() => cardMouseOnHandler(id)} onMouseLeave={cardMouseLeaveHandler}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
         </div> : null }
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to= {`offer/${id}`} onMouseEnter={() => cardMouseOnHandler(id)} onMouseLeave={cardMouseLeaveHandler}>
+        <Link to= {`offer/${id}`} >
           <img className="place-card__image" src={previewImage} width={imgWidth} height={imgHeight} alt="Place image" />
         </Link>
       </div>
