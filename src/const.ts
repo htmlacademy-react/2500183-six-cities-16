@@ -1,8 +1,6 @@
-const Setting = {
-  OffersCount: 5
-} as const;
-
 const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'] as const;
+
+const ACTIVE_CITY = CITIES[0];
 
 enum AppRoute {
   MainPage = '/',
@@ -17,4 +15,4 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export {Setting, CITIES, AppRoute, AuthorizationStatus};
+export { CITIES, ACTIVE_CITY, AppRoute, AuthorizationStatus };

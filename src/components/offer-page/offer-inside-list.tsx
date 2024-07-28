@@ -1,7 +1,9 @@
-const mockInsideItem = ['Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'] as const;
-
 type insideItemProps = {
   itemInside: string;
+}
+
+type insideListProps = {
+  insideList: string[];
 }
 
 function OfferInside ({itemInside} : insideItemProps) : JSX.Element {
@@ -12,10 +14,10 @@ function OfferInside ({itemInside} : insideItemProps) : JSX.Element {
   );
 }
 
-function OfferInsideList () : JSX.Element {
+function OfferInsideList ({insideList} : insideListProps) : JSX.Element {
   return (
     <ul className="offer__inside-list">
-      {mockInsideItem.map((item) => (<OfferInside itemInside={item} key={crypto.randomUUID()} />))}
+      {insideList.map((item) => (<OfferInside itemInside={item} key={crypto.randomUUID()} />))}
     </ul>
   );
 }

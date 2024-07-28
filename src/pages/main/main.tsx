@@ -2,20 +2,24 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import CitiesItem from '../../components/cities/cities-item';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
-import PlaceCard from '../../components/place-card/place-card';
+import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
-import { placeCardOffers } from '../../mock/place-card-offers';
-import { CITIES } from '../../const';
-import { MainProps } from '../../types/main-page/main-props';
+import { CITIES, ACTIVE_CITY } from '../../const';
+import { PlaceCardT } from '../../types/offer/offer';
 
-function Main({offersCount}: MainProps): JSX.Element {
+type MainPageProps = {
+  placesMock: PlaceCardT[];
+  favoritesNumber: number;
+}
+
+function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
         <title>6 cities</title>
       </Helmet>
 
-      <Header/>
+      <Header favoritesNumber={favoritesNumber}/>
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -30,13 +34,12 @@ function Main({offersCount}: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+              <b className="places__found">{placesMock.length} places to stay in {ACTIVE_CITY}</b>
 
               <PlacesSorting/>
 
-              <div className="cities__places-list places__list tabs__content">
-                {placeCardOffers.map((offer) => <PlaceCard className='cities__card'place={offer} key={crypto.randomUUID()} />)}
-              </div>
+              <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={placesMock} />
+
             </section>
             <div className="cities__right-section">
 

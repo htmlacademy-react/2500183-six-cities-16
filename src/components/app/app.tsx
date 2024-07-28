@@ -7,20 +7,26 @@ import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
 import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { PlaceCardT } from '../../types/offer/offer';
+import { ReviewsT } from '../../types/reviews/reviews';
 
 
 type AppProps = {
-  offersCount: number;
+  placesMock: PlaceCardT[];
+  reviews: ReviewsT[];
 }
 
-function App({offersCount}: AppProps): JSX.Element {
+
+function App({placesMock, reviews}: AppProps): JSX.Element {
+  const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
+  const favoritesNumber = favoriteOffers.length | 0;
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main offersCount={offersCount}/>}
+            element={<Main placesMock={placesMock} favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path={AppRoute.LoginPage}
@@ -29,14 +35,14 @@ function App({offersCount}: AppProps): JSX.Element {
           <Route
             path={AppRoute.FavoritesPage}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <Favorites />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <Favorites placesMock={placesMock} favoritesNumber={favoritesNumber} />
               </PrivateRoute>
             }
           />
           <Route
             path={AppRoute.OfferPage}
-            element={<Offer/>}
+            element={<Offer reviews={reviews} favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path= '*'

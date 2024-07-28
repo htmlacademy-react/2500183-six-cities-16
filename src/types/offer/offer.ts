@@ -3,16 +3,23 @@ type Location = {
   longitude: number;
   zoom: number;
 }
+type City = {
+  name: string;
+  location: Location;
+}
 
-type PlaceCardProps = {
+type Host = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+}
+
+type PlaceCardT = {
   id: string;
   title: string;
   type: string;
   price: number;
-  city: {
-    name: string;
-    location: Location;
-  };
+  city: City;
   location: Location;
   isFavorite: boolean;
   isPremium: boolean;
@@ -20,4 +27,14 @@ type PlaceCardProps = {
   previewImage: string;
 };
 
-export type {PlaceCardProps};
+type PlaceCardAllT = Omit<PlaceCardT, 'previewImage'> & {
+  description: string;
+  bedrooms: number;
+  goods: string[];
+  host: Host;
+  images: string[];
+  maxAdults: number;
+  };
+
+export type {PlaceCardT,PlaceCardAllT};
+
