@@ -18,7 +18,6 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
 
   const cardMouseOnHandler = (placeId: string): void => {
     setActiveCard(placeId);
-    console.log(placeId);
   };
 
   const cardMouseLeaveHandler = (): void => {

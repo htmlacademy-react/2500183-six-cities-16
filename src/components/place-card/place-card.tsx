@@ -27,7 +27,6 @@ function PlaceCard({className = 'cities', place, cardMouseOnHandler, cardMouseLe
   const handlerOnMouse = () => {
     if(cardMouseOnHandler) {
       cardMouseOnHandler(id);
-      console.log(id);
     }
   };
 
