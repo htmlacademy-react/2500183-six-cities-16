@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import { PlaceCardT } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
@@ -10,9 +9,11 @@ const OFFER_CLASS_NAME = 'offer';
 type PlaceCardProps = {
   place: PlaceCardT;
   className: string;
+  cardMouseOnHandler?:(placeId: string) => void;
+  cardMouseLeaveHandler?:() => void;
 }
 
-function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element {
+function PlaceCard({className = 'cities', place, cardMouseOnHandler, cardMouseLeaveHandler} : PlaceCardProps): JSX.Element {
   const {price, type, title, previewImage, id, rating, isFavorite, isPremium} = place;
   const url = generatePath(AppRoute.OfferPage, { id });
 
@@ -23,21 +24,21 @@ function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element 
   const cardInfoClassName = className === FAVORITE_CLASS_NAME ? 'favorites__card-info' : '';
   const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
 
-  const [activeCard, setActiveCard] = useState<string | null>(null);
-
-
-  const cardMouseOnHandler = (placeId: string): void => {
-    setActiveCard(placeId);
+  const handlerOnMouse = () => {
+    if(cardMouseOnHandler) {
+      cardMouseOnHandler(id);
+      console.log(id);
+    }
   };
 
-  const cardMouseLeaveHandler = (): void => {
-    if(activeCard){
-      setActiveCard(null);
+  const handleMouseLeave = () => {
+    if(cardMouseLeaveHandler) {
+      cardMouseLeaveHandler();
     }
   };
 
   return (
-    <article className={`${className}__card place-card`} onMouseEnter={() => cardMouseOnHandler(id)} onMouseLeave={cardMouseLeaveHandler}>
+    <article className={`${className}__card place-card`} onMouseEnter={() => handlerOnMouse } onMouseLeave={handleMouseLeave}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
