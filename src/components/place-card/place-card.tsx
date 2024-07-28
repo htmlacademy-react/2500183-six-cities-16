@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, generatePath } from 'react-router-dom';
 import { PlaceCardT } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
-import { useState } from 'react';
+import { AppRoute } from '../../const';
 
 const FAVORITE_CLASS_NAME = 'favorites';
 const OFFER_CLASS_NAME = 'offer';
@@ -13,6 +14,7 @@ type PlaceCardProps = {
 
 function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element {
   const {price, type, title, previewImage, id, rating, isFavorite, isPremium} = place;
+  const url = generatePath(AppRoute.OfferPage, { id });
 
   const imgWidth = className === FAVORITE_CLASS_NAME ? 150 : 260 ;
   const imgHeight = className === FAVORITE_CLASS_NAME ? 110 : 200;
@@ -41,7 +43,7 @@ function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element 
           <span>Premium</span>
         </div> : null }
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to= {`offer/${id}`} >
+        <Link to= {url}>
           <img className="place-card__image" src={previewImage} width={imgWidth} height={imgHeight} alt="Place image" />
         </Link>
       </div>
@@ -65,7 +67,7 @@ function PlaceCard({className = 'cities', place} : PlaceCardProps): JSX.Element 
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to= {`offer/${id}`}>Beautiful &amp; {title}</Link>
+          <Link to= {url}>Beautiful &amp; {title}</Link>
         </h2>
         <p className="place-card__type">{upFirstLetter(type)}</p>
       </div>
