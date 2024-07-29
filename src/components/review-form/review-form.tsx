@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import { REVIEW_LENGTH } from '../../const';
 
 type FormDataT = {
   rating: number;
@@ -22,6 +23,8 @@ function ReviewForm(): JSX.Element {
       setFormData({...formData, review: target.value});
     }
   };
+
+  const reviewCheck = formData.review.length < REVIEW_LENGTH.MIN_REVIEW_LENGTH || formData.review.length > REVIEW_LENGTH.MAX_REVIEW_LENGTH || formData.rating === 0;
 
   return (
     <form className="reviews__form form" action="#" method="post">
@@ -67,7 +70,7 @@ function ReviewForm(): JSX.Element {
         <p className="reviews__help">
         To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={reviewCheck}>Submit</button>
       </div>
     </form>
   );
