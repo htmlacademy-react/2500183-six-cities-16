@@ -37,7 +37,7 @@ function PlaceCard({className = 'cities', place, cardMouseOnHandler, cardMouseLe
   };
 
   return (
-    <article className={`${className}__card place-card`} onMouseEnter={() => handlerOnMouse } onMouseLeave={handleMouseLeave}>
+    <article className={`${className}__card place-card`} onMouseEnter={handlerOnMouse} onMouseLeave={handleMouseLeave}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
