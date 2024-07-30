@@ -26,6 +26,7 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
     }
   };
 
+  console.log(activeCard);
   return (
     <div className="page page--gray page--main">
       <Helmet>
