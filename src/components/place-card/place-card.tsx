@@ -9,11 +9,11 @@ const OFFER_CLASS_NAME = 'offer';
 type PlaceCardProps = {
   place: PlaceCardT;
   className: string;
-  cardMouseOnHandler?:(placeId: string) => void;
-  cardMouseLeaveHandler?:() => void;
+  onCardMouseOnHandler?:(placeId: string) => void;
+  onCardMouseLeaveHandler?:() => void;
 }
 
-function PlaceCard({className = 'cities', place, cardMouseOnHandler, cardMouseLeaveHandler} : PlaceCardProps): JSX.Element {
+function PlaceCard({className = 'cities', place, onCardMouseOnHandler, onCardMouseLeaveHandler} : PlaceCardProps): JSX.Element {
   const {price, type, title, previewImage, id, rating, isFavorite, isPremium} = place;
   const url = generatePath(AppRoute.OfferPage, { id });
 
@@ -24,20 +24,20 @@ function PlaceCard({className = 'cities', place, cardMouseOnHandler, cardMouseLe
   const cardInfoClassName = className === FAVORITE_CLASS_NAME ? 'favorites__card-info' : '';
   const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
 
-  const handlerOnMouse = () => {
-    if(cardMouseOnHandler) {
-      cardMouseOnHandler(id);
+  const handleCardOnMouse = () => {
+    if(onCardMouseOnHandler) {
+      onCardMouseOnHandler(id);
     }
   };
 
-  const handleMouseLeave = () => {
-    if(cardMouseLeaveHandler) {
-      cardMouseLeaveHandler();
+  const handleCardMouseLeave = () => {
+    if(onCardMouseLeaveHandler) {
+      onCardMouseLeaveHandler();
     }
   };
 
   return (
-    <article className={`${className}__card place-card`} onMouseEnter={handlerOnMouse} onMouseLeave={handleMouseLeave}>
+    <article className={`${className}__card place-card`} onMouseEnter={handleCardOnMouse} onMouseLeave={handleCardMouseLeave}>
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>

@@ -16,11 +16,11 @@ type MainPageProps = {
 function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<string | null>(null);
 
-  const cardMouseOnHandler = (placeId: string): void => {
+  const handleCardMouseOn = (placeId: string): void => {
     setActiveCard(placeId);
   };
 
-  const cardMouseLeaveHandler = (): void => {
+  const handleCardMouseLeave = (): void => {
     setActiveCard(null);
   };
 
@@ -51,7 +51,7 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
 
               <PlacesSorting/>
 
-              <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={placesMock} cardMouseOnHandler={cardMouseOnHandler} cardMouseLeaveHandler={cardMouseLeaveHandler}/>
+              <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={placesMock} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
 
             </section>
             <div className="cities__right-section">
