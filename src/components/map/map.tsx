@@ -1,43 +1,10 @@
 import {useRef, useEffect} from 'react';
 import useMap from '../../hooks/use-map';
 import leaflet from 'leaflet';
-import { Icon, Marker, layerGroup } from 'leaflet';
+import { Icon} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { PlaceCardT } from '../../types/offer/offer';
 
-const cityExample = {
-  title: 'Нью-Йорк',
-  lat: 40.835292,
-  lng: -73.916236,
-  zoom: 10
-};
-
-const points = [
-  {
-    title: 'Саундвью',
-    lat: 40.816881,
-    lng: -73.872768
-  },
-  {
-    title: 'Ферри Поинт',
-    lat: 40.814909,
-    lng: -73.830682
-  },
-  {
-    title: 'Бронкс',
-    lat: 40.862413,
-    lng: -73.879357
-  },
-  {
-    title: 'Инвуд-Хилл',
-    lat: 40.870817,
-    lng: -73.927112
-  },
-  {
-    title: 'Пелхэм-Бей-Парк',
-    lat: 40.877312,
-    lng: -73.807182
-  }
-];
 
 const defaultCustomIcon = new Icon({
   iconUrl: 'img/pin.svg',
@@ -51,27 +18,43 @@ const currentCustomIcon = new Icon({
   iconAnchor: [13.5, 39]
 });
 
-function Map ({className = 'offer__map' } : {className : string}) : JSX.Element {
-  const mapRef = useRef(null);
-  const map = useMap(mapRef,cityExample);
+type MapProps = {
+  placesMock: PlaceCardT[];
+  className:string;
+  activeOfferId?: string | null;
+}
 
-  useEffect(() => {
+const locationExample = {
+  location: {
+    latitude: 52.379189,
+    longitude: 4.899431,
+    zoom: 12,
+  },
+};
+
+function Map ({className = 'offer__map', placesMock, activeOfferId} : MapProps) : JSX.Element {
+
+  const mapContainerRef = useRef<HTMLElement>(null);
+  const map = useMap({location:locationExample.location, containerRef: mapContainerRef});
+
+  useEffect(() : void => {
     if (map) {
-      points.forEach((point) => {
+      placesMock.forEach((place) : void => {
         leaflet
           .marker({
-            lat: point.lat,
-            lng: point.lng,
+            lat: place.location.latitude,
+            lng: place.location.longitude,
           }, {
-            icon: defaultCustomIcon,
+            icon: place.id === activeOfferId ? currentCustomIcon : defaultCustomIcon,
           })
           .addTo(map);
       });
     }
-  }, [map, points]);
+  }, [activeOfferId, map, placesMock]);
+
 
   return (
-    <section className={`${className} map`} style={{height: '500px'}} ref={mapRef}></section>
+    <section className={`${className} map`} style={{height: '500px'}} ref={mapContainerRef}></section>
   );
 }
 

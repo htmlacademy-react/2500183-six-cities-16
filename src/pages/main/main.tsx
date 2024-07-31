@@ -21,12 +21,9 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
   };
 
   const cardMouseLeaveHandler = (): void => {
-    if(activeCard){
-      setActiveCard(null);
-    }
+    setActiveCard(null);
   };
 
-  console.log(activeCard);
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -57,7 +54,7 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
             </section>
             <div className="cities__right-section">
 
-              <Map className='cities__map'/>
+              <Map className='cities__map' placesMock={placesMock} activeOfferId={activeCard}/>
 
             </div>
           </div>
