@@ -24,6 +24,8 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
     setActiveCard(null);
   };
 
+  const cityCentry = placesMock[0].city;
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -54,7 +56,7 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
             </section>
             <div className="cities__right-section">
 
-              <Map className='cities__map' placesMock={placesMock} activeOfferId={activeCard}/>
+              <Map className='cities__map' placesMock={placesMock} activePlaceId={activeCard} city={cityCentry}/>
 
             </div>
           </div>

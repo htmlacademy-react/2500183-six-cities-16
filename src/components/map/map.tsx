@@ -3,7 +3,7 @@ import useMap from '../../hooks/use-map';
 import leaflet from 'leaflet';
 import { Icon} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { PlaceCardT } from '../../types/offer/offer';
+import { PlaceCardT, City } from '../../types/offer/offer';
 
 
 const defaultCustomIcon = new Icon({
@@ -21,21 +21,14 @@ const currentCustomIcon = new Icon({
 type MapProps = {
   placesMock: PlaceCardT[];
   className:string;
-  activeOfferId?: string | null;
+  activePlaceId?: string | null;
+  city: City;
 }
 
-const locationExample = {
-  location: {
-    latitude: 52.3809553943508,
-    longitude: 4.85309666406198,
-    zoom: 12,
-  },
-};
-
-function Map ({className = 'offer__map', placesMock, activeOfferId} : MapProps) : JSX.Element {
+function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapProps) : JSX.Element {
 
   const mapContainerRef = useRef<HTMLElement>(null);
-  const map = useMap({location:locationExample.location, containerRef: mapContainerRef});
+  const map = useMap({location:city.location, containerRef: mapContainerRef});
 
   useEffect(() : void => {
     if (map) {
@@ -45,12 +38,12 @@ function Map ({className = 'offer__map', placesMock, activeOfferId} : MapProps) 
             lat: place.location.latitude,
             lng: place.location.longitude,
           }, {
-            icon: place.id === activeOfferId ? currentCustomIcon : defaultCustomIcon,
+            icon: place.id === activePlaceId ? currentCustomIcon : defaultCustomIcon,
           })
           .addTo(map);
       });
     }
-  }, [activeOfferId, map, placesMock]);
+  }, [activePlaceId, map, placesMock]);
 
 
   return (

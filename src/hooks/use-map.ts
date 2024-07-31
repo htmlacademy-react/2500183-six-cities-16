@@ -1,12 +1,9 @@
 import {useEffect, useState, useRef} from 'react';
 import leaflet, {Map as LeafletMap} from 'leaflet';
+import {Location} from '../types/offer/offer.ts';
 
 type UseMapProps = {
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
+  location: Location;
   containerRef: React.RefObject<HTMLElement | null>;
 }
 
