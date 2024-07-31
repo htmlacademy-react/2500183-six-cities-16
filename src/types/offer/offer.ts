@@ -36,5 +36,5 @@ type PlaceCardAllT = Omit<PlaceCardT, 'previewImage'> & {
   maxAdults: number;
   };
 
-export type {PlaceCardT,PlaceCardAllT,Location};
+export type {PlaceCardT, PlaceCardAllT, Location, City};
 
