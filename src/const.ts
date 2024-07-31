@@ -1,6 +1,6 @@
 const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'] as const;
 
-const ACTIVE_CITY = CITIES[0];
+const ACTIVE_CITY = CITIES[3];
 
 enum AppRoute {
   MainPage = '/',

@@ -26,8 +26,8 @@ type MapProps = {
 
 const locationExample = {
   location: {
-    latitude: 52.379189,
-    longitude: 4.899431,
+    latitude: 52.3809553943508,
+    longitude: 4.85309666406198,
     zoom: 12,
   },
 };
