@@ -111,7 +111,7 @@ const placeCardOffers : PlaceCardT[] = [
       'longitude': 6.784314,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': true,
     'rating': 3.9
   },

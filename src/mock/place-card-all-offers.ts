@@ -127,7 +127,7 @@ const placeCardAllOffers : PlaceCardAllT[] = [
       'longitude': 6.784314,
       'zoom': 16
     },
-    'isFavorite': false,
+    'isFavorite': true,
     'isPremium': true,
     'rating': 3.9,
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam7.',
