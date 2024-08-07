@@ -53,7 +53,7 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
                 <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={currentPlacesCard} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
               </section>
               <div className="cities__right-section">
-                <Map className='cities__map' placesMock={currentPlacesCard} activePlaceId={activeCard} city={currentPlacesCard[0].city}/>
+                <Map className='cities__map' places={currentPlacesCard} activePlaceId={activeCard} city={currentPlacesCard[0].city}/>
               </div>
             </div>
           </div> :

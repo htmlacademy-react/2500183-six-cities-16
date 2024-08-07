@@ -18,13 +18,13 @@ const currentCustomIcon = new Icon({
 });
 
 type MapProps = {
-  placesMock: PlaceCardT[];
+  places: PlaceCardT[];
   className:string;
   activePlaceId?: string | null;
   city: City;
 }
 
-function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapProps) : JSX.Element {
+function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps) : JSX.Element {
 
   const mapContainerRef = useRef<HTMLElement>(null);
   const map = useMap({location:city.location, containerRef: mapContainerRef});
@@ -37,7 +37,7 @@ function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapP
       layer.current.addTo(map);
       layer.current.clearLayers();
 
-      placesMock.forEach((place) : void => {
+      places.forEach((place) : void => {
         leaflet
           .marker({
             lat: place.location.latitude,
@@ -48,7 +48,7 @@ function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapP
           .addTo(map);
       });
     }
-  }, [activePlaceId, map, placesMock, city]);
+  }, [activePlaceId, map, places, city]);
 
 
   return (
