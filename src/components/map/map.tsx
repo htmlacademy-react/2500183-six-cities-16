@@ -1,19 +1,19 @@
 import {useRef, useEffect} from 'react';
 import useMap from '../../hooks/use-map';
-import leaflet from 'leaflet';
-import { Icon} from 'leaflet';
+import leaflet, {Icon} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { PlaceCardT, City } from '../../types/offer/offer';
+import { IconOptions } from '../../const';
 
 
 const defaultCustomIcon = new Icon({
-  iconUrl: 'img/pin.svg',
+  iconUrl: IconOptions.DefaultIconUrl,
   iconSize: [27, 39],
   iconAnchor: [13.5, 39]
 });
 
 const currentCustomIcon = new Icon({
-  iconUrl: 'img/pin-active.svg',
+  iconUrl: IconOptions.ActiveIconUrl,
   iconSize: [27, 39],
   iconAnchor: [13.5, 39]
 });
@@ -47,7 +47,7 @@ function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapP
 
 
   return (
-    <section className={`${className} map`} style={{height: '500px'}} ref={mapContainerRef}></section>
+    <section className={`${className} map`} ref={mapContainerRef}></section>
   );
 }
 

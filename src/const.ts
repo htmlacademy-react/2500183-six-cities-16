@@ -20,4 +20,14 @@ const REVIEW_LENGTH = {
   MAX: 300,
 } as const;
 
-export { CITIES, ACTIVE_CITY, REVIEW_LENGTH, AppRoute, AuthorizationStatus };
+const IconOptions = {
+  DefaultIconUrl: 'img/pin.svg',
+  ActiveIconUrl: 'img/pin-active.svg',
+} as const;
+
+const TITLE_LAYER_URL = {
+  PATTERN: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+} as const;
+
+export { CITIES, ACTIVE_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, AppRoute, AuthorizationStatus };
