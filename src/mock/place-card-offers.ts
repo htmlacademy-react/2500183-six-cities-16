@@ -47,29 +47,6 @@ const placeCardOffers : PlaceCardT[] = [
     'rating': 4.8
   },
   {
-    'id': 'ffb99d6b-6767-4150-8327-423581c9e2ac',
-    'title': 'Beautiful & luxurious apartment at great location',
-    'type': 'house',
-    'price': 355,
-    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/6.jpg',
-    'city': {
-      'name': 'Paris',
-      'location': {
-        'latitude': 52.3909553943508,
-        'longitude': 4.929309666406198,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 52.3909553943508,
-      'longitude': 4.929309666406198,
-      'zoom': 16
-    },
-    'isFavorite': false,
-    'isPremium': false,
-    'rating': 4.3
-  },
-  {
     'id': '5c8b793f-7651-4d77-b98b-7baeffc7f3a0',
     'title': 'Penthouse, 4-5 rooms + 5 balconies',
     'type': 'house',

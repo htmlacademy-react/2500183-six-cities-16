@@ -5,7 +5,6 @@ import 'leaflet/dist/leaflet.css';
 import { PlaceCardT, City } from '../../types/offer/offer';
 import { IconOptions } from '../../const';
 
-
 const defaultCustomIcon = new Icon({
   iconUrl: IconOptions.DefaultIconUrl,
   iconSize: [27, 39],
