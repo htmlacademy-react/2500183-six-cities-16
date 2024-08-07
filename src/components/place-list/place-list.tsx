@@ -6,17 +6,19 @@ type PlaceListProps = {
   placesMock: PlaceCardT[];
   className: string;
   classNameCard: string;
+  onCardMouseOnHandler?:(placeId: string) => void;
+  onCardMouseLeaveHandler?:() => void;
 }
 
 const FAVORITE_LIST_CLASS_NAME = 'favorites__places';
 const CITIES_PLACES_LIST_CLASS_NAME = 'cities__places-list';
 
-function PlaceList ({className, classNameCard, placesMock} :PlaceListProps) : JSX.Element {
+function PlaceList ({className, classNameCard, placesMock, onCardMouseOnHandler, onCardMouseLeaveHandler} :PlaceListProps) : JSX.Element {
   const placesList = className === FAVORITE_LIST_CLASS_NAME ? '' : 'places__list' ;
   const tabsContent = className === CITIES_PLACES_LIST_CLASS_NAME ? 'tabs__content' : '';
   return (
     <div className={`${className} ${placesList} ${tabsContent}`}>
-      {placesMock.map((offer) => <PlaceCard className={classNameCard} place={offer} key={crypto.randomUUID()} />)}
+      {placesMock.map((offer) => <PlaceCard className={classNameCard} place={offer} onCardMouseOnHandler={onCardMouseOnHandler} onCardMouseLeaveHandler={onCardMouseLeaveHandler} key={crypto.randomUUID()} />)}
     </div>
   );
 }

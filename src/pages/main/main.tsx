@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import CitiesItem from '../../components/cities/cities-item';
@@ -13,6 +14,18 @@ type MainPageProps = {
 }
 
 function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+
+  const handleCardMouseOn = (placeId: string): void => {
+    setActiveCard(placeId);
+  };
+
+  const handleCardMouseLeave = (): void => {
+    setActiveCard(null);
+  };
+
+  const cityCentry = placesMock[3].city;
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -38,12 +51,12 @@ function Main({placesMock, favoritesNumber}: MainPageProps): JSX.Element {
 
               <PlacesSorting/>
 
-              <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={placesMock} />
+              <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={placesMock} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
 
             </section>
             <div className="cities__right-section">
 
-              <Map className='cities__map'/>
+              <Map className='cities__map' placesMock={placesMock} activePlaceId={activeCard} city={cityCentry}/>
 
             </div>
           </div>

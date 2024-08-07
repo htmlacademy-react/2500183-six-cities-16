@@ -7,16 +7,16 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'type': 'house',
     'price': 709,
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
-        'zoom': 13
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
+        'zoom': 11
       }
     },
     'location': {
-      'latitude': 48.868610000000004,
-      'longitude': 2.342499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'isFavorite': false,
@@ -43,16 +43,16 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'type': 'room',
     'price': 145,
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3609553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.858610000000006,
-      'longitude': 2.330499,
+      'latitude': 52.3609553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'isFavorite': false,
@@ -79,16 +79,16 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'type': 'house',
     'price': 355,
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.929309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.834610000000005,
-      'longitude': 2.335499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.929309666406198,
       'zoom': 16
     },
     'isFavorite': false,
@@ -110,26 +110,26 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     'maxAdults': 4
   },
   {
-    'id': '5c8b793f-7651-4d77-b98b-7baeffc7f3a0',
-    'title': 'Penthouse, 4-5 rooms + 5 balconies',
-    'type': 'house',
-    'price': 595,
+    'id': '92e15e24-fa63-45d6-b9db-b9b108d7512a',
+    'title': 'Perfectly located Castro',
+    'type': 'hotel',
+    'price': 246,
     'city': {
-      'name': 'Paris',
+      'name': 'Dusseldorf',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 51.225402,
+        'longitude': 6.776314,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.84461,
-      'longitude': 2.374499,
+      'latitude': 51.236402000000005,
+      'longitude': 6.784314,
       'zoom': 16
     },
-    'isFavorite': false,
-    'isPremium': false,
-    'rating': 3.5,
+    'isFavorite': true,
+    'isPremium': true,
+    'rating': 3.9,
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam7.',
     'bedrooms': 3,
     'goods': [

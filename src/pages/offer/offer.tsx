@@ -6,7 +6,6 @@ import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
-import Map from '../../components/map/map';
 import ReviewForm from '../../components/review-form/review-form';
 import { PlaceCardAllT } from '../../types/offer/offer';
 import { ReviewsT } from '../../types/reviews/reviews';
@@ -134,7 +133,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map className='offer__map'/>
+          <section className="offer__map map"></section>
         </section>
         <div className="container">
           <section className="near-places places">
