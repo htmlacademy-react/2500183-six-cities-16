@@ -1,6 +1,6 @@
 import {useRef, useEffect} from 'react';
 import useMap from '../../hooks/use-map';
-import leaflet, {Icon} from 'leaflet';
+import leaflet, {Icon, layerGroup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { PlaceCardT, City } from '../../types/offer/offer';
 import { IconOptions } from '../../const';
@@ -28,9 +28,15 @@ function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapP
 
   const mapContainerRef = useRef<HTMLElement>(null);
   const map = useMap({location:city.location, containerRef: mapContainerRef});
+  const layer = useRef(layerGroup());
 
   useEffect(() : void => {
     if (map) {
+
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+      layer.current.addTo(map);
+      layer.current.clearLayers();
+
       placesMock.forEach((place) : void => {
         leaflet
           .marker({
@@ -42,7 +48,7 @@ function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapP
           .addTo(map);
       });
     }
-  }, [activePlaceId, map, placesMock]);
+  }, [activePlaceId, map, placesMock, city]);
 
 
   return (
