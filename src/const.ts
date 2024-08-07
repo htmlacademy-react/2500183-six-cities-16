@@ -1,6 +1,7 @@
 const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'] as const;
 
-const ACTIVE_CITY = CITIES[3];
+const ACTIVE_CITY = 'Amsterdam';
+const DEFAULT_CITY = 'Paris';
 
 enum AppRoute {
   MainPage = '/',
@@ -30,4 +31,4 @@ const TITLE_LAYER_URL = {
   ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
 
-export { CITIES, ACTIVE_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, AppRoute, AuthorizationStatus };
+export { CITIES, ACTIVE_CITY, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, AppRoute, AuthorizationStatus };

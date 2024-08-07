@@ -115,6 +115,52 @@ const placeCardOffers : PlaceCardT[] = [
     'isPremium': true,
     'rating': 3.9
   },
+  {
+    'id': 'c92ee82b-38b9-41bd-874f-ac053f0d3461',
+    'title': 'Beautiful & luxurious apartment at great location',
+    'type': 'room',
+    'price': 115,
+    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/6.jpg',
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.868610000000004,
+      'longitude': 2.342499,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 1.9
+  },
+  {
+    'id': 'b952cd1b-dbf6-4e3d-ab73-7ebc7af6c3d3',
+    'title': 'Perfectly located Castro',
+    'type': 'hotel',
+    'price': 321,
+    'previewImage': 'https://16.design.htmlacademy.pro/static/hotel/5.jpg',
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.858610000000006,
+      'longitude': 2.330499,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 3.1
+  },
 
 ];
 
