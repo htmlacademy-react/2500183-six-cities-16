@@ -1,13 +1,13 @@
 import { ChangeEvent, useState } from 'react';
 import { REVIEW_LENGTH } from '../../const';
 
-type FormDataT = {
+type FormData = {
   rating: number;
   review: string;
 }
 
 function ReviewForm(): JSX.Element {
-  const [formData, setFormData] = useState<FormDataT>({
+  const [formData, setFormData] = useState<FormData>({
     rating: 0,
     review: ''
   });
@@ -26,7 +26,7 @@ function ReviewForm(): JSX.Element {
 
   const numberCharacters : number = 50;
 
-  const reviewCheck = formData.review.length < REVIEW_LENGTH.MIN_REVIEW_LENGTH || formData.review.length > REVIEW_LENGTH.MAX_REVIEW_LENGTH || formData.rating === 0;
+  const reviewCheck = formData.review.length < REVIEW_LENGTH.MIN || formData.review.length > REVIEW_LENGTH.MAX || formData.rating === 0;
 
   return (
     <form className="reviews__form form" action="#" method="post">
