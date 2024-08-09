@@ -6,6 +6,8 @@ import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { SortBy } from '../../const';
+import { PlaceCardT } from '../../types/offer/offer';
 
 type MainPageProps = {
   favoritesNumber: number;
@@ -19,9 +21,26 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
 
   const currentSortType = useAppSelector((state) => state.sortBy);
 
-  console.log(currentSortType);
+  const sortOffers = (initialOffers: PlaceCardT[], sortType: SortBy) : PlaceCardT[] => {
+    const offers = [...initialOffers];
+    switch (sortType) {
+      case SortBy.Popular:
+        break;
+      case SortBy.PriceDown:
+        offers.sort((firstOffer, secondOffer) => secondOffer.price - firstOffer.price);
+        break;
+      case SortBy.PriceUp:
+        offers.sort((firstOffer, secondOffer) => firstOffer.price - secondOffer.price);
+        break;
+      case SortBy.Rating:
+        offers.sort((firstOffer, secondOffer) => secondOffer.rating - firstOffer.rating);
+        break;
+    }
+    return offers;
+  };
 
-  const currentPlacesCard = placesCard.filter((offer) => offer.city.name === currentCity);
+  const sortCityPlaceCard = placesCard.filter((offer) => offer.city.name === currentCity);
+  const currentPlacesCard = sortOffers(sortCityPlaceCard,currentSortType);
 
   const handleCardMouseOn = (placeId: string): void => {
     setActiveCard(placeId);

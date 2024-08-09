@@ -3,12 +3,13 @@ import classNames from 'classnames';
 import { changeSortBy } from '../../store/action';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { SortBy } from '../../const';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
 
 function PlacesSorting () : JSX.Element {
 
   const [ isFormOpened, setFormOpened ] = useState(false);
 
-  const currentSortType = SortBy.Popular;
+  const currentSortType = useAppSelector((state) => state.sortBy);
   const dispatch = useAppDispatch();
 
   const sortByClickHandler = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {
