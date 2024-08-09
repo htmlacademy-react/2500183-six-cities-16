@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import App from './components/app/app';
 import { placeCardOffers } from './mock/place-card-offers';
 import { offerReviews } from './mock/offer-reviews';
@@ -9,10 +11,12 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <App
-      placesMock={placeCardOffers}
-      reviews={offerReviews}
-    />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <App
+        placesMock={placeCardOffers}
+        reviews={offerReviews}
+      />
+    </React.StrictMode>
+  </Provider>
 );

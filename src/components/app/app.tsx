@@ -26,7 +26,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main placesMock={placesMock} favoritesNumber={favoritesNumber}/>}
+            element={<Main favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path={AppRoute.LoginPage}

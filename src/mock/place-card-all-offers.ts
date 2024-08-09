@@ -145,6 +145,78 @@ const placeCardAllOffers : PlaceCardAllT[] = [
     ],
     'maxAdults': 42
   },
+  {
+    'id': 'c92ee82b-38b9-41bd-874f-ac053f0d3461',
+    'title': 'Beautiful & luxurious apartment at great location',
+    'type': 'room',
+    'price': 115,
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.868610000000004,
+      'longitude': 2.342499,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 3.9,
+    'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam7.',
+    'bedrooms': 3,
+    'goods': [
+      'Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'
+    ],
+    'host': {
+      'name': 'Oliver Conner',
+      'avatarUrl': 'img/avatar-angelina.jpg',
+      'isPro': false
+    },
+    'images': [
+      'img/room.jpg', 'img/apartment-01.jpg','img/studio-01.jpg', 'img/apartment-01.jpg'
+    ],
+    'maxAdults': 42
+  },
+  {
+    'id': 'b952cd1b-dbf6-4e3d-ab73-7ebc7af6c3d3',
+    'title': 'Perfectly located Castro',
+    'type': 'hotel',
+    'price': 321,
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.858610000000006,
+      'longitude': 2.330499,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 3.1,
+    'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam7.',
+    'bedrooms': 3,
+    'goods': [
+      'Wi-Fi', 'Washing machine', 'Towels', 'Heating', 'Coffee machine', 'Baby seat', 'Kitchen', 'Dishwasher', 'Cabel TV', 'Fridge'
+    ],
+    'host': {
+      'name': 'Oliver Conner',
+      'avatarUrl': 'img/avatar-angelina.jpg',
+      'isPro': false
+    },
+    'images': [
+      'img/room.jpg', 'img/apartment-01.jpg','img/studio-01.jpg', 'img/apartment-01.jpg'
+    ],
+    'maxAdults': 42
+  },
 ];
 
 export {placeCardAllOffers};
