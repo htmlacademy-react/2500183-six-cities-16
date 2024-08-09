@@ -17,6 +17,10 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
   const placesCard = useAppSelector((state) => state.initialOffers);
   const currentCity = useAppSelector((state) => state.city);
 
+  const currentSortType = useAppSelector((state) => state.sortBy);
+
+  console.log(currentSortType);
+
   const currentPlacesCard = placesCard.filter((offer) => offer.city.name === currentCity);
 
   const handleCardMouseOn = (placeId: string): void => {
