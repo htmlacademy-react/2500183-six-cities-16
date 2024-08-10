@@ -1,10 +1,9 @@
 import {useRef, useEffect} from 'react';
 import useMap from '../../hooks/use-map';
-import leaflet, {Icon} from 'leaflet';
+import leaflet, {Icon, layerGroup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { PlaceCardT, City } from '../../types/offer/offer';
+import { PlaceCardSample, City } from '../../types/offer/offer';
 import { IconOptions } from '../../const';
-
 
 const defaultCustomIcon = new Icon({
   iconUrl: IconOptions.DefaultIconUrl,
@@ -19,20 +18,26 @@ const currentCustomIcon = new Icon({
 });
 
 type MapProps = {
-  placesMock: PlaceCardT[];
+  places: PlaceCardSample[];
   className:string;
   activePlaceId?: string | null;
   city: City;
 }
 
-function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapProps) : JSX.Element {
+function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps) : JSX.Element {
 
   const mapContainerRef = useRef<HTMLElement>(null);
   const map = useMap({location:city.location, containerRef: mapContainerRef});
+  const layer = useRef(layerGroup());
 
   useEffect(() : void => {
     if (map) {
-      placesMock.forEach((place) : void => {
+
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+      layer.current.addTo(map);
+      layer.current.clearLayers();
+
+      places.forEach((place) : void => {
         leaflet
           .marker({
             lat: place.location.latitude,
@@ -43,7 +48,7 @@ function Map ({className = 'offer__map', placesMock, activePlaceId, city} : MapP
           .addTo(map);
       });
     }
-  }, [activePlaceId, map, placesMock]);
+  }, [activePlaceId, map, places, city]);
 
 
   return (

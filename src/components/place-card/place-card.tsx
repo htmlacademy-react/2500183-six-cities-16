@@ -1,5 +1,5 @@
 import { Link, generatePath } from 'react-router-dom';
-import { PlaceCardT } from '../../types/offer/offer';
+import { PlaceCardSample } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
 import { AppRoute } from '../../const';
 
@@ -7,7 +7,7 @@ const FAVORITE_CLASS_NAME = 'favorites';
 const OFFER_CLASS_NAME = 'offer';
 
 type PlaceCardProps = {
-  place: PlaceCardT;
+  place: PlaceCardSample;
   className: string;
   onCardMouseOnHandler?:(placeId: string) => void;
   onCardMouseLeaveHandler?:() => void;

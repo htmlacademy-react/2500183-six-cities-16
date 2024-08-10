@@ -1,13 +1,13 @@
-import { ReviewsT } from '../../types/reviews/reviews';
+import { Reviews } from '../../types/reviews/reviews';
 
 const RATING_WIDTH_STEP = 20;
 
 type ReviewsListProps = {
-  reviews: ReviewsT[];
+  reviews: Reviews[];
 }
 
 type ReviewsItemProps = {
-  review: ReviewsT;
+  review: Reviews;
 }
 
 

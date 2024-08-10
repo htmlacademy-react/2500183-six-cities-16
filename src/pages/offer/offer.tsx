@@ -7,10 +7,12 @@ import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
-import { PlaceCardAllT } from '../../types/offer/offer';
-import { ReviewsT } from '../../types/reviews/reviews';
+import { PlaceCardAllSample } from '../../types/offer/offer';
+import { Reviews } from '../../types/reviews/reviews';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
+import Map from '../../components/map/map';
 
 
 const PLACE_CARDS_COUNT = 2;
@@ -19,14 +21,19 @@ const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
 type OfferPageProps = {
-  reviews: ReviewsT[];
+  reviews: Reviews[];
   favoritesNumber: number;
 }
 
 
 function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  const currentPlace: PlaceCardAllT | undefined = placeCardAllOffers.find((place: PlaceCardAllT) => place.id === id);
+  const currentPlace:PlaceCardAllSample | undefined = placeCardAllOffers.find((place: PlaceCardAllSample) => place.id === id);
+
+  const placesCard = useAppSelector((state) => state.offers);
+  const currentCity = useAppSelector((state) => state.city);
+
+  const currentPlacesCard = placesCard.filter((offer) => offer.city.name === currentCity);
 
   if (!currentPlace) {
     return <Page404 />;
@@ -133,7 +140,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map"></section>
+          <Map className='offer__map map' places={currentPlacesCard} city={currentPlacesCard[0].city}/>
         </section>
         <div className="container">
           <section className="near-places places">

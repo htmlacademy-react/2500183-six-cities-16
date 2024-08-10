@@ -7,13 +7,13 @@ import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
 import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { PlaceCardT } from '../../types/offer/offer';
-import { ReviewsT } from '../../types/reviews/reviews';
+import { PlaceCardSample } from '../../types/offer/offer';
+import { Reviews } from '../../types/reviews/reviews';
 
 
 type AppProps = {
-  placesMock: PlaceCardT[];
-  reviews: ReviewsT[];
+  placesMock: PlaceCardSample[];
+  reviews: Reviews[];
 }
 
 
@@ -26,7 +26,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main placesMock={placesMock} favoritesNumber={favoritesNumber}/>}
+            element={<Main favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path={AppRoute.LoginPage}
