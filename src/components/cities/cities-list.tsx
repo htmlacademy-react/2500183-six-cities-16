@@ -9,7 +9,7 @@ function CitiesList(): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const cityTabClickHandler = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {
+  const handleTabCityClick = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {
     dispatch(changeCity({city: currentTarget.innerText}));
   };
 
@@ -19,7 +19,7 @@ function CitiesList(): JSX.Element {
       {
         CITIES.map((city) => (
           <li key={`${city}-tab`} className="locations__item">
-            <Link className={`locations__item-link tabs__item ${currentCity === city ? 'tabs__item--active' : ''}`} to = {AppRoute.MainPage} onClick={cityTabClickHandler}>
+            <Link className={`locations__item-link tabs__item ${currentCity === city ? 'tabs__item--active' : ''}`} to = {AppRoute.MainPage} onClick={handleTabCityClick}>
               <span>{city}</span>
             </Link>
 
