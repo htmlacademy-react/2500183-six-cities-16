@@ -15,7 +15,7 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-enum SortBy {
+enum Sorting {
   Popular = 'Popular',
   PriceUp = 'Price: low to high',
   PriceDown = 'Price: high to low',
@@ -38,4 +38,4 @@ const TITLE_LAYER_URL = {
   ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
 
-export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, SortBy, TITLE_LAYER_URL, AppRoute, AuthorizationStatus };
+export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus };
