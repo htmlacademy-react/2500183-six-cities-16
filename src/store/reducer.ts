@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import { changeCity, changeSortBy } from './action';
+import { changeCity, changeSortBy, uploadOffers } from './action';
 import { DEFAULT_CITY, Sorting } from '../const';
 import { placeCardOffers } from '../mock/place-card-offers';
 
@@ -16,6 +16,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(changeSortBy, (state, action) => {
       state.sorting = action.payload.sorting;
+    })
+    .addCase(uploadOffers, (state, action) => {
+      state.offers = action.payload.offers;
     });
 });
 
