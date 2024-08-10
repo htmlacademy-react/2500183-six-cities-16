@@ -38,4 +38,8 @@ const TITLE_LAYER_URL = {
   ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
 
-export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus };
+enum ApiRoute {
+  Offers = '/offers'
+}
+
+export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus, ApiRoute };

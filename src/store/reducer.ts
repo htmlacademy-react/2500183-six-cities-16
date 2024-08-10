@@ -1,11 +1,19 @@
 import {createReducer} from '@reduxjs/toolkit';
 import { changeCity, changeSortBy, uploadOffers } from './action';
 import { DEFAULT_CITY, Sorting } from '../const';
-import { placeCardOffers } from '../mock/place-card-offers';
+//import { placeCardOffers } from '../mock/place-card-offers';
+import { PlaceCardSample } from '../types/offer/offer';
 
-const initialState = {
+type InitialState = {
+  city: string;
+  offers: [] | PlaceCardSample[];
+  sorting: Sorting;
+};
+
+
+const initialState : InitialState = {
   city: DEFAULT_CITY,
-  offers: placeCardOffers,
+  offers: [],
   sorting: Sorting.Popular
 };
 
