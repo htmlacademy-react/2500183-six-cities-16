@@ -7,6 +7,7 @@ import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { sortOffers } from '../../utils/place-card';
+import { selectFilteredOffers } from '../../store/selectors';
 
 type MainPageProps = {
   favoritesNumber: number;
@@ -15,13 +16,13 @@ type MainPageProps = {
 function Main({favoritesNumber}: MainPageProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<string | null>(null);
 
-  const placesCard = useAppSelector((state) => state.offers);
-  const currentCity = useAppSelector((state) => state.city);
 
+  const currentCity = useAppSelector((state) => state.city);
   const currentSortType = useAppSelector((state) => state.sortBy);
 
-  const sortCityPlaceCard = placesCard.filter((offer) => offer.city.name === currentCity);
-  const currentPlacesCard = sortOffers(sortCityPlaceCard,currentSortType);
+
+  const filteredCityOffers = useAppSelector(selectFilteredOffers);
+  const currentPlacesCard = sortOffers(filteredCityOffers,currentSortType);
 
   const handleCardMouseOn = (placeId: string): void => {
     setActiveCard(placeId);
