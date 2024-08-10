@@ -1,6 +1,6 @@
-import { PlaceCardAllT } from '../types/offer/offer';
+import { PlaceCardAllSample } from '../types/offer/offer';
 
-const placeCardAllOffers : PlaceCardAllT[] = [
+const placeCardAllOffers : PlaceCardAllSample[] = [
   {
     'id': 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
     'title': 'Nice, cozy, warm big bed apartment',
