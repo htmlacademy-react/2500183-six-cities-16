@@ -12,7 +12,7 @@ function PlacesSorting () : JSX.Element {
   const currentSortType = useAppSelector((state) => state.sortBy);
   const dispatch = useAppDispatch();
 
-  const sortByClickHandler = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {
+  const handlePlacesSortingClick = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {
     dispatch(changeSortBy({sortBy: currentTarget.innerHTML as SortBy}));
     setFormOpened(!isFormOpened);
   };
@@ -38,7 +38,7 @@ function PlacesSorting () : JSX.Element {
               'places__option': true,
               'places__option--active': currentSortType === sortValue})}
             tabIndex={index}
-            onClick={sortByClickHandler}
+            onClick={handlePlacesSortingClick}
           >{ sortValue }
           </li>
         )
