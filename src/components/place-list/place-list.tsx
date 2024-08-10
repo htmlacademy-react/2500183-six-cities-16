@@ -1,9 +1,9 @@
-import { PlaceCardT } from '../../types/offer/offer';
+import { PlaceCardSample } from '../../types/offer/offer';
 import PlaceCard from '../place-card/place-card';
 
 
 type PlaceListProps = {
-  placesMock: PlaceCardT[];
+  placesMock: PlaceCardSample[];
   className: string;
   classNameCard: string;
   onCardMouseOnHandler?:(placeId: string) => void;

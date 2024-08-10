@@ -2,7 +2,7 @@ import {useRef, useEffect} from 'react';
 import useMap from '../../hooks/use-map';
 import leaflet, {Icon, layerGroup } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { PlaceCardT, City } from '../../types/offer/offer';
+import { PlaceCardSample, City } from '../../types/offer/offer';
 import { IconOptions } from '../../const';
 
 const defaultCustomIcon = new Icon({
@@ -18,7 +18,7 @@ const currentCustomIcon = new Icon({
 });
 
 type MapProps = {
-  places: PlaceCardT[];
+  places: PlaceCardSample[];
   className:string;
   activePlaceId?: string | null;
   city: City;

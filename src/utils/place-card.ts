@@ -1,4 +1,4 @@
-import { PlaceCardT } from '../types/offer/offer';
+import { PlaceCardSample } from '../types/offer/offer';
 import { Sorting } from '../const';
 const MAX_RATING = 5;
 
@@ -6,7 +6,7 @@ export const calculateRatingWidth = (rating: number): string => `${ Math.round(r
 
 export const upFirstLetter = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;
 
-export const sortOffers = (initialOffers: PlaceCardT[], sortType: Sorting) : PlaceCardT[] => {
+export const sortOffers = (initialOffers: PlaceCardSample[], sortType: Sorting) : PlaceCardSample[] => {
   const offers = [...initialOffers];
   switch (sortType) {
     case Sorting.Popular:
