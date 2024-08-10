@@ -8,12 +8,12 @@ import Page404 from '../../pages/page404/page404';
 import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
-import { ReviewsT } from '../../types/reviews/reviews';
+import { Reviews } from '../../types/reviews/reviews';
 
 
 type AppProps = {
   placesMock: PlaceCardSample[];
-  reviews: ReviewsT[];
+  reviews: Reviews[];
 }
 
 
