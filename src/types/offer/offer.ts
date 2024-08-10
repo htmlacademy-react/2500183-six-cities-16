@@ -14,7 +14,7 @@ type Host = {
   isPro: boolean;
 }
 
-type PlaceCardT = {
+type PlaceCardSample = {
   id: string;
   title: string;
   type: string;
@@ -27,7 +27,7 @@ type PlaceCardT = {
   previewImage: string;
 };
 
-type PlaceCardAllT = Omit<PlaceCardT, 'previewImage'> & {
+type PlaceCardAllT = Omit<PlaceCardSample, 'previewImage'> & {
   description: string;
   bedrooms: number;
   goods: string[];
@@ -36,5 +36,5 @@ type PlaceCardAllT = Omit<PlaceCardT, 'previewImage'> & {
   maxAdults: number;
   };
 
-export type {PlaceCardT, PlaceCardAllT, Location, City};
+export type {PlaceCardSample, PlaceCardAllT, Location, City};
 
