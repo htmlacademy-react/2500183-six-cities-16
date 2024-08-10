@@ -27,7 +27,7 @@ type PlaceCardSample = {
   previewImage: string;
 };
 
-type PlaceCardAllT = Omit<PlaceCardSample, 'previewImage'> & {
+type PlaceCardAllSample = Omit<PlaceCardSample, 'previewImage'> & {
   description: string;
   bedrooms: number;
   goods: string[];
@@ -36,5 +36,5 @@ type PlaceCardAllT = Omit<PlaceCardSample, 'previewImage'> & {
   maxAdults: number;
   };
 
-export type {PlaceCardSample, PlaceCardAllT, Location, City};
+export type {PlaceCardSample, PlaceCardAllSample, Location, City};
 
