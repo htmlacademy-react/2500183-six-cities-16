@@ -8,7 +8,7 @@ import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
 import { PlaceCardAllSample } from '../../types/offer/offer';
-import { ReviewsT } from '../../types/reviews/reviews';
+import { Reviews } from '../../types/reviews/reviews';
 import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
@@ -21,7 +21,7 @@ const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
 type OfferPageProps = {
-  reviews: ReviewsT[];
+  reviews: Reviews[];
   favoritesNumber: number;
 }
 
