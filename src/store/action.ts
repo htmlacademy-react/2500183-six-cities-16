@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
-import { SortBy } from '../const';
+import { Sorting } from '../const';
 
 const changeCity = createAction<{city: string}>('citiesList/changeCity');
-const changeSortBy = createAction<{sortBy: SortBy}>('placesSorting/changeSortBy');
+const changeSortBy = createAction<{sorting: Sorting}>('placesSorting/changeSorting');
 
 export {
   changeCity,

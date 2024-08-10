@@ -2,18 +2,18 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { changeSortBy } from '../../store/action';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
-import { SortBy } from '../../const';
+import { Sorting } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 
 function PlacesSorting () : JSX.Element {
 
   const [ isFormOpened, setFormOpened ] = useState(false);
 
-  const currentSortType = useAppSelector((state) => state.sortBy);
+  const currentSortType = useAppSelector((state) => state.sorting);
   const dispatch = useAppDispatch();
 
   const handlePlacesSortingClick = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {
-    dispatch(changeSortBy({sortBy: currentTarget.innerHTML as SortBy}));
+    dispatch(changeSortBy({sorting: currentTarget.innerHTML as Sorting}));
     setFormOpened(!isFormOpened);
   };
 
@@ -31,7 +31,7 @@ function PlacesSorting () : JSX.Element {
 
         'places__options--opened': isFormOpened })}
       >
-        { Object.entries(SortBy).map(([sortKey, sortValue], index) => (
+        { Object.entries(Sorting).map(([sortKey, sortValue], index) => (
           <li
             key={sortKey}
             className={classNames({

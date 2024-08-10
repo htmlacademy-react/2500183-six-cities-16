@@ -1,23 +1,23 @@
 import { PlaceCardT } from '../types/offer/offer';
-import { SortBy } from '../const';
+import { Sorting } from '../const';
 const MAX_RATING = 5;
 
 export const calculateRatingWidth = (rating: number): string => `${ Math.round(rating) * 100 / MAX_RATING}%`;
 
 export const upFirstLetter = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;
 
-export const sortOffers = (initialOffers: PlaceCardT[], sortType: SortBy) : PlaceCardT[] => {
+export const sortOffers = (initialOffers: PlaceCardT[], sortType: Sorting) : PlaceCardT[] => {
   const offers = [...initialOffers];
   switch (sortType) {
-    case SortBy.Popular:
+    case Sorting.Popular:
       break;
-    case SortBy.PriceDown:
+    case Sorting.PriceDown:
       offers.sort((firstOffer, secondOffer) => secondOffer.price - firstOffer.price);
       break;
-    case SortBy.PriceUp:
+    case Sorting.PriceUp:
       offers.sort((firstOffer, secondOffer) => firstOffer.price - secondOffer.price);
       break;
-    case SortBy.Rating:
+    case Sorting.Rating:
       offers.sort((firstOffer, secondOffer) => secondOffer.rating - firstOffer.rating);
       break;
   }

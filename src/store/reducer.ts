@@ -1,12 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
 import { changeCity, changeSortBy } from './action';
-import { DEFAULT_CITY, SortBy } from '../const';
+import { DEFAULT_CITY, Sorting } from '../const';
 import { placeCardOffers } from '../mock/place-card-offers';
 
 const initialState = {
   city: DEFAULT_CITY,
   offers: placeCardOffers,
-  sortBy: SortBy.Popular
+  sorting: Sorting.Popular
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -15,7 +15,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.city = action.payload.city;
     })
     .addCase(changeSortBy, (state, action) => {
-      state.sortBy = action.payload.sortBy;
+      state.sorting = action.payload.sorting;
     });
 });
 
