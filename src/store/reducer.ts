@@ -5,7 +5,7 @@ import { placeCardOffers } from '../mock/place-card-offers';
 
 const initialState = {
   city: DEFAULT_CITY,
-  initialOffers: placeCardOffers,
+  offers: placeCardOffers,
   sortBy: SortBy.Popular
 };
 
