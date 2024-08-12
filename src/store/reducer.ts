@@ -1,7 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 import { changeCity, changeSortBy, uploadOffers } from './action';
 import { DEFAULT_CITY, Sorting } from '../const';
-//import { placeCardOffers } from '../mock/place-card-offers';
 import { PlaceCardSample } from '../types/offer/offer';
 
 type InitialState = {
