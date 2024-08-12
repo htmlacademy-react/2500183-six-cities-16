@@ -9,6 +9,8 @@ import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
+import Spiner from '../spiner/spiner';
 
 
 type AppProps = {
@@ -20,6 +22,14 @@ type AppProps = {
 function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const favoritesNumber = favoriteOffers.length | 0;
+  const isLoading = useAppSelector((state) => state.isLoading);
+
+
+  if (isLoading) {
+    return (
+      <Spiner />
+    );
+  }
   return (
     <HelmetProvider>
       <BrowserRouter>
