@@ -5,9 +5,7 @@ import { createAPI } from '../services/api';
 const api = createAPI();
 
 const store = configureStore({
-  reducer: {
-    reducer: reducer
-  },
+  reducer: reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {

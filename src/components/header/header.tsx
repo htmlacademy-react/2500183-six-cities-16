@@ -10,7 +10,7 @@ type HeaderProps = {
 
 function Header({favoritesNumber} : HeaderProps) : JSX.Element {
 
-  const authorizationStatus = useAppSelector((state) => state.reducer.authorizationStatus);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   return (
     <header className="header">
