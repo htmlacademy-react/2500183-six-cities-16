@@ -6,6 +6,8 @@ import { loginUser } from '../../store/api-actions';
 import { Helmet } from 'react-helmet-async';
 import HeaderLogo from '../../components/header/header-logo';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { updateAuthorization } from '../../store/action';
+import { AuthorizationStatus } from '../../const';
 
 function Login () : JSX.Element {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -13,16 +15,11 @@ function Login () : JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-
-
   const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (emailRef !== null && passwordRef !== null) {
       dispatch(loginUser({email: emailRef.current.value, password: passwordRef.current.value}));
-      //navigate(AppRoute.MainPage);
-      console.log(authorizationStatus);
-
+      navigate(AppRoute.MainPage);
     }
   };
   return (

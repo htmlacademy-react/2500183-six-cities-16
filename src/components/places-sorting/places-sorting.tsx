@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
-import { changeSortBy } from '../../store/action';
+import { changeSortBy } from '../../store/main-reducer/main-reducer';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { Sorting } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
@@ -9,7 +9,7 @@ function PlacesSorting () : JSX.Element {
 
   const [ isFormOpened, setFormOpened ] = useState(false);
 
-  const currentSortType = useAppSelector((state) => state.sorting);
+  const currentSortType = useAppSelector((state) => state.main.sorting);
   const dispatch = useAppDispatch();
 
   const handlePlacesSortingClick = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {

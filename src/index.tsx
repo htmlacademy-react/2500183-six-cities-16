@@ -10,7 +10,6 @@ import { loadingOffers, checkAuthorization } from './store/api-actions';
 store.dispatch(loadingOffers());
 store.dispatch(checkAuthorization());
 
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
