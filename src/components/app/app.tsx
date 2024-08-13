@@ -9,8 +9,11 @@ import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
+//import { useAppSelector, useAppDispatch } from '../../hooks/use-app-dispatch';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
+//import { useEffect } from 'react';
+//import { loadingOffers } from '../../store/api-actions';
 
 
 type AppProps = {
@@ -22,6 +25,13 @@ type AppProps = {
 function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const favoritesNumber = favoriteOffers.length | 0;
+
+  // const dispatch = useAppDispatch();
+
+  //useEffect(() => {
+  //dispatch(loadingOffers());
+  //});
+
   const isLoading = useAppSelector((state) => state.main.isLoading);
 
 
