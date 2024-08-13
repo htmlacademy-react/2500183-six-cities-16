@@ -4,6 +4,7 @@ import { DEFAULT_CITY, Sorting } from '../const';
 import { PlaceCardSample } from '../types/offer/offer';
 import { AuthorizationStatus } from '../const';
 
+
 type InitialState = {
   city: string;
   offers: [] | PlaceCardSample[];
