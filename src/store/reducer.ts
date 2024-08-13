@@ -1,13 +1,15 @@
 import {createReducer} from '@reduxjs/toolkit';
-import { changeCity, changeSortBy, uploadOffers, toggleLoading } from './action';
+import { changeCity, changeSortBy, uploadOffers, toggleLoading, updateAuthorization } from './action';
 import { DEFAULT_CITY, Sorting } from '../const';
 import { PlaceCardSample } from '../types/offer/offer';
+import { AuthorizationStatus } from '../const';
 
 type InitialState = {
   city: string;
   offers: [] | PlaceCardSample[];
   sorting: Sorting;
   isLoading: boolean;
+  authorizationStatus: AuthorizationStatus;
 };
 
 
@@ -15,7 +17,8 @@ const initialState : InitialState = {
   city: DEFAULT_CITY,
   offers: [],
   sorting: Sorting.Popular,
-  isLoading: false
+  isLoading: false,
+  authorizationStatus: AuthorizationStatus.Unknown
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -31,6 +34,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(toggleLoading, (state) => {
       state.isLoading = !state.isLoading;
+    })
+    .addCase(updateAuthorization, (state,action) => {
+      state.authorizationStatus = action.payload.authorizationStatus;
     });
 });
 

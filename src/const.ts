@@ -39,7 +39,9 @@ const TITLE_LAYER_URL = {
 } as const;
 
 enum ApiRoute {
-  Offers = '/offers'
+  Offers = '/offers',
+  Login = '/login',
+  Favorites = '/favorite',
 }
 
 export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus, ApiRoute };

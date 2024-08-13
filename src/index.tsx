@@ -5,9 +5,11 @@ import { store } from './store';
 import App from './components/app/app';
 import { placeCardOffers } from './mock/place-card-offers';
 import { offerReviews } from './mock/offer-reviews';
-import { loadingOffers } from './store/api-actions';
+import { loadingOffers, checkAuthorization } from './store/api-actions';
 
 store.dispatch(loadingOffers());
+store.dispatch(checkAuthorization());
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

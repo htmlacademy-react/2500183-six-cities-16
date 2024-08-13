@@ -2,14 +2,15 @@ import {Link} from 'react-router-dom';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import HeaderLogo from '../header/header-logo';
 import React from 'react';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
 
 type HeaderProps = {
   favoritesNumber : number;
 }
 
 function Header({favoritesNumber} : HeaderProps) : JSX.Element {
-  const getAuthorizationStatus = () => AuthorizationStatus.Auth;
-  const authorizationStatus = getAuthorizationStatus();
+
+  const authorizationStatus = useAppSelector((state) => state.reducer.authorizationStatus);
 
   return (
     <header className="header">
