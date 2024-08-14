@@ -29,6 +29,19 @@ const loginUser = createAsyncThunk<void, AuthData, {dispatch: Dispatch; state: S
   }
 });
 
+export const Endpoint = {
+  Comments: '/comments',
+  Favorite: 'favorite',
+  Login: '/login',
+  Logout: '/logout',
+  Offers: '/offers'
+} as const;
 
-export {loadingOffers, checkAuthorization, loginUser};
+const loginReg = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>('auth/login', async (body, { extra: api }) => {
+  const response = await api.post<UserData>(Endpoint.Login, body);
+  saveToken(response.data.token);
+  return response.data;
+});
+
+export {loadingOffers, checkAuthorization, loginUser, loginReg};
 

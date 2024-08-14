@@ -1,27 +1,51 @@
-import { FormEvent, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AppRoute } from '../../const';
-import { useAppDispatch } from '../../hooks/use-app-dispatch';
-import { loginUser } from '../../store/api-actions';
+import { FormEvent, ReactEventHandler, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import HeaderLogo from '../../components/header/header-logo';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
-import { updateAuthorization } from '../../store/action';
-import { AuthorizationStatus } from '../../const';
+import { useActionCreators } from '../../hooks/use-action-creators';
+import { userActions } from '../../store/main-reducer/main-reducer';
+import { AppRoute } from '../../const';
+
+type HTMLLoginForm = HTMLFormElement & {
+  email: HTMLInputElement;
+  password: HTMLInputElement;
+};
+
+type ChangeHandler = ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+
+const PASSWORD_REGEXP = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$/;
 
 function Login () : JSX.Element {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    if (emailRef !== null && passwordRef !== null) {
-      dispatch(loginUser({email: emailRef.current.value, password: passwordRef.current.value}));
-      navigate(AppRoute.MainPage);
-    }
+  const { loginReg } = useActionCreators(userActions);
+
+  const handleChange: ChangeHandler = (evt) => {
+    const { name, value } = evt.currentTarget;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
+
+  function validatePassword(password : string) : boolean {
+    return PASSWORD_REGEXP.test(password);
+  }
+
+  function handleSubmit(event: FormEvent<HTMLLoginForm>) {
+    event.preventDefault();
+    if (!validatePassword(formData.password)) {
+      //console.log('Пароль должен содержать минимум одну цифру и одну латинскую букву');
+      return;
+    }
+    navigate(AppRoute.MainPage);
+    loginReg(formData);
+  }
+
   return (
     <div className="page page--gray page--login">
       <Helmet>
@@ -41,14 +65,14 @@ function Login () : JSX.Element {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="#" method="post" onSubmit={handleFormSubmit}>
+            <form className="login__form form" action="#" method="post" onSubmit={handleSubmit}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
-                <input ref={ emailRef } className="login__input form__input" type="email" name="email" placeholder="Email" required />
+                <input className="login__input form__input" type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
-                <input ref={ passwordRef } className="login__input form__input" type="password" name="password" placeholder="Password" required />
+                <input className="login__input form__input" type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
               </div>
               <button className="login__submit form__submit button" type="submit">Sign in</button>
             </form>
