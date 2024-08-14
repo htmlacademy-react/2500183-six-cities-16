@@ -30,8 +30,8 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const currentPlace:PlaceCardAllSample | undefined = placeCardAllOffers.find((place: PlaceCardAllSample) => place.id === id);
 
-  const placesCard = useAppSelector((state) => state.offers);
-  const currentCity = useAppSelector((state) => state.city);
+  const placesCard = useAppSelector((state) => state.main.offers);
+  const currentCity = useAppSelector((state) => state.main.city);
 
   const currentPlacesCard = placesCard.filter((offer) => offer.city.name === currentCity);
 
