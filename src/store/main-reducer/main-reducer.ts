@@ -65,6 +65,7 @@ const mainReducer = mainReducerSlice.reducer;
 
 const userActions = {
   loginReg,
+  loadingOffers
 };
 
 export {

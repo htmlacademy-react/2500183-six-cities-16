@@ -5,9 +5,8 @@ import { store } from './store';
 import App from './components/app/app';
 import { placeCardOffers } from './mock/place-card-offers';
 import { offerReviews } from './mock/offer-reviews';
-import { loadingOffers, checkAuthorization } from './store/api-actions';
+import { checkAuthorization } from './store/api-actions';
 
-store.dispatch(loadingOffers());
 store.dispatch(checkAuthorization());
 
 const root = ReactDOM.createRoot(

@@ -1,4 +1,5 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import { useEffect } from 'react';
 import {HelmetProvider} from 'react-helmet-async';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
@@ -13,7 +14,8 @@ import { Reviews } from '../../types/reviews/reviews';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
 //import { useEffect } from 'react';
-//import { loadingOffers } from '../../store/api-actions';
+import { userActions } from '../../store/main-reducer/main-reducer';
+import { useActionCreators } from '../../hooks/use-action-creators';
 
 
 type AppProps = {
@@ -26,11 +28,16 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const favoritesNumber = favoriteOffers.length | 0;
 
-  // const dispatch = useAppDispatch();
+  const { loadingOffers } = useActionCreators(userActions);
 
-  //useEffect(() => {
-  //dispatch(loadingOffers());
-  //});
+  useEffect(() => {
+    loadingOffers()
+      .unwrap()
+      .catch(() => {
+      // console.log('не удалось загрузить данные');
+      });
+
+  }, [loadingOffers]);
 
   const isLoading = useAppSelector((state) => state.main.isLoading);
 
