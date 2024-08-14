@@ -10,11 +10,9 @@ import PrivateRoute from '../private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
-//import { useAppSelector, useAppDispatch } from '../../hooks/use-app-dispatch';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
-//import { useEffect } from 'react';
-import { userActions } from '../../store/main-reducer/main-reducer';
+import { offerAction } from '../../store/main-reducer/main-reducer';
 import { useActionCreators } from '../../hooks/use-action-creators';
 
 
@@ -28,7 +26,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const favoritesNumber = favoriteOffers.length | 0;
 
-  const { loadingOffers } = useActionCreators(userActions);
+  const { loadingOffers } = useActionCreators(offerAction);
 
   useEffect(() => {
     loadingOffers()

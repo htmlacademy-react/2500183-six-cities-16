@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
-import { userActions } from '../../store/main-reducer/main-reducer';
+import { userActions } from '../../store/user-reducer/user-reducer';
 import { AppRoute } from '../../const';
 
 type HTMLLoginForm = HTMLFormElement & {

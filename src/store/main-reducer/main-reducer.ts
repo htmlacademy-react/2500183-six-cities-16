@@ -2,7 +2,7 @@ import { Sorting } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { AuthorizationStatus, DEFAULT_CITY } from '../../const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loadingOffers, loginReg } from '../api-actions';
+import { loadingOffers} from '../api-actions';
 import { UserData } from '../../types/user/auth';
 
 type InitialState = {
@@ -48,13 +48,6 @@ const mainReducerSlice = createSlice({
       })
       .addCase(loadingOffers.rejected, (state) => {
         state.isLoading = false;
-      })
-      .addCase(loginReg.fulfilled, (state, action) => {
-        state.info = action.payload;
-        state.authorizationStatus = AuthorizationStatus.Auth;
-      })
-      .addCase(loginReg.rejected, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
       });
   }
 
@@ -63,8 +56,7 @@ const mainReducerSlice = createSlice({
 const {changeSortBy,changeCity,uploadOffers, } = mainReducerSlice.actions;
 const mainReducer = mainReducerSlice.reducer;
 
-const userActions = {
-  loginReg,
+const offerAction = {
   loadingOffers
 };
 
@@ -73,5 +65,5 @@ export {
   changeSortBy,
   uploadOffers,
   changeCity,
-  userActions
+  offerAction
 };
