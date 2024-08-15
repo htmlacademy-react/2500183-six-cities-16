@@ -19,10 +19,6 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
 
   const currentCity = useAppSelector((state) => state.main.city);
   const currentSortType = useAppSelector((state) => state.main.sorting);
-  // const test = useAppSelector((state) => state.user.requestStatus);
-
-  //console.log(test);
-
 
   const filteredCityOffers = useAppSelector(selectFilteredOffers);
   const currentPlacesCard = sortOffers(filteredCityOffers,currentSortType);
