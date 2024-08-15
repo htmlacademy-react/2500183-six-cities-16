@@ -8,14 +8,14 @@ import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
-import { PlaceCardAllSample } from '../../types/offer/offer';
+//import { PlaceCardAllSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
-import { placeCardAllOffers } from '../../mock/place-card-all-offers';
+//import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
-import { selectMainCity, selectMainOffers } from '../../store/selectors';
-import { selectOfferInfo, selectOfferStatus, selectOfferNerby } from '../../store/selectors';
+//import { selectMainCity, } from '../../store/selectors';
+import { selectOfferInfo, selectOfferNerby } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { offerActions } from '../../store/offer-reducer/offer-reducer';
 
@@ -34,8 +34,10 @@ type OfferPageProps = {
 function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
 
   const offerPage = useAppSelector(selectOfferInfo);
-  const status = useAppSelector(selectOfferStatus);
+  //const status = useAppSelector(selectOfferStatus);
   const nearbyOffers = useAppSelector(selectOfferNerby);
+
+  //const currentCity = useAppSelector(selectMainCity);
 
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
 
@@ -154,7 +156,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map className='offer__map map' places={currentPlacesCard} city={currentPlacesCard[0].city}/>
+          <Map className='offer__map map' places={nearbyOffers} city={offerPage.city}/>
         </section>
         <div className="container">
           <section className="near-places places">
