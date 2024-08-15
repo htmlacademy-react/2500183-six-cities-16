@@ -42,6 +42,7 @@ enum ApiRoute {
   Offers = '/offers',
   Login = '/login',
   Favorites = '/favorite',
+  Comments = '/comments',
 }
 
 export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus, ApiRoute };

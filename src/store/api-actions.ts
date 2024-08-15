@@ -5,7 +5,6 @@ import { ApiRoute } from '../const';
 import { PlaceCardSample } from '../types/offer/offer';
 import { UserData, AuthData } from '../types/user/auth';
 import { saveToken } from '../services/token';
-//import { AuthorizationStatus } from '../const';
 
 
 const loadingOffers = createAsyncThunk<PlaceCardSample[], undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('data/uploadOffers', async (_arg, { extra: api}) => {
@@ -18,30 +17,11 @@ const checkAuthorization = createAsyncThunk<UserData, undefined, {dispatch: Disp
   return data;
 });
 
-const loginUser = createAsyncThunk<void, AuthData, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('loginUser', async ({ email, password }, {extra: api}) => {
-  try {
-    const {data: { token } } = await api.post<UserData>(ApiRoute.Login, {email, password});
-    saveToken(token);
-    //dispatch(updateAuthorization({authorizationStatus: AuthorizationStatus.Auth}));
-    //dispatch(redirectToRoute(AppRoute.Main));
-  } catch {
-    //dispatch(updateAuthorization({authorizationStatus: AuthorizationStatus.NoAuth}));
-  }
-});
-
-export const Endpoint = {
-  Comments: '/comments',
-  Favorite: 'favorite',
-  Login: '/login',
-  Logout: '/logout',
-  Offers: '/offers'
-} as const;
-
 const loginReg = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>('auth/login', async (body, { extra: api }) => {
-  const response = await api.post<UserData>(Endpoint.Login, body);
+  const response = await api.post<UserData>(ApiRoute.Login, body);
   saveToken(response.data.token);
   return response.data;
 });
 
-export {loadingOffers, checkAuthorization, loginUser, loginReg};
+export {loadingOffers, checkAuthorization, loginReg};
 
