@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import Header from '../../components/header/header';
 import PlaceList from '../../components/place-list/place-list';
-import { placeCardOffers } from '../../mock/place-card-offers';
+//import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
@@ -15,12 +15,13 @@ import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
 //import { selectMainCity, } from '../../store/selectors';
-import { selectOfferInfo, selectOfferNerby } from '../../store/selectors';
+import { selectOfferInfo, selectOfferNerby, selectOfferStatus } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { offerActions } from '../../store/offer-reducer/offer-reducer';
+import { RequestStatus } from '../../const';
 
 
-const PLACE_CARDS_COUNT = 2;
+//const PLACE_CARDS_COUNT = 2;
 const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
@@ -34,7 +35,7 @@ type OfferPageProps = {
 function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
 
   const offerPage = useAppSelector(selectOfferInfo);
-  //const status = useAppSelector(selectOfferStatus);
+  const status = useAppSelector(selectOfferStatus);
   const nearbyOffers = useAppSelector(selectOfferNerby);
 
   //const currentCity = useAppSelector(selectMainCity);
@@ -51,7 +52,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
   [fetchOffer, fetchNearBy, id]
   );
 
-  if (!offerPage) {
+  if (status === RequestStatus.Failed || !offerPage) {
     return <Page404 />;
   }
   const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = offerPage;
@@ -161,7 +162,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={placeCardOffers.slice(PLACE_CARDS_COUNT)} />
+            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={nearbyOffers.slice(0, 3)} />
           </section>
         </div>
       </main>
