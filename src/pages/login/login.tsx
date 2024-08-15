@@ -5,6 +5,7 @@ import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { userActions } from '../../store/user-reducer/user-reducer';
 import { AppRoute } from '../../const';
+import { toast } from 'react-toastify';
 
 type HTMLLoginForm = HTMLFormElement & {
   email: HTMLInputElement;
@@ -39,7 +40,7 @@ function Login () : JSX.Element {
   function handleSubmit(event: FormEvent<HTMLLoginForm>) {
     event.preventDefault();
     if (!validatePassword(formData.password)) {
-      //console.log('Пароль должен содержать минимум одну цифру и одну латинскую букву');
+      toast.error('Пароль должен содержать минимум одну цифру и одну латинскую букву');
       return;
     }
     navigate(AppRoute.MainPage);

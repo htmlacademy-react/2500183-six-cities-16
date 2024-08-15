@@ -1,5 +1,6 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import { useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import {HelmetProvider} from 'react-helmet-async';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
@@ -23,6 +24,8 @@ type AppProps = {
   reviews: Reviews[];
 }
 
+const TOASTIFY_ERROR_MESSAGE = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу';
+
 
 function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
@@ -35,7 +38,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
     loadingOffers()
       .unwrap()
       .catch(() => {
-      // console.log('не удалось загрузить данные');
+        toast.error(TOASTIFY_ERROR_MESSAGE);
       });
 
   }, [loadingOffers]);
@@ -59,6 +62,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route
             path={AppRoute.MainPage}
