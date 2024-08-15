@@ -56,6 +56,7 @@ const userReducer = userReducerSlice.reducer;
 
 const userActions = {
   loginReg,
+  checkAuthorization
 };
 
 export {

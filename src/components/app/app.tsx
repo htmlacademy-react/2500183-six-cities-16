@@ -6,14 +6,16 @@ import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
-import PrivateRoute from '../private-route/private-route';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import ProtectedRoute from '../private-route/protected-route';
+import { AppRoute } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
 import { offerAction } from '../../store/main-reducer/main-reducer';
+import { userActions } from '../../store/user-reducer/user-reducer';
 import { useActionCreators } from '../../hooks/use-action-creators';
+import { getToken } from '../../services/token';
 
 
 type AppProps = {
@@ -27,6 +29,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoritesNumber = favoriteOffers.length | 0;
 
   const { loadingOffers } = useActionCreators(offerAction);
+  const { checkAuthorization } = useActionCreators(userActions);
 
   useEffect(() => {
     loadingOffers()
@@ -36,6 +39,14 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
       });
 
   }, [loadingOffers]);
+
+  const token = getToken();
+  useEffect(() => {
+    if (token) {
+      checkAuthorization();
+    }
+  }, [token, checkAuthorization]);
+
 
   const isLoading = useAppSelector((state) => state.main.isLoading);
 
@@ -55,14 +66,18 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.LoginPage}
-            element={<Login/>}
+            element={
+              <ProtectedRoute onlyAuth>
+                <Login/>
+              </ProtectedRoute>
+            }
           />
           <Route
             path={AppRoute.FavoritesPage}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <ProtectedRoute>
                 <Favorites placesMock={placesMock} favoritesNumber={favoritesNumber} />
-              </PrivateRoute>
+              </ProtectedRoute>
             }
           />
           <Route
