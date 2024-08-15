@@ -17,6 +17,7 @@ import { offerAction } from '../../store/main-reducer/main-reducer';
 import { userActions } from '../../store/user-reducer/user-reducer';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { getToken } from '../../services/token';
+import { selectIsLoading } from '../../store/selectors';
 
 
 type AppProps = {
@@ -51,7 +52,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
   }, [token, checkAuthorization]);
 
 
-  const isLoading = useAppSelector((state) => state.main.isLoading);
+  const isLoading = useAppSelector(selectIsLoading);
 
 
   if (isLoading) {

@@ -4,12 +4,13 @@ import { changeSortBy } from '../../store/main-reducer/main-reducer';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { Sorting } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { selectMainSorting } from '../../store/selectors';
 
 function PlacesSorting () : JSX.Element {
 
   const [ isFormOpened, setFormOpened ] = useState(false);
 
-  const currentSortType = useAppSelector((state) => state.main.sorting);
+  const currentSortType = useAppSelector(selectMainSorting);
   const dispatch = useAppDispatch();
 
   const handlePlacesSortingClick = ({ currentTarget }: React.MouseEvent<HTMLElement>) => {

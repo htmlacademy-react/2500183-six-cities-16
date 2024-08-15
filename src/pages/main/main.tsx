@@ -7,7 +7,7 @@ import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { sortOffers } from '../../utils/place-card';
-import { selectFilteredOffers } from '../../store/selectors';
+import { selectFilteredOffers, selectMainCity, selectMainSorting } from '../../store/selectors';
 
 type MainPageProps = {
   favoritesNumber: number;
@@ -17,8 +17,8 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<string | null>(null);
 
 
-  const currentCity = useAppSelector((state) => state.main.city);
-  const currentSortType = useAppSelector((state) => state.main.sorting);
+  const currentCity = useAppSelector(selectMainCity);
+  const currentSortType = useAppSelector(selectMainSorting);
 
   const filteredCityOffers = useAppSelector(selectFilteredOffers);
   const currentPlacesCard = sortOffers(filteredCityOffers,currentSortType);

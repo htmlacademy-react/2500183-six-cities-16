@@ -3,6 +3,7 @@ import { AppRoute, AuthorizationStatus} from '../../const';
 import HeaderLogo from '../header/header-logo';
 import React from 'react';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { selectAuthorizationStatus, selectUserInfo } from '../../store/selectors';
 
 type HeaderProps = {
   favoritesNumber : number;
@@ -10,8 +11,8 @@ type HeaderProps = {
 
 function Header({favoritesNumber} : HeaderProps) : JSX.Element {
 
-  const authorizationStatus = useAppSelector((state) => state.user.authorizationStatus);
-  const userData = useAppSelector((state) => state.user.info);
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+  const userData = useAppSelector(selectUserInfo);
 
   return (
     <header className="header">

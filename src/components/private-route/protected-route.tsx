@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Location } from 'react-router-dom';
+import { selectUserInfo } from '../../store/selectors';
 
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -20,7 +21,7 @@ export default function ProtectedRoute({ children, onlyAuth }: ProtectedRoutePro
 
   const location: Location<FromState> = useLocation() as Location<FromState>;
 
-  const user = useAppSelector((state) => state.user.info);
+  const user = useAppSelector(selectUserInfo);
 
   if (onlyAuth && user) {
     const from = location.state?.from || { pathname: AppRoute.MainPage};

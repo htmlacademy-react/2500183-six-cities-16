@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../hooks/use-app-dispatch';
 import { CITIES, AppRoute } from '../../const';
 import { changeCity } from '../../store/main-reducer/main-reducer';
+import { selectMainCity } from '../../store/selectors';
 
 
 function CitiesList(): JSX.Element {
-  const currentCity = useAppSelector((state) => state.main.city);
+  const currentCity = useAppSelector(selectMainCity);
 
   const dispatch = useAppDispatch();
 
