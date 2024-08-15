@@ -2,9 +2,7 @@ import { UserData } from '../../types/user/auth';
 import { AuthorizationStatus } from '../../const';
 import { createSlice} from '@reduxjs/toolkit';
 import {loginReg, checkAuthorization } from '../api-actions';
-
-export const enum RequestStatus { Idle, Loading, Success, Failed }
-
+import { RequestStatus } from '../../const';
 
 type InitialState = {
   authorizationStatus: AuthorizationStatus;
