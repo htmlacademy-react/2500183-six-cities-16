@@ -10,10 +10,9 @@ type HeaderProps = {
 
 function Header({favoritesNumber} : HeaderProps) : JSX.Element {
 
-  //const authorizationStatus = useAppSelector((state) => state.main.authorizationStatus);
   const authorizationStatus = useAppSelector((state) => state.user.authorizationStatus);
+  const userData = useAppSelector((state) => state.user.info);
 
-  console.log(authorizationStatus);
   return (
     <header className="header">
       <div className="container">
@@ -27,7 +26,7 @@ function Header({favoritesNumber} : HeaderProps) : JSX.Element {
                   </div>
                   { authorizationStatus === AuthorizationStatus.Auth ?
                     <React.Fragment>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <span className="header__user-name user__name">{userData?.email}</span>
                       <span className="header__favorite-count">{favoritesNumber}</span>
                     </React.Fragment> : null }
                 </Link>
