@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from '../../components/header/header';
 import PlaceList from '../../components/place-list/place-list';
 import { placeCardOffers } from '../../mock/place-card-offers';
@@ -13,6 +14,10 @@ import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
+import { selectMainCity, selectMainOffers } from '../../store/selectors';
+import { selectOfferInfo, selectOfferStatus, selectOfferNerby } from '../../store/selectors';
+import { useActionCreators } from '../../hooks/use-action-creators';
+import { offerActions } from '../../store/offer-reducer/offer-reducer';
 
 
 const PLACE_CARDS_COUNT = 2;
@@ -27,18 +32,27 @@ type OfferPageProps = {
 
 
 function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
+
+  const offerPage = useAppSelector(selectOfferInfo);
+  const status = useAppSelector(selectOfferStatus);
+  const nearbyOffers = useAppSelector(selectOfferNerby);
+
+  const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
+
   const { id } = useParams<{ id: string }>();
-  const currentPlace:PlaceCardAllSample | undefined = placeCardAllOffers.find((place: PlaceCardAllSample) => place.id === id);
 
-  const placesCard = useAppSelector((state) => state.main.offers);
-  const currentCity = useAppSelector((state) => state.main.city);
+  useEffect(() => {
+    Promise.all([
+      fetchOffer(id as string),
+      fetchNearBy(id as string)]);
+  },
+  [fetchOffer, fetchNearBy, id]
+  );
 
-  const currentPlacesCard = placesCard.filter((offer) => offer.city.name === currentCity);
-
-  if (!currentPlace) {
+  if (!offerPage) {
     return <Page404 />;
   }
-  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = currentPlace;
+  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = offerPage;
 
   return (
     <div className="page">

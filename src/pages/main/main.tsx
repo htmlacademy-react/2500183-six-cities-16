@@ -15,11 +15,8 @@ type MainPageProps = {
 
 function Main({favoritesNumber}: MainPageProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<string | null>(null);
-
-
   const currentCity = useAppSelector(selectMainCity);
   const currentSortType = useAppSelector(selectMainSorting);
-
   const filteredCityOffers = useAppSelector(selectFilteredOffers);
   const currentPlacesCard = sortOffers(filteredCityOffers,currentSortType);
 
