@@ -1,12 +1,11 @@
 import { FormEvent, ReactEventHandler, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useNavigate } from 'react-router-dom';
 import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { userActions } from '../../store/user-slice/user-slice';
-import { AppRoute } from '../../const';
 import { toast } from 'react-toastify';
 import { TOASTIFY_ERROR_MESSAGE } from '../../const';
+
 
 type HTMLLoginForm = HTMLFormElement & {
   email: HTMLInputElement;
@@ -18,7 +17,7 @@ type ChangeHandler = ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 const PASSWORD_REGEXP = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$/;
 
 function Login () : JSX.Element {
-  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -44,7 +43,6 @@ function Login () : JSX.Element {
       toast.error(TOASTIFY_ERROR_MESSAGE.ValidatePassword);
       return;
     }
-    navigate(AppRoute.MainPage);
     loginUser(formData);
   }
 
