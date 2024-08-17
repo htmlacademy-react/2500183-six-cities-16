@@ -45,6 +45,22 @@ enum ApiRoute {
   Comments = '/comments',
 }
 
+enum TOASTIFY_ERROR_MESSAGE {
+  UploadOffer = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу',
+  ValidatePassword = 'Пароль должен содержать минимум одну цифру и одну латинскую букву'
+}
+
 const enum RequestStatus { Idle, Loading, Success, Failed }
 
-export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus, ApiRoute, RequestStatus };
+export { CITIES,
+  DEFAULT_CITY,
+  REVIEW_LENGTH,
+  IconOptions,
+  TITLE_LAYER_URL,
+  Sorting,
+  AppRoute,
+  AuthorizationStatus,
+  ApiRoute,
+  RequestStatus,
+  TOASTIFY_ERROR_MESSAGE
+};
