@@ -2,7 +2,7 @@ import { Sorting } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { DEFAULT_CITY } from '../../const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchOffers} from '../api-actions';
+import { fetchOffers} from '../thunks/main';
 import { UserData } from '../../types/user/auth';
 
 type InitialState = {

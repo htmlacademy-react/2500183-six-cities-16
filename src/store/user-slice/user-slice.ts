@@ -1,7 +1,7 @@
 import { UserData } from '../../types/user/auth';
 import { AuthorizationStatus } from '../../const';
 import { createSlice} from '@reduxjs/toolkit';
-import {loginUser, checkAuthorization } from '../api-actions';
+import {loginUser, checkAuthorization } from '../thunks/main';
 import { RequestStatus } from '../../const';
 
 type InitialState = {

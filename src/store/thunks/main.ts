@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { State, Dispatch } from '../types/state/state';
-import { ApiRoute } from '../const';
-import { PlaceCardSample } from '../types/offer/offer';
-import { UserData, AuthData } from '../types/user/auth';
-import { saveToken } from '../services/token';
+import { State, Dispatch } from '../../types/state/state';
+import { ApiRoute } from '../../const';
+import { PlaceCardSample } from '../../types/offer/offer';
+import { UserData, AuthData } from '../../types/user/auth';
+import { saveToken } from '../../services/token';
 
 
 const fetchOffers = createAsyncThunk<PlaceCardSample[], undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('data/uploadOffers', async (_arg, { extra: api}) => {
