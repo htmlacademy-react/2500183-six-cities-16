@@ -38,4 +38,30 @@ const TITLE_LAYER_URL = {
   ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
 
-export { CITIES, DEFAULT_CITY, REVIEW_LENGTH, IconOptions, TITLE_LAYER_URL, Sorting, AppRoute, AuthorizationStatus };
+enum ApiRoute {
+  Offers = '/offers',
+  Login = '/login',
+  Favorites = '/favorite',
+  Comments = '/comments',
+  Logout = '/logout',
+}
+
+enum TOASTIFY_ERROR_MESSAGE {
+  UploadOffer = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу',
+  ValidatePassword = 'Пароль должен содержать минимум одну цифру и одну латинскую букву'
+}
+
+const enum RequestStatus { Idle, Loading, Success, Failed }
+
+export { CITIES,
+  DEFAULT_CITY,
+  REVIEW_LENGTH,
+  IconOptions,
+  TITLE_LAYER_URL,
+  Sorting,
+  AppRoute,
+  AuthorizationStatus,
+  ApiRoute,
+  RequestStatus,
+  TOASTIFY_ERROR_MESSAGE
+};

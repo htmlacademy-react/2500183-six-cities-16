@@ -1,44 +1,71 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from '../../components/header/header';
 import PlaceList from '../../components/place-list/place-list';
-import { placeCardOffers } from '../../mock/place-card-offers';
 import OfferImage from '../../components/offer-page/offer-gallery';
 import OfferInsideList from '../../components/offer-page/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
-import { PlaceCardAllSample } from '../../types/offer/offer';
-import { Reviews } from '../../types/reviews/reviews';
-import { placeCardAllOffers } from '../../mock/place-card-all-offers';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
+import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus } from '../../store/selectors';
+import { useActionCreators } from '../../hooks/use-action-creators';
+import { offerActions } from '../../store/offer-slice/offer-slice';
+import { reviewActions } from '../../store/reviews-slice/reviews-slice';
+import { RequestStatus, AuthorizationStatus } from '../../const';
+import { selectReviewItem } from '../../store/selectors';
+import Spiner from '../../components/spiner/spiner';
 
 
-const PLACE_CARDS_COUNT = 2;
 const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
+enum CommentLehgth {
+  MIN = 0,
+  MAX = 3
+}
+
 type OfferPageProps = {
-  reviews: Reviews[];
   favoritesNumber: number;
 }
 
 
-function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
+function Offer({favoritesNumber} : OfferPageProps): JSX.Element {
+
+  const offerPage = useAppSelector(selectOfferInfo);
+  const status = useAppSelector(selectOfferStatus);
+  const nearbyOffers = useAppSelector(selectOfferNerby);
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
+  const reviews = useAppSelector(selectReviewItem);
+
+  const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
+  const { fetchComments } = useActionCreators(reviewActions);
+
   const { id } = useParams<{ id: string }>();
-  const currentPlace:PlaceCardAllSample | undefined = placeCardAllOffers.find((place: PlaceCardAllSample) => place.id === id);
 
-  const placesCard = useAppSelector((state) => state.offers);
-  const currentCity = useAppSelector((state) => state.city);
+  useEffect(() => {
+    Promise.all([
+      fetchOffer(id as string),
+      fetchNearBy(id as string),
+      fetchComments(id as string),
+    ]);
+  },
+  [fetchOffer, fetchNearBy, fetchComments, id]
+  );
 
-  const currentPlacesCard = placesCard.filter((offer) => offer.city.name === currentCity);
+  if (status === RequestStatus.Loading) {
+    return (
+      <Spiner />
+    );
+  }
 
-  if (!currentPlace) {
+  if (status === RequestStatus.Failed || !offerPage) {
     return <Page404 />;
   }
-  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = currentPlace;
+  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = offerPage;
 
   return (
     <div className="page">
@@ -135,17 +162,16 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 <ReviewsList reviews={reviews}/>
-
-                <ReviewForm />
+                {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm />}
               </section>
             </div>
           </div>
-          <Map className='offer__map map' places={currentPlacesCard} city={currentPlacesCard[0].city}/>
+          <Map className='offer__map map' places={nearbyOffers} city={offerPage.city}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={placeCardOffers.slice(PLACE_CARDS_COUNT)} />
+            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={nearbyOffers.slice(CommentLehgth.MIN, CommentLehgth.MAX)} />
           </section>
         </div>
       </main>
