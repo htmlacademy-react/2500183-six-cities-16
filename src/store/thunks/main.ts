@@ -4,7 +4,7 @@ import { State, Dispatch } from '../../types/state/state';
 import { ApiRoute } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { UserData, AuthData } from '../../types/user/auth';
-import { saveToken } from '../../services/token';
+import { saveToken, dropToken } from '../../services/token';
 
 
 const fetchOffers = createAsyncThunk<PlaceCardSample[], undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('data/uploadOffers', async (_arg, { extra: api}) => {
@@ -23,5 +23,11 @@ const loginUser = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>
   return response.data;
 });
 
-export {fetchOffers, checkAuthorization, loginUser};
+const logout = createAsyncThunk<unknown, undefined, { extra: AxiosInstance }>
+('auth/logout', async (_, { extra: api }) => {
+  await api.delete(Endpoint.Logout);
+  dropToken();
+});
+
+export {fetchOffers, checkAuthorization, loginUser, logout};
 

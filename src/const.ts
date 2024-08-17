@@ -43,6 +43,7 @@ enum ApiRoute {
   Login = '/login',
   Favorites = '/favorite',
   Comments = '/comments',
+  Logout = '/logout',
 }
 
 enum TOASTIFY_ERROR_MESSAGE {

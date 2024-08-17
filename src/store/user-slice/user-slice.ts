@@ -1,7 +1,7 @@
 import { UserData } from '../../types/user/auth';
 import { AuthorizationStatus } from '../../const';
 import { createSlice} from '@reduxjs/toolkit';
-import {loginUser, checkAuthorization } from '../thunks/main';
+import {loginUser, logout, checkAuthorization } from '../thunks/main';
 import { RequestStatus } from '../../const';
 
 type InitialState = {
@@ -45,6 +45,9 @@ const userSlice = createSlice({
       })
       .addCase(checkAuthorization.pending, (state) => {
         state.requestStatus = RequestStatus.Loading;
+      }).addCase(logout.pending, (state) => {
+        state.info = null;
+        state.authorizationStatus = AuthorizationStatus.Unknown;
       });
   }
 
@@ -54,6 +57,7 @@ const userReducer = userSlice.reducer;
 
 const userActions = {
   loginUser,
+  logout,
   checkAuthorization
 };
 

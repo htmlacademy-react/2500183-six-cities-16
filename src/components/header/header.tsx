@@ -3,6 +3,8 @@ import { AppRoute, AuthorizationStatus} from '../../const';
 import HeaderLogo from '../header/header-logo';
 import React from 'react';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { userActions } from '../../store/user-slice/user-slice';
+import { useActionCreators } from '../../hooks/use-action-creators';
 import { selectAuthorizationStatus, selectUserInfo } from '../../store/selectors';
 
 type HeaderProps = {
@@ -13,6 +15,12 @@ function Header({favoritesNumber} : HeaderProps) : JSX.Element {
 
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const userData = useAppSelector(selectUserInfo);
+
+  const {logout} = useActionCreators(userActions);
+
+  const handleSignoutClick = () => {
+    logout();
+  };
 
   return (
     <header className="header">
@@ -33,9 +41,13 @@ function Header({favoritesNumber} : HeaderProps) : JSX.Element {
                 </Link>
               </li>
               <li className="header__nav-item">
-                <Link className="header__nav-link" to={AppRoute.LoginPage}>
-                  <span className="header__signout">{authorizationStatus === AuthorizationStatus.Auth ? 'Sign out' : 'Sign in' }</span>
-                </Link>
+                {authorizationStatus === AuthorizationStatus.Auth ?
+                  <Link className="header__nav-link" to={AppRoute.MainPage}>
+                    <span className="header__signout" onClick={handleSignoutClick}>Sign out</span>
+                  </Link> :
+                  <Link className="header__nav-link" to={AppRoute.LoginPage}>
+                    <span className="header__signout">Sign in</span>
+                  </Link>}
               </li>
             </ul>
           </nav>
