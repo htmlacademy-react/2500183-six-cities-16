@@ -28,9 +28,6 @@ const mainSlice = createSlice({
     changeSortBy: (state, action: PayloadAction<{sorting: Sorting}>) => {
       state.sorting = action.payload.sorting;
     },
-    uploadOffers: (state, action: PayloadAction<{offers: PlaceCardSample[]}>) => {
-      state.offers = action.payload.offers;
-    },
     changeCity: (state, action: PayloadAction<{city: string}>) => {
       state.city = action.payload.city;
     }
@@ -51,7 +48,7 @@ const mainSlice = createSlice({
 
 });
 
-const {changeSortBy,changeCity,uploadOffers, } = mainSlice.actions;
+const {changeSortBy,changeCity, } = mainSlice.actions;
 const mainReducer = mainSlice.reducer;
 
 const offerAction = {
@@ -61,7 +58,6 @@ const offerAction = {
 export {
   mainReducer,
   changeSortBy,
-  uploadOffers,
   changeCity,
   offerAction
 };
