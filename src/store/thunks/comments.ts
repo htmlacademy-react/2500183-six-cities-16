@@ -25,4 +25,4 @@ const postComment = createAsyncThunk<Reviews, PostCommentProps, {extra: AxiosIns
   return response.data;
 });
 
-export const commentsThunk = { fetchComments, postComment};
+export { fetchComments, postComment};

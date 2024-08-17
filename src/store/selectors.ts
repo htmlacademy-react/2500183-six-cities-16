@@ -15,6 +15,7 @@ const selectUserInfo = (state: State) => state.user.info;
 const selectMainOffers = (state: State) => state.main.offers;
 const selectOfferInfo = (state: State) => state.offerPage.info;
 const selectOfferNerby = (state: State) =>state.offerPage.nearby;
+const selectReviewItem = (state: State) =>state.review.items;
 const selectOfferStatus = (state: State) => state.offerPage.status;
 
 
@@ -28,5 +29,6 @@ export {
   selectMainOffers,
   selectOfferInfo,
   selectOfferNerby,
-  selectOfferStatus
+  selectOfferStatus,
+  selectReviewItem
 };

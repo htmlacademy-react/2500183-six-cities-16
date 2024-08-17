@@ -3,6 +3,7 @@ import { createAPI } from '../services/api';
 import { mainReducer } from './main-slice/main-slice';
 import { userReducer } from './user-slice/user-slice';
 import { offerReducer } from './offer-slice/offer-slice';
+import { reveiwReducer } from './reviews-slice/reviews-slice';
 
 
 const api = createAPI();
@@ -11,7 +12,8 @@ const store = configureStore({
   reducer: {
     main: mainReducer,
     user: userReducer,
-    offerPage: offerReducer
+    offerPage: offerReducer,
+    review: reveiwReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

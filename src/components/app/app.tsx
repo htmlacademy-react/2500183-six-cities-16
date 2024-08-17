@@ -10,7 +10,6 @@ import Page404 from '../../pages/page404/page404';
 import ProtectedRoute from '../protected-route/protected-route';
 import { AppRoute } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
-import { Reviews } from '../../types/reviews/reviews';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
 import { offerAction } from '../../store/main-slice/main-slice';
@@ -23,11 +22,10 @@ import { TOASTIFY_ERROR_MESSAGE } from '../../const';
 
 type AppProps = {
   placesMock: PlaceCardSample[];
-  reviews: Reviews[];
 }
 
 
-function App({placesMock, reviews}: AppProps): JSX.Element {
+function App({placesMock}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const favoritesNumber = favoriteOffers.length | 0;
 
@@ -86,7 +84,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.OfferPage}
-            element={<Offer reviews={reviews} favoritesNumber={favoritesNumber}/>}
+            element={<Offer favoritesNumber={favoritesNumber}/>}
           />
           <Route
             path= '*'
