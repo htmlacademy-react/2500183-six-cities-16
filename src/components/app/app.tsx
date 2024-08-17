@@ -18,14 +18,13 @@ import { userActions } from '../../store/user-slice/user-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { getToken } from '../../services/token';
 import { selectIsLoading } from '../../store/selectors';
+import { TOASTIFY_ERROR_MESSAGE } from '../../const';
 
 
 type AppProps = {
   placesMock: PlaceCardSample[];
   reviews: Reviews[];
 }
-
-const TOASTIFY_ERROR_MESSAGE = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу';
 
 
 function App({placesMock, reviews}: AppProps): JSX.Element {
@@ -39,7 +38,7 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
     fetchOffers()
       .unwrap()
       .catch(() => {
-        toast.error(TOASTIFY_ERROR_MESSAGE);
+        toast.error(TOASTIFY_ERROR_MESSAGE.UploadOffer);
       });
 
   }, [fetchOffers]);
