@@ -17,11 +17,11 @@ const checkAuthorization = createAsyncThunk<UserData, undefined, {dispatch: Disp
   return data;
 });
 
-const loginReg = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>('auth/login', async (body, { extra: api }) => {
+const loginUser = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>('auth/login', async (body, { extra: api }) => {
   const response = await api.post<UserData>(ApiRoute.Login, body);
   saveToken(response.data.token);
   return response.data;
 });
 
-export {loadingOffers, checkAuthorization, loginReg};
+export {loadingOffers, checkAuthorization, loginUser};
 

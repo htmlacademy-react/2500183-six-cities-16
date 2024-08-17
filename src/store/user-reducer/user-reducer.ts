@@ -1,7 +1,7 @@
 import { UserData } from '../../types/user/auth';
 import { AuthorizationStatus } from '../../const';
 import { createSlice} from '@reduxjs/toolkit';
-import {loginReg, checkAuthorization } from '../api-actions';
+import {loginUser, checkAuthorization } from '../api-actions';
 import { RequestStatus } from '../../const';
 
 type InitialState = {
@@ -22,16 +22,16 @@ const userReducerSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(loginReg.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.info = action.payload;
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.requestStatus = RequestStatus.Success;
       })
-      .addCase(loginReg.rejected, (state) => {
+      .addCase(loginUser.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.requestStatus = RequestStatus.Failed;
       })
-      .addCase(loginReg.pending, (state) => {
+      .addCase(loginUser.pending, (state) => {
         state.requestStatus = RequestStatus.Loading;
       })
       .addCase(checkAuthorization.fulfilled, (state, action) => {
@@ -53,7 +53,7 @@ const userReducerSlice = createSlice({
 const userReducer = userReducerSlice.reducer;
 
 const userActions = {
-  loginReg,
+  loginUser,
   checkAuthorization
 };
 

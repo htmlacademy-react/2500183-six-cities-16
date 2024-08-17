@@ -23,7 +23,7 @@ function Login () : JSX.Element {
     password: '',
   });
 
-  const { loginReg } = useActionCreators(userActions);
+  const { loginUser } = useActionCreators(userActions);
 
   const handleChange: ChangeHandler = (evt) => {
     const { name, value } = evt.currentTarget;
@@ -44,7 +44,7 @@ function Login () : JSX.Element {
       return;
     }
     navigate(AppRoute.MainPage);
-    loginReg(formData);
+    loginUser(formData);
   }
 
   return (
