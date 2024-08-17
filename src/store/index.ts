@@ -2,7 +2,7 @@ import { configureStore} from '@reduxjs/toolkit';
 import { createAPI } from '../services/api';
 import { mainReducer } from './main-slice/main-slice';
 import { userReducer } from './user-reducer/user-reducer';
-import { offerReducer } from './offer-reducer/offer-reducer';
+import { offerReducer } from './offer-slice/offer-slice';
 
 
 const api = createAPI();

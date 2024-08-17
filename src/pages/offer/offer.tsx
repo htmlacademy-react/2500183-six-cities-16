@@ -13,7 +13,7 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
 import { selectOfferInfo, selectOfferNerby, selectOfferStatus } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';
-import { offerActions } from '../../store/offer-reducer/offer-reducer';
+import { offerActions } from '../../store/offer-slice/offer-slice';
 import { RequestStatus } from '../../const';
 
 
