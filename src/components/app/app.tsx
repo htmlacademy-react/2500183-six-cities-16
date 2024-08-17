@@ -7,7 +7,7 @@ import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
-import ProtectedRoute from '../private-route/protected-route';
+import ProtectedRoute from '../protected-route/protected-route';
 import { AppRoute } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
