@@ -32,17 +32,17 @@ function App({placesMock, reviews}: AppProps): JSX.Element {
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const favoritesNumber = favoriteOffers.length | 0;
 
-  const { loadingOffers } = useActionCreators(offerAction);
+  const { fetchOffers } = useActionCreators(offerAction);
   const { checkAuthorization } = useActionCreators(userActions);
 
   useEffect(() => {
-    loadingOffers()
+    fetchOffers()
       .unwrap()
       .catch(() => {
         toast.error(TOASTIFY_ERROR_MESSAGE);
       });
 
-  }, [loadingOffers]);
+  }, [fetchOffers]);
 
   const token = getToken();
   useEffect(() => {

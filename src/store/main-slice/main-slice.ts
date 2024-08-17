@@ -2,7 +2,7 @@ import { Sorting } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { DEFAULT_CITY } from '../../const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loadingOffers} from '../api-actions';
+import { fetchOffers} from '../api-actions';
 import { UserData } from '../../types/user/auth';
 
 type InitialState = {
@@ -34,14 +34,14 @@ const mainSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(loadingOffers.pending, (state) => {
+      .addCase(fetchOffers.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(loadingOffers.fulfilled, (state, action) => {
+      .addCase(fetchOffers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.offers = action.payload;
       })
-      .addCase(loadingOffers.rejected, (state) => {
+      .addCase(fetchOffers.rejected, (state) => {
         state.isLoading = false;
       });
   }
@@ -52,7 +52,7 @@ const {changeSortBy,changeCity, } = mainSlice.actions;
 const mainReducer = mainSlice.reducer;
 
 const offerAction = {
-  loadingOffers
+  fetchOffers
 };
 
 export {

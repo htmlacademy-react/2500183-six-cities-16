@@ -7,7 +7,7 @@ import { UserData, AuthData } from '../types/user/auth';
 import { saveToken } from '../services/token';
 
 
-const loadingOffers = createAsyncThunk<PlaceCardSample[], undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('data/uploadOffers', async (_arg, { extra: api}) => {
+const fetchOffers = createAsyncThunk<PlaceCardSample[], undefined, {dispatch: Dispatch; state: State; extra: AxiosInstance}>('data/uploadOffers', async (_arg, { extra: api}) => {
   const { data } = await api.get<PlaceCardSample[]>(ApiRoute.Offers);
   return data;
 });
@@ -23,5 +23,5 @@ const loginUser = createAsyncThunk<UserData, AuthData, { extra: AxiosInstance }>
   return response.data;
 });
 
-export {loadingOffers, checkAuthorization, loginUser};
+export {fetchOffers, checkAuthorization, loginUser};
 
