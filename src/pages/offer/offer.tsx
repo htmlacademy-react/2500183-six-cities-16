@@ -11,13 +11,12 @@ import { Reviews } from '../../types/reviews/reviews';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
-import { selectOfferInfo, selectOfferNerby, selectOfferStatus } from '../../store/selectors';
+import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { offerActions } from '../../store/offer-slice/offer-slice';
-import { RequestStatus } from '../../const';
+import { RequestStatus, AuthorizationStatus } from '../../const';
 
 
-//const PLACE_CARDS_COUNT = 2;
 const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
@@ -33,8 +32,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
   const offerPage = useAppSelector(selectOfferInfo);
   const status = useAppSelector(selectOfferStatus);
   const nearbyOffers = useAppSelector(selectOfferNerby);
-
-  //const currentCity = useAppSelector(selectMainCity);
+  const authorizationStatus = useAppSelector(selectAuthorizationStatus);
 
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
 
@@ -148,8 +146,7 @@ function Offer({reviews, favoritesNumber} : OfferPageProps): JSX.Element {
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 <ReviewsList reviews={reviews}/>
-
-                <ReviewForm />
+                {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm />}
               </section>
             </div>
           </div>
