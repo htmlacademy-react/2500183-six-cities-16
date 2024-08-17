@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
-import { userActions } from '../../store/user-slice/user-reducer';
+import { userActions } from '../../store/user-slice/user-slice';
 import { AppRoute } from '../../const';
 import { toast } from 'react-toastify';
 

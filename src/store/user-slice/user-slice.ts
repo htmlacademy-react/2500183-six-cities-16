@@ -16,7 +16,7 @@ const initialState : InitialState = {
   requestStatus: RequestStatus.Idle,
 };
 
-const userReducerSlice = createSlice({
+const userSlice = createSlice({
   name: 'UserProcess',
   initialState,
   reducers: {},
@@ -50,7 +50,7 @@ const userReducerSlice = createSlice({
 
 });
 
-const userReducer = userReducerSlice.reducer;
+const userReducer = userSlice.reducer;
 
 const userActions = {
   loginUser,
@@ -58,7 +58,7 @@ const userActions = {
 };
 
 export {
-  userReducerSlice,
+  userSlice,
   userReducer,
   userActions
 };
