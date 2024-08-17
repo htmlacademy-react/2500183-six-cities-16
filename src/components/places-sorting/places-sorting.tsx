@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
-import { changeSortBy } from '../../store/main-reducer/main-reducer';
+import { changeSortBy } from '../../store/main-slice/main-slice';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { Sorting } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';

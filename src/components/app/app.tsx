@@ -13,7 +13,7 @@ import { PlaceCardSample } from '../../types/offer/offer';
 import { Reviews } from '../../types/reviews/reviews';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
-import { offerAction } from '../../store/main-reducer/main-reducer';
+import { offerAction } from '../../store/main-slice/main-slice';
 import { userActions } from '../../store/user-reducer/user-reducer';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { getToken } from '../../services/token';

@@ -1,16 +1,15 @@
 import { Sorting } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
-import { AuthorizationStatus, DEFAULT_CITY } from '../../const';
+import { DEFAULT_CITY } from '../../const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loadingOffers} from '../api-actions';
 import { UserData } from '../../types/user/auth';
 
 type InitialState = {
   city: string;
-  offers: [] | PlaceCardSample[];
+  offers: PlaceCardSample[];
   sorting: Sorting;
   isLoading: boolean;
-  authorizationStatus: AuthorizationStatus;
   info: UserData | null;
 };
 
@@ -19,11 +18,10 @@ const initialState : InitialState = {
   offers: [],
   sorting: Sorting.Popular,
   isLoading: false,
-  authorizationStatus: AuthorizationStatus.Unknown,
   info: null,
 };
 
-const mainReducerSlice = createSlice({
+const mainSlice = createSlice({
   name: 'MainProcess',
   initialState,
   reducers: {
@@ -53,8 +51,8 @@ const mainReducerSlice = createSlice({
 
 });
 
-const {changeSortBy,changeCity,uploadOffers, } = mainReducerSlice.actions;
-const mainReducer = mainReducerSlice.reducer;
+const {changeSortBy,changeCity,uploadOffers, } = mainSlice.actions;
+const mainReducer = mainSlice.reducer;
 
 const offerAction = {
   loadingOffers

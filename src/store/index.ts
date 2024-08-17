@@ -1,6 +1,6 @@
 import { configureStore} from '@reduxjs/toolkit';
 import { createAPI } from '../services/api';
-import { mainReducer } from './main-reducer/main-reducer';
+import { mainReducer } from './main-slice/main-slice';
 import { userReducer } from './user-reducer/user-reducer';
 import { offerReducer } from './offer-reducer/offer-reducer';
 
