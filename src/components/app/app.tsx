@@ -14,7 +14,7 @@ import { Reviews } from '../../types/reviews/reviews';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
 import { offerAction } from '../../store/main-slice/main-slice';
-import { userActions } from '../../store/user-reducer/user-reducer';
+import { userActions } from '../../store/user-slice/user-reducer';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { getToken } from '../../services/token';
 import { selectIsLoading } from '../../store/selectors';
