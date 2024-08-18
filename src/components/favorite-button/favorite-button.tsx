@@ -19,8 +19,6 @@ function FavoriteButton({width, height, offerId }: FavoriteButtonProps) {
   const navigate = useNavigate();
   const favoriteOffer = useAppSelector(selectFavoriteOffer);
   const isFavorite = favoriteOffer.some((offer) => offer.id === offerId && offer.isFavorite);
-  //console.log(offerId);
-  //console.log(isFavorite);
 
   const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
 
