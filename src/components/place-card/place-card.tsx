@@ -1,6 +1,7 @@
 import { Link, generatePath } from 'react-router-dom';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
+import FavoriteButton from '../favorite-button/favorite-button';
 import { AppRoute } from '../../const';
 
 const FAVORITE_CLASS_NAME = 'favorites';
@@ -59,6 +60,7 @@ function PlaceCard({className = 'cities', place, onCardMouseOnHandler, onCardMou
             </svg>
             <span className="visually-hidden">{isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
           </button>
+          <FavoriteButton isFavoriteClassName = {isFavoriteClassName} isFavorite = {isFavorite} width={imgWidthBtn} height = {imgHeightBtn} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
