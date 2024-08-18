@@ -2,22 +2,20 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import { PlaceCardSample } from '../../types/offer/offer';
 import PlaceList from '../../components/place-list/place-list';
 import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { toast } from 'react-toastify';
 import { TOASTIFY_ERROR_MESSAGE } from '../../const';
-//import { useAppSelector } from '../../hooks/use-app-dispatch';
-//import { selectFavoriteOffer } from '../../store/selectors';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { selectFavoriteOffer } from '../../store/selectors';
 
 type FavoritePageProps = {
-  placesMock: PlaceCardSample[];
   favoritesNumber: number;
 }
 
-function Favorites ({placesMock, favoritesNumber}: FavoritePageProps) : JSX.Element {
+function Favorites ({favoritesNumber}: FavoritePageProps) : JSX.Element {
   const { fetchFavorites } = useActionCreators(favoritesActions);
 
   useEffect(() => {
@@ -29,12 +27,7 @@ function Favorites ({placesMock, favoritesNumber}: FavoritePageProps) : JSX.Elem
 
   }, [fetchFavorites]);
 
-
- // const favoriteOffersTest = useAppSelector(selectFavoriteOffer);
-
-  //console.log(favoriteOffersTest);
-
-  const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
+  const favoriteOffers = useAppSelector(selectFavoriteOffer);
   const cityNames = favoriteOffers.reduce((newOffers: string[], offer) => {
     if (!(newOffers.includes(offer.city.name))) {
       newOffers.push(offer.city.name);

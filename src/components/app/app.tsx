@@ -78,7 +78,7 @@ function App({placesMock}: AppProps): JSX.Element {
             path={AppRoute.FavoritesPage}
             element={
               <ProtectedRoute>
-                <Favorites placesMock={placesMock} favoritesNumber={favoritesNumber} />
+                <Favorites favoritesNumber={favoritesNumber} />
               </ProtectedRoute>
             }
           />
