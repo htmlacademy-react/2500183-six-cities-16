@@ -9,8 +9,8 @@ import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { toast } from 'react-toastify';
 import { TOASTIFY_ERROR_MESSAGE } from '../../const';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
-import { selectFavoriteOffer } from '../../store/selectors';
+//import { useAppSelector } from '../../hooks/use-app-dispatch';
+//import { selectFavoriteOffer } from '../../store/selectors';
 
 type FavoritePageProps = {
   placesMock: PlaceCardSample[];
@@ -30,9 +30,9 @@ function Favorites ({placesMock, favoritesNumber}: FavoritePageProps) : JSX.Elem
   }, [fetchFavorites]);
 
 
-  const favoriteOffersTest = useAppSelector(selectFavoriteOffer);
+ // const favoriteOffersTest = useAppSelector(selectFavoriteOffer);
 
-  console.log(favoriteOffersTest);
+  //console.log(favoriteOffersTest);
 
   const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
   const cityNames = favoriteOffers.reduce((newOffers: string[], offer) => {
