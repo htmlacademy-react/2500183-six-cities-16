@@ -6,17 +6,16 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { userActions } from '../../store/user-slice/user-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { selectAuthorizationStatus, selectUserInfo } from '../../store/selectors';
+import { selectFavoriteOffer } from '../../store/selectors';
 
-type HeaderProps = {
-  favoritesNumber : number;
-}
-
-function Header({favoritesNumber} : HeaderProps) : JSX.Element {
+function Header() : JSX.Element {
 
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const userData = useAppSelector(selectUserInfo);
 
   const {logout} = useActionCreators(userActions);
+  const favoriteOffers = useAppSelector(selectFavoriteOffer);
+  const favoritesNumber = favoriteOffers.length;
 
   const handleSignoutClick = () => {
     logout();

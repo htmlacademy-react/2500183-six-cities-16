@@ -11,11 +11,7 @@ import { TOASTIFY_ERROR_MESSAGE } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { selectFavoriteOffer } from '../../store/selectors';
 
-type FavoritePageProps = {
-  favoritesNumber: number;
-}
-
-function Favorites ({favoritesNumber}: FavoritePageProps) : JSX.Element {
+function Favorites () : JSX.Element {
   const { fetchFavorites } = useActionCreators(favoritesActions);
 
   useEffect(() => {
@@ -40,7 +36,7 @@ function Favorites ({favoritesNumber}: FavoritePageProps) : JSX.Element {
       <Helmet>
         <title>6 cities: Favorites</title>
       </Helmet>
-      <Header favoritesNumber={favoritesNumber}/>
+      <Header/>
       <main className={`page__main page__main--favorites ${favoriteOffers.length ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
           <section className="favorites">

@@ -9,11 +9,7 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { sortOffers } from '../../utils/place-card';
 import { selectFilteredOffers, selectMainCity, selectMainSorting } from '../../store/selectors';
 
-type MainPageProps = {
-  favoritesNumber: number;
-}
-
-function Main({favoritesNumber}: MainPageProps): JSX.Element {
+function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const currentCity = useAppSelector(selectMainCity);
   const currentSortType = useAppSelector(selectMainSorting);
@@ -35,7 +31,7 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
         <title>6 cities</title>
       </Helmet>
 
-      <Header favoritesNumber={favoritesNumber}/>
+      <Header/>
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>

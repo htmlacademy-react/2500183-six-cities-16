@@ -28,12 +28,8 @@ enum CommentLehgth {
   MAX = 3
 }
 
-type OfferPageProps = {
-  favoritesNumber: number;
-}
 
-
-function Offer({favoritesNumber} : OfferPageProps): JSX.Element {
+function Offer(): JSX.Element {
 
   const offerPage = useAppSelector(selectOfferInfo);
   const status = useAppSelector(selectOfferStatus);
@@ -72,7 +68,7 @@ function Offer({favoritesNumber} : OfferPageProps): JSX.Element {
         <title>6 cities: Offer</title>
       </Helmet>
 
-      <Header favoritesNumber={favoritesNumber}/>
+      <Header/>
 
       <main className="page__main page__main--offer">
         <section className="offer">

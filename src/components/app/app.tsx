@@ -9,7 +9,6 @@ import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
 import ProtectedRoute from '../protected-route/protected-route';
 import { AppRoute } from '../../const';
-import { PlaceCardSample } from '../../types/offer/offer';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
 import { offerAction } from '../../store/main-slice/main-slice';
@@ -19,15 +18,7 @@ import { getToken } from '../../services/token';
 import { selectIsLoading } from '../../store/selectors';
 import { TOASTIFY_ERROR_MESSAGE } from '../../const';
 
-
-type AppProps = {
-  placesMock: PlaceCardSample[];
-}
-
-
-function App({placesMock}: AppProps): JSX.Element {
-  const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
-  const favoritesNumber = favoriteOffers.length | 0;
+function App(): JSX.Element {
 
   const { fetchOffers } = useActionCreators(offerAction);
   const { checkAuthorization } = useActionCreators(userActions);
@@ -64,7 +55,7 @@ function App({placesMock}: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.MainPage}
-            element={<Main favoritesNumber={favoritesNumber}/>}
+            element={<Main/>}
           />
           <Route
             path={AppRoute.LoginPage}
@@ -78,13 +69,13 @@ function App({placesMock}: AppProps): JSX.Element {
             path={AppRoute.FavoritesPage}
             element={
               <ProtectedRoute>
-                <Favorites favoritesNumber={favoritesNumber} />
+                <Favorites/>
               </ProtectedRoute>
             }
           />
           <Route
             path={AppRoute.OfferPage}
-            element={<Offer favoritesNumber={favoritesNumber}/>}
+            element={<Offer/>}
           />
           <Route
             path= '*'
