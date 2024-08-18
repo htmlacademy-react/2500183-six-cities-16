@@ -46,7 +46,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
   const handleSubmit = (event: FormEvent) => {
 
     event.preventDefault();
-    // Использую offerId из пропсов и состояние вашей формы для отправки комментария
+
     postComment({
       offerId,
       body: {
