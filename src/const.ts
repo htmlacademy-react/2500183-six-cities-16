@@ -52,6 +52,12 @@ enum TOASTIFY_ERROR_MESSAGE {
   ValidateReview = 'Не удалось выполнить отправку комментария. Проверьте подключение'
 }
 
+ enum FavoritesStatus {
+  Added = 1,
+  Removed = 0
+}
+
+
 const enum RequestStatus { Idle, Loading, Success, Failed }
 
 export { CITIES,
@@ -64,5 +70,6 @@ export { CITIES,
   AuthorizationStatus,
   ApiRoute,
   RequestStatus,
-  TOASTIFY_ERROR_MESSAGE
+  TOASTIFY_ERROR_MESSAGE,
+  FavoritesStatus
 };
