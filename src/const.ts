@@ -48,7 +48,8 @@ enum ApiRoute {
 
 enum TOASTIFY_ERROR_MESSAGE {
   UploadOffer = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу',
-  ValidatePassword = 'Пароль должен содержать минимум одну цифру и одну латинскую букву'
+  ValidatePassword = 'Пароль должен содержать минимум одну цифру и одну латинскую букву',
+  ValidateReview = 'Не удалось выполнить отправку комментария. Проверьте подключение'
 }
 
 const enum RequestStatus { Idle, Loading, Success, Failed }

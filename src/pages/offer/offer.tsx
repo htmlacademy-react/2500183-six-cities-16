@@ -65,8 +65,8 @@ function Offer({favoritesNumber} : OfferPageProps): JSX.Element {
   if (status === RequestStatus.Failed || !offerPage) {
     return <Page404 />;
   }
-  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host } = offerPage;
-
+  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host, id: offerId } = offerPage;
+   console.log(offerId);
   return (
     <div className="page">
       <Helmet>
@@ -162,7 +162,7 @@ function Offer({favoritesNumber} : OfferPageProps): JSX.Element {
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 <ReviewsList reviews={reviews}/>
-                {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm />}
+                {authorizationStatus === AuthorizationStatus.Auth && <ReviewForm offerId = {id}/>}
               </section>
             </div>
           </div>

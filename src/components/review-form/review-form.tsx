@@ -1,4 +1,11 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, FormEvent } from 'react';
+import { toast } from 'react-toastify';
+import { useActionCreators} from '../../hooks/use-action-creators';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { reviewActions } from '../../store/reviews-slice/reviews-slice';
+import { selectReviewStatus } from '../../store/selectors';
+import { TOASTIFY_ERROR_MESSAGE, RequestStatus } from '../../const';
+
 import { REVIEW_LENGTH } from '../../const';
 
 type FormData = {
@@ -6,7 +13,11 @@ type FormData = {
   review: string;
 }
 
-function ReviewForm(): JSX.Element {
+type ReviewFormProps = {
+  offerId: string;
+}
+
+function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
   const [formData, setFormData] = useState<FormData>({
     rating: 0,
     review: ''
@@ -26,8 +37,33 @@ function ReviewForm(): JSX.Element {
 
   const reviewCheck = formData.review.length < REVIEW_LENGTH.MIN || formData.review.length > REVIEW_LENGTH.MAX || formData.rating === 0;
 
+
+  const { postComment } = useActionCreators(reviewActions);
+  const reviewStatus = useAppSelector(selectReviewStatus);
+  const isLoading = reviewStatus === RequestStatus.Loading;
+
+
+  const handleSubmit = (event: FormEvent) => {
+
+    event.preventDefault();
+    // Использую offerId из пропсов и состояние вашей формы для отправки комментария
+    postComment({
+      offerId,
+      body: {
+        comment: formData.review,
+        rating: Number(formData.rating),
+      }
+    }).unwrap()
+      .then(() => {
+        setFormData({ rating: 0, review: '' });
+      })
+      .catch(() => {
+        toast.error(TOASTIFY_ERROR_MESSAGE.ValidateReview);
+      });
+  };
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating" onChange={raitingChangeHandler}>
         <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
@@ -70,7 +106,7 @@ function ReviewForm(): JSX.Element {
         <p className="reviews__help">
         To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{REVIEW_LENGTH.MIN} characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={reviewCheck}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={reviewCheck || isLoading}>Submit</button>
       </div>
     </form>
   );
