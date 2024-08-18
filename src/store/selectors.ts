@@ -18,6 +18,7 @@ const selectOfferNerby = (state: State) =>state.offerPage.nearby;
 const selectReviewItem = (state: State) =>state.review.items;
 const selectReviewStatus = (state: State) =>state.review.status;
 const selectOfferStatus = (state: State) => state.offerPage.status;
+const selectFavoriteOffer = (state: State) => state.favorite.items;
 
 
 export {
@@ -32,5 +33,6 @@ export {
   selectOfferNerby,
   selectOfferStatus,
   selectReviewItem,
-  selectReviewStatus
+  selectReviewStatus,
+  selectFavoriteOffer
 };
