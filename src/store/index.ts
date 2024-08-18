@@ -4,6 +4,7 @@ import { mainReducer } from './main-slice/main-slice';
 import { userReducer } from './user-slice/user-slice';
 import { offerReducer } from './offer-slice/offer-slice';
 import { reveiwReducer } from './reviews-slice/reviews-slice';
+import { favoritesReducer } from './favorite-slice/favorite-slice';
 
 
 const api = createAPI();
@@ -13,7 +14,8 @@ const store = configureStore({
     main: mainReducer,
     user: userReducer,
     offerPage: offerReducer,
-    review: reveiwReducer
+    review: reveiwReducer,
+    favorite: favoritesReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
