@@ -31,15 +31,16 @@ function Favorites () : JSX.Element {
     return newOffers;
   }, []);
 
+
   return (
-    <div className= "page">
+    <div className = {`page ${!favoriteOffers.length && 'page--favorites-empty'}`}>
       <Helmet>
         <title>6 cities: Favorites</title>
       </Helmet>
       <Header/>
       <main className={`page__main page__main--favorites ${favoriteOffers.length ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
-          <section className="favorites">
+          <section className={`favorites ${!favoriteOffers.length && 'favorites--empty'}`}>
             <h1 className={`${favoriteOffers.length ? 'favorites__title' : 'visually-hidden' }`}>{`${favoriteOffers.length ? 'Saved listing' : 'Favorites (empty)' }`}</h1>
             {favoriteOffers.length ?
               <ul className="favorites__list">

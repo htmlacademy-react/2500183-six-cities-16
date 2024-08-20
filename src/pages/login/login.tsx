@@ -44,6 +44,11 @@ function Login () : JSX.Element {
       return;
     }
     loginUser(formData);
+    setFormData({
+      ...formData,
+      email: '',
+      password: '',
+    });
   }
 
   return (

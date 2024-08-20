@@ -34,9 +34,7 @@ function App(): JSX.Element {
 
   const token = getToken();
   useEffect(() => {
-    if (token) {
-      checkAuthorization();
-    }
+    checkAuthorization();
   }, [token, checkAuthorization]);
 
 
