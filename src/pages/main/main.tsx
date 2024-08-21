@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import classNames from 'classnames';
 import Header from '../../components/header/header';
 import CitiesList from '../../components/cities/cities-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -15,6 +16,7 @@ function Main(): JSX.Element {
   const currentSortType = useAppSelector(selectMainSorting);
   const filteredCityOffers = useAppSelector(selectFilteredOffers);
   const currentPlacesCard = sortOffers(filteredCityOffers,currentSortType);
+  const isEmpty = currentPlacesCard.length === 0;
 
 
   const handleCardMouseOn = (placeId: string): void => {
@@ -34,7 +36,10 @@ function Main(): JSX.Element {
 
       <Header/>
 
-      <main className="page__main page__main--index">
+      <main className={classNames('page__main', 'page__main--index', {
+        'page__main--index-empty': isEmpty,
+      })}
+      >
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
