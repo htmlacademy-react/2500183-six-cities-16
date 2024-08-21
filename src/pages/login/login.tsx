@@ -43,12 +43,21 @@ function Login () : JSX.Element {
       toast.error(TOASTIFY_ERROR_MESSAGE.ValidatePassword);
       return;
     }
-    loginUser(formData);
-    setFormData({
-      ...formData,
-      email: '',
-      password: '',
-    });
+    loginUser(formData).unwrap()
+      .then(() => {
+        setFormData({
+          ...formData,
+          email: '',
+          password: '',
+        });
+      })
+      .catch(() => {
+        setFormData({
+          ...formData,
+          email: formData.email,
+          password: formData.password,
+        });
+      });
   }
 
   return (
