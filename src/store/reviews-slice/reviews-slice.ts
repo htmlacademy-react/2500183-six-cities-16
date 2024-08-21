@@ -6,11 +6,13 @@ import { fetchComments, postComment } from '../thunks/comments';
 interface ReviewState {
   items: Reviews[];
   status: RequestStatus;
+  test: boolean
 }
 
 const initialState: ReviewState = {
   items: [],
-  status: RequestStatus.Idle
+  status: RequestStatus.Idle,
+  test: false
 };
 
 export const reviewSlice = createSlice({
@@ -28,12 +30,15 @@ export const reviewSlice = createSlice({
     builder.addCase(postComment.fulfilled, (state, action) => {
       state.items.push(action.payload);
       state.status = RequestStatus.Success;
+      state.test = false;
     });
     builder.addCase(postComment.rejected, (state) => {
       state.status = RequestStatus.Failed;
+      state.test = false;
     });
     builder.addCase(postComment.pending, (state) => {
       state.status = RequestStatus.Loading;
+      state.test = true;
     });
   },
   initialState,

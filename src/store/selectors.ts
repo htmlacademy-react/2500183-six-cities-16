@@ -19,6 +19,7 @@ const selectReviewItem = (state: State) =>state.review.items;
 const selectReviewStatus = (state: State) =>state.review.status;
 const selectOfferStatus = (state: State) => state.offerPage.status;
 const selectFavoriteOffer = (state: State) => state.favorite.items;
+const selectTestReviesStatus = (state: State) => state.review.test;
 
 
 export {
@@ -34,5 +35,6 @@ export {
   selectOfferStatus,
   selectReviewItem,
   selectReviewStatus,
-  selectFavoriteOffer
+  selectFavoriteOffer,
+  selectTestReviesStatus
 };
