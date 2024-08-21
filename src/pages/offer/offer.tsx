@@ -17,6 +17,7 @@ import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { RequestStatus, AuthorizationStatus } from '../../const';
 import { selectReviewItem } from '../../store/selectors';
 import Spiner from '../../components/spiner/spiner';
+import { upFirstLetter } from '../../utils/place-card';
 
 
 const MIN_BEDROOMS_COUNT = 1;
@@ -26,6 +27,11 @@ const RATING_WIDTH_STEP = 20;
 enum CommentLehgth {
   MIN = 0,
   MAX = 3
+}
+
+enum imageLength {
+  Min = 0,
+  Max = 6
 }
 
 
@@ -61,7 +67,7 @@ function Offer(): JSX.Element {
   if (status === RequestStatus.Failed || !offerPage) {
     return <Page404 />;
   }
-  const { images, title, description, isPremium, isFavorite, bedrooms, maxAdults, rating, price, goods, host, id: offerId } = offerPage;
+  const { images, title, description, isPremium, type, isFavorite, bedrooms, maxAdults, rating, price, goods, host, id: offerId } = offerPage;
   return (
     <div className="page">
       <Helmet>
@@ -74,7 +80,7 @@ function Offer(): JSX.Element {
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className ="offer__gallery">
-              {images.map((srcImage : string) => (
+              {images.slice(imageLength.Min,imageLength.Max).map((srcImage : string) => (
                 <OfferImage imageSrc={srcImage} key={crypto.randomUUID()} />
               ))}
             </div>
@@ -107,7 +113,7 @@ function Offer(): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  Apartment
+                  {upFirstLetter(type)}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   {bedrooms}
@@ -141,9 +147,7 @@ function Offer(): JSX.Element {
                   <span className="offer__user-name">
                     {host.name}
                   </span>
-                  <span className="offer__user-status">
-                    {host.isPro ? 'Pro' : ''}
-                  </span>
+                  {host.isPro && <span className="offer__user-status">Pro</span>}
                 </div>
                 <div className="offer__description">
                   <p className="offer__text">
