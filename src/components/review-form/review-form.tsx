@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 //import { selectReviewStatus } from '../../store/selectors';
 import { TOASTIFY_ERROR_MESSAGE} from '../../const';
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 import { selectTestReviesStatus } from '../../store/selectors';
 
 import { REVIEW_LENGTH } from '../../const';
@@ -20,7 +20,7 @@ type ReviewFormProps = {
 }
 
 function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
-  const [submitButtonStatus, setSubmitButtonStatus] = useState(true);
+  //const [submitButtonStatus, setSubmitButtonStatus] = useState(true);
 
   const [formData, setFormData] = useState<FormData>({
     rating: 0,
@@ -39,15 +39,8 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
     }
   };
 
-  useEffect(() => {
-    if (formData.rating > 0 && formData.review.length > 49 && formData.review.length < 301) {
-      setSubmitButtonStatus(false);
-    } else {
-      setSubmitButtonStatus(true);
-    }
-  }, [formData]);
 
-  //const reviewCheck = formData.review.length < REVIEW_LENGTH.MIN || formData.review.length > REVIEW_LENGTH.MAX || formData.rating === 0;
+  const isValid = formData.review.length >= REVIEW_LENGTH.MIN && formData.review.length <= REVIEW_LENGTH.MAX && formData.rating !== 0;
 
 
   const { postComment } = useActionCreators(reviewActions);
@@ -122,7 +115,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
         <p className="reviews__help">
         To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{REVIEW_LENGTH.MIN} characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={submitButtonStatus || testStatus}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!isValid}>Submit</button>
       </div>
     </form>
   );
