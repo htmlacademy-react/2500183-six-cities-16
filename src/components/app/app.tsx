@@ -13,6 +13,7 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Spiner from '../spiner/spiner';
 import { offerAction } from '../../store/main-slice/main-slice';
 import { userActions } from '../../store/user-slice/user-slice';
+import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { getToken } from '../../services/token';
 import { selectIsLoading } from '../../store/selectors';
@@ -22,6 +23,7 @@ function App(): JSX.Element {
 
   const { fetchOffers } = useActionCreators(offerAction);
   const { checkAuthorization } = useActionCreators(userActions);
+  const {fetchFavorites} = useActionCreators(favoritesActions);
 
   useEffect(() => {
     fetchOffers()
@@ -36,6 +38,12 @@ function App(): JSX.Element {
   useEffect(() => {
     checkAuthorization();
   }, [token, checkAuthorization]);
+
+  useEffect(() => {
+    if (token) {
+      fetchFavorites();
+    }
+  }, [token, fetchFavorites]);
 
 
   const isLoading = useAppSelector(selectIsLoading);
