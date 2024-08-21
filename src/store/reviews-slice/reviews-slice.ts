@@ -6,7 +6,7 @@ import { fetchComments, postComment } from '../thunks/comments';
 interface ReviewState {
   items: Reviews[];
   status: RequestStatus;
-  test: boolean
+  test: boolean;
 }
 
 const initialState: ReviewState = {
