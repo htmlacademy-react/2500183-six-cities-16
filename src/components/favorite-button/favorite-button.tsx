@@ -6,21 +6,32 @@ import { AuthorizationStatus, AppRoute, TOASTIFY_ERROR_MESSAGE } from '../../con
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { selectFavoriteOffer } from '../../store/selectors';
+import classNames from 'classnames';
 
 interface FavoriteButtonProps {
+  bemBlock?: 'offer' | 'place-card';
   width: number;
   height: number;
   offerId: string;
 }
 
 
-function FavoriteButton({width, height, offerId }: FavoriteButtonProps) {
+function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: FavoriteButtonProps) {
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const navigate = useNavigate();
   const favoriteOffer = useAppSelector(selectFavoriteOffer);
   const isFavorite = favoriteOffer.some((offer) => offer.id === offerId && offer.isFavorite);
 
-  const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
+  const favoriteLabel = `${isFavorite ? 'In' : 'To'} bookmarks`;
+
+  const buttonClass = `${bemBlock}__bookmark-button`;
+  const favoriteClass = classNames(
+    buttonClass,
+    {
+      [`${buttonClass}--active`]: isFavorite
+    },
+    'button'
+  );
 
 
   const { changeFavorite, fetchFavorites } = useActionCreators(favoritesActions);
@@ -44,11 +55,11 @@ function FavoriteButton({width, height, offerId }: FavoriteButtonProps) {
   }
 
   return (
-    <button className={`place-card__bookmark-button ${isFavoriteClassName} button`} type="button" onClick={handleClick}>
-      <svg className="place-card__bookmark-icon" width={width} height={height}>
+    <button className={favoriteClass} type="button" onClick={handleClick}>
+      <svg className={`${bemBlock}__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
-      <span className="visually-hidden">{isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
+      <span className="visually-hidden">{favoriteLabel}</span>
     </button>
   );
 }

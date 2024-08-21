@@ -18,6 +18,7 @@ import { RequestStatus, AuthorizationStatus } from '../../const';
 import { selectReviewItem } from '../../store/selectors';
 import Spiner from '../../components/spiner/spiner';
 import { upFirstLetter } from '../../utils/place-card';
+import FavoriteButton from '../../components/favorite-button/favorite-button';
 
 
 const MIN_BEDROOMS_COUNT = 1;
@@ -67,7 +68,7 @@ function Offer(): JSX.Element {
   if (status === RequestStatus.Failed || !offerPage) {
     return <Page404 />;
   }
-  const { images, title, description, isPremium, type, isFavorite, bedrooms, maxAdults, rating, price, goods, host, id: offerId } = offerPage;
+  const { images, title, description, isPremium, type, bedrooms, maxAdults, rating, price, goods, host, id: offerId } = offerPage;
   return (
     <div className="page">
       <Helmet>
@@ -95,14 +96,14 @@ function Offer(): JSX.Element {
                 <h1 className="offer__name">
                   {title}
                 </h1>
-                <button className={`offer__bookmark-button  ${isFavorite ? 'offer__bookmark-button--active' : null} button`}
-                  type="button"
-                >
-                  <svg className="offer__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+
+                <FavoriteButton
+                  offerId={offerId}
+                  bemBlock="offer"
+                  width={31}
+                  height={33}
+                />
+
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
