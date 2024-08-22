@@ -10,7 +10,7 @@ import ReviewForm from '../../components/review-form/review-form';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
-import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus } from '../../store/selectors';
+import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus, selectOffersForOfferPageMap } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { offerActions } from '../../store/offer-slice/offer-slice';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
@@ -46,10 +46,11 @@ function Offer(): JSX.Element {
 
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
   const { fetchComments } = useActionCreators(reviewActions);
-
+  const currentSampleOffer = useAppSelector(selectOffersForOfferPageMap);
   const { id } = useParams<{ id: string }>();
 
   const sliceNearPlaces = nearbyOffers.slice(SliceNearPlaces.MIN, SliceNearPlaces.MAX);
+
 
   useEffect(() => {
     Promise.all([
@@ -169,7 +170,7 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map className='offer__map map' places={sliceNearPlaces} city={offerPage.city}/>
+          <Map className='offer__map map' places={[...sliceNearPlaces,currentSampleOffer]} city={offerPage.city} activePlaceId={id}/>
         </section>
         <div className="container">
           <section className="near-places places">
