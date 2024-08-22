@@ -102,6 +102,7 @@ function Offer(): JSX.Element {
                   bemBlock="offer"
                   width={31}
                   height={33}
+                  offerPage
                 />
 
               </div>
