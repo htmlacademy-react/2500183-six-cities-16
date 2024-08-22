@@ -49,6 +49,8 @@ function Offer(): JSX.Element {
 
   const { id } = useParams<{ id: string }>();
 
+  const sliceNearPlaces = nearbyOffers.slice(CommentLehgth.MIN, CommentLehgth.MAX);
+
   useEffect(() => {
     Promise.all([
       fetchOffer(id as string),
@@ -172,7 +174,7 @@ function Offer(): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={nearbyOffers.slice(CommentLehgth.MIN, CommentLehgth.MAX)} />
+            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={sliceNearPlaces} />
           </section>
         </div>
       </main>
