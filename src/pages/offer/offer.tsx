@@ -25,7 +25,7 @@ const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
-enum CommentLehgth {
+enum SliceNearPlaces {
   MIN = 0,
   MAX = 3
 }
@@ -49,7 +49,7 @@ function Offer(): JSX.Element {
 
   const { id } = useParams<{ id: string }>();
 
-  const sliceNearPlaces = nearbyOffers.slice(CommentLehgth.MIN, CommentLehgth.MAX);
+  const sliceNearPlaces = nearbyOffers.slice(SliceNearPlaces.MIN, SliceNearPlaces.MAX);
 
   useEffect(() => {
     Promise.all([
@@ -169,7 +169,7 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map className='offer__map map' places={nearbyOffers} city={offerPage.city}/>
+          <Map className='offer__map map' places={sliceNearPlaces} city={offerPage.city}/>
         </section>
         <div className="container">
           <section className="near-places places">
