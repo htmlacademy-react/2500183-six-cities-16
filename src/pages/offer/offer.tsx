@@ -71,6 +71,9 @@ function Offer(): JSX.Element {
   if (status === RequestStatus.Failed || !offerPage) {
     return <Page404 />;
   }
+  if(!currentSampleOffer) {
+    return <Page404 />;
+  }
   const { images, title, description, isPremium, type, bedrooms, maxAdults, rating, price, goods, host, id: offerId } = offerPage;
   return (
     <div className="page">
