@@ -51,7 +51,7 @@ function Main(): JSX.Element {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{currentPlacesCard.length} places to stay in {currentCity}</b>
+                <b className="places__found">{currentPlacesCard.length} place{currentPlacesCard.length > 1 && 's'} to stay in {currentCity}</b>
                 <PlacesSorting/>
                 <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={currentPlacesCard} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
               </section>

@@ -28,7 +28,7 @@ function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: Favor
   const favoriteClass = classNames(
     buttonClass,
     {
-      [`${buttonClass}--active`]: isFavorite
+      'place-card__bookmark-button--active': isFavorite
     },
     'button'
   );
