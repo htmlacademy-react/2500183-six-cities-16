@@ -20,6 +20,11 @@ const selectReviewStatus = (state: State) =>state.review.status;
 const selectOfferStatus = (state: State) => state.offerPage.status;
 const selectFavoriteOffer = (state: State) => state.favorite.items;
 const selectTestReviesStatus = (state: State) => state.review.test;
+const selectOffersForOfferPageMap = createSelector([
+  selectMainOffers,
+  selectOfferInfo],
+(offers, currentOffer) => offers.find((offer) => offer.id === currentOffer?.id)
+);
 
 
 export {
@@ -36,5 +41,6 @@ export {
   selectReviewItem,
   selectReviewStatus,
   selectFavoriteOffer,
-  selectTestReviesStatus
+  selectTestReviesStatus,
+  selectOffersForOfferPageMap
 };
