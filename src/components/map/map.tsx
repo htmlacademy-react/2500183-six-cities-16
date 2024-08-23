@@ -30,6 +30,32 @@ function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps
   const map = useMap({location:city.location, containerRef: mapContainerRef});
   const layer = useRef(layerGroup());
 
+
+  useEffect(() : void => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+      layer.current.addTo(map);
+      layer.current.clearLayers();
+    }
+  }, [city, map]);
+
+  useEffect(() => {
+    if (map) {
+      layer.current.clearLayers();
+      places.forEach((place) => {
+        leaflet
+          .marker({
+            lat: place.location.latitude,
+            lng: place.location.longitude,
+          }, {
+            icon: place.id === activePlaceId ? currentCustomIcon : defaultCustomIcon,
+          })
+          .addTo(layer.current);
+      });
+    }
+  }, [activePlaceId, map, places]);
+
+  /*
   useEffect(() : void => {
     if (map) {
 
@@ -50,7 +76,7 @@ function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps
     }
   }, [activePlaceId, map, places, city]);
 
-
+*/
   return (
     <section className={`${className} map`} ref={mapContainerRef}></section>
   );
