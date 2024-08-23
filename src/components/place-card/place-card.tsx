@@ -53,7 +53,7 @@ function PlaceCard({className = 'cities', place, onCardMouseOnHandler, onCardMou
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <FavoriteButton bemBlock='place-card' offerId={id} width={imgWidthBtn} height = {imgHeightBtn} />
+          <FavoriteButton bemBlock="place-card" offerId={id} width={imgWidthBtn} height = {imgHeightBtn} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

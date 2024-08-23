@@ -22,23 +22,16 @@ function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: Favor
   const favoriteOffer = useAppSelector(selectFavoriteOffer);
   const isFavorite = favoriteOffer.some((offer) => offer.id === offerId && offer.isFavorite);
 
-  const offerPage = bemBlock === 'offer';
-
-  //console.log(offerPage);
-
   const favoriteLabel = `${isFavorite ? 'In' : 'To'} bookmarks`;
 
-  //const buttonClass = `${bemBlock}__bookmark-button`;
+  const buttonClass = `${bemBlock}__bookmark-button`;
   const favoriteClass = classNames(
+    buttonClass,
     {
-      'offer__bookmark-button button': isFavorite && offerPage,
-      'offer__bookmark-button--active': isFavorite && offerPage,
-      'place-card__bookmark-button': isFavorite && !offerPage,
-      'place-card__bookmark-button--active': isFavorite && !offerPage
+      [`${buttonClass}--active`]: isFavorite
     },
     'button'
   );
-
 
   const { changeFavorite, fetchFavorites } = useActionCreators(favoritesActions);
 

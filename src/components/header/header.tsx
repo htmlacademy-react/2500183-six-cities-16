@@ -6,26 +6,15 @@ import { userActions } from '../../store/user-slice/user-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { selectAuthorizationStatus, selectUserInfo } from '../../store/selectors';
 import { selectFavoriteOffer } from '../../store/selectors';
-import React, { useEffect } from 'react';
-import { getToken } from '../../services/token';
-import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
+import React from 'react';
+
 
 function Header() : JSX.Element {
 
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const userData = useAppSelector(selectUserInfo);
 
-  const token = getToken();
-
   const {logout} = useActionCreators(userActions);
-
-  const {fetchFavorites} = useActionCreators(favoritesActions);
-
-  useEffect(() => {
-    if (token) {
-      fetchFavorites();
-    }
-  }, [token, fetchFavorites]);
 
   const favoriteOffers = useAppSelector(selectFavoriteOffer);
   const favoritesNumber = favoriteOffers.length;
