@@ -56,7 +56,7 @@ function Favorites () : JSX.Element {
                             </a>
                           </div>
                         </div>
-                        <PlaceList className={'favorites__places'} classNameCard={'favorites'} placesMock={cityOffers} />
+                        <PlaceList className={'favorites__places'} classNameCard={'favorites'} places={cityOffers} />
                       </li>
                     );
                   })

@@ -53,7 +53,7 @@ function Main(): JSX.Element {
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{currentPlacesCard.length} place{currentPlacesCard.length > 1 && 's'} to stay in {currentCity}</b>
                 <PlacesSorting/>
-                <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={currentPlacesCard} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
+                <PlaceList className={'cities__places-list'} classNameCard= {'cities'} places={currentPlacesCard} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
               </section>
               <div className="cities__right-section">
                 <Map className='cities__map' places={currentPlacesCard} activePlaceId={activeCard} city={currentPlacesCard[0].city}/>
