@@ -57,6 +57,14 @@ enum TOASTIFY_ERROR_MESSAGE {
   Removed = 0
 }
 
+const RATINGS = [
+  { value: 5, label: 'perfect' },
+  { value: 4, label: 'good' },
+  { value: 3, label: 'not bad' },
+  { value: 2, label: 'badly' },
+  { value: 1, label: 'terribly' },
+] as const;
+
 
 const enum RequestStatus { Idle, Loading, Success, Failed }
 
@@ -71,5 +79,6 @@ export { CITIES,
   ApiRoute,
   RequestStatus,
   TOASTIFY_ERROR_MESSAGE,
-  FavoritesStatus
+  FavoritesStatus,
+  RATINGS
 };
