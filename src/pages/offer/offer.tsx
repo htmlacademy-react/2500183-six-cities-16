@@ -176,7 +176,7 @@ function Offer(): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={slicedNearOffersList} />
+            <PlaceList className={'near-places__list'} classNameCard={'near-places'} places={slicedNearOffersList} />
           </section>
         </div>
       </main>
