@@ -24,7 +24,7 @@ function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: Favor
 
   const offerPage = bemBlock === 'offer';
 
-  console.log(offerPage);
+  //console.log(offerPage);
 
   const favoriteLabel = `${isFavorite ? 'In' : 'To'} bookmarks`;
 
@@ -33,7 +33,7 @@ function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: Favor
     {
       'offer__bookmark-button button': isFavorite && offerPage,
       'offer__bookmark-button--active': isFavorite && offerPage,
-      'place-card__bookmark-button button': isFavorite && !offerPage,
+      'place-card__bookmark-button': isFavorite && !offerPage,
       'place-card__bookmark-button--active': isFavorite && !offerPage
     },
     'button'
