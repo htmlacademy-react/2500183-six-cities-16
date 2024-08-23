@@ -10,7 +10,7 @@ import ReviewForm from '../../components/review-form/review-form';
 import Page404 from '../page404/page404';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import Map from '../../components/map/map';
-import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus } from '../../store/selectors';
+import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus, selectOffersPreviewByID } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { offerActions } from '../../store/offer-slice/offer-slice';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
@@ -25,7 +25,7 @@ const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
-enum CommentLehgth {
+enum sliceNearOffersLength {
   MIN = 0,
   MAX = 3
 }
@@ -43,9 +43,14 @@ function Offer(): JSX.Element {
   const nearbyOffers = useAppSelector(selectOfferNerby);
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const reviews = useAppSelector(selectReviewItem);
+  const currentOfferPreview = useAppSelector(selectOffersPreviewByID);
 
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
   const { fetchComments } = useActionCreators(reviewActions);
+
+  const slicedNearOffersList = nearbyOffers.slice(sliceNearOffersLength.MIN, sliceNearOffersLength.MAX);
+
+  const shortNearOffersListWithCurrent = [...slicedNearOffersList, ...currentOfferPreview];
 
   const { id } = useParams<{ id: string }>();
 
@@ -167,12 +172,12 @@ function Offer(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map className='offer__map map' places={nearbyOffers} city={offerPage.city}/>
+          <Map className='offer__map map' places={shortNearOffersListWithCurrent} city={offerPage.city} activePlaceId={id}/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={nearbyOffers.slice(CommentLehgth.MIN, CommentLehgth.MAX)} />
+            <PlaceList className={'near-places__list'} classNameCard={'near-places'} placesMock={slicedNearOffersList} />
           </section>
         </div>
       </main>
