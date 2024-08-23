@@ -13,24 +13,28 @@ interface FavoriteButtonProps {
   width: number;
   height: number;
   offerId: string;
-  offerPage?: boolean;
 }
 
 
-function FavoriteButton({bemBlock = 'place-card',width, height, offerId, offerPage }: FavoriteButtonProps) {
+function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: FavoriteButtonProps) {
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const navigate = useNavigate();
   const favoriteOffer = useAppSelector(selectFavoriteOffer);
   const isFavorite = favoriteOffer.some((offer) => offer.id === offerId && offer.isFavorite);
 
+  const offerPage = bemBlock === 'offer';
+
+  console.log(offerPage);
+
   const favoriteLabel = `${isFavorite ? 'In' : 'To'} bookmarks`;
 
-  const buttonClass = `${bemBlock}__bookmark-button`;
+  //const buttonClass = `${bemBlock}__bookmark-button`;
   const favoriteClass = classNames(
-    buttonClass,
     {
-      'place-card__bookmark-button--active': isFavorite,
-      'offer__bookmark-button--active': isFavorite && offerPage
+      'offer__bookmark-button button': isFavorite && offerPage,
+      'offer__bookmark-button--active': isFavorite && offerPage,
+      'place-card__bookmark-button button': isFavorite && !offerPage,
+      'place-card__bookmark-button--active': isFavorite && !offerPage
     },
     'button'
   );
