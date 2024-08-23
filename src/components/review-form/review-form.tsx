@@ -5,8 +5,6 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { selectReviewStatus } from '../../store/selectors';
 import { TOASTIFY_ERROR_MESSAGE} from '../../const';
-//import { useEffect } from 'react';
-//import { selectTestReviesStatus } from '../../store/selectors';
 import { RATINGS, RequestStatus } from '../../const';
 
 import { REVIEW_LENGTH } from '../../const';
@@ -21,8 +19,6 @@ type ReviewFormProps = {
 }
 
 function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
-  //const [submitButtonStatus, setSubmitButtonStatus] = useState(true);
-
   const [formData, setFormData] = useState<FormData>({
     rating: 0,
     review: ''
@@ -46,12 +42,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
 
   const { postComment } = useActionCreators(reviewActions);
   const reviewStatus = useAppSelector(selectReviewStatus);
-  //const testStatus = useAppSelector(selectTestReviesStatus);
   const isLoading = reviewStatus === RequestStatus.Loading;
-  //const formDisableStatus = testStatus;
-
-  //console.log(testStatus);
-
 
   const handleSubmit = (event: FormEvent) => {
 
