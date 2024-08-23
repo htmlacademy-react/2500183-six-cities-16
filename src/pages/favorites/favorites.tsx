@@ -1,17 +1,29 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import { PlaceCardSample } from '../../types/offer/offer';
 import PlaceList from '../../components/place-list/place-list';
 import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
+import { useActionCreators } from '../../hooks/use-action-creators';
+import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
+import { toast } from 'react-toastify';
+import { TOASTIFY_ERROR_MESSAGE } from '../../const';
+import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { selectFavoriteOffer } from '../../store/selectors';
 
-type FavoritePageProps = {
-  placesMock: PlaceCardSample[];
-  favoritesNumber: number;
-}
+function Favorites () : JSX.Element {
+  const { fetchFavorites } = useActionCreators(favoritesActions);
 
-function Favorites ({placesMock, favoritesNumber}: FavoritePageProps) : JSX.Element {
-  const favoriteOffers = placesMock.filter((offer) => offer.isFavorite);
+  useEffect(() => {
+    fetchFavorites()
+      .unwrap()
+      .catch(() => {
+        toast.error(TOASTIFY_ERROR_MESSAGE.UploadOffer);
+      });
+
+  }, [fetchFavorites]);
+
+  const favoriteOffers = useAppSelector(selectFavoriteOffer);
   const cityNames = favoriteOffers.reduce((newOffers: string[], offer) => {
     if (!(newOffers.includes(offer.city.name))) {
       newOffers.push(offer.city.name);
@@ -19,15 +31,16 @@ function Favorites ({placesMock, favoritesNumber}: FavoritePageProps) : JSX.Elem
     return newOffers;
   }, []);
 
+
   return (
-    <div className= "page">
+    <div className = {`page ${!favoriteOffers.length && 'page--favorites-empty'}`}>
       <Helmet>
         <title>6 cities: Favorites</title>
       </Helmet>
-      <Header favoritesNumber={favoritesNumber}/>
+      <Header/>
       <main className={`page__main page__main--favorites ${favoriteOffers.length ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
-          <section className="favorites">
+          <section className={`favorites ${!favoriteOffers.length && 'favorites--empty'}`}>
             <h1 className={`${favoriteOffers.length ? 'favorites__title' : 'visually-hidden' }`}>{`${favoriteOffers.length ? 'Saved listing' : 'Favorites (empty)' }`}</h1>
             {favoriteOffers.length ?
               <ul className="favorites__list">

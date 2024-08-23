@@ -30,14 +30,19 @@ function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps
   const map = useMap({location:city.location, containerRef: mapContainerRef});
   const layer = useRef(layerGroup());
 
+
   useEffect(() : void => {
     if (map) {
-
       map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
       layer.current.addTo(map);
       layer.current.clearLayers();
+    }
+  }, [city, map]);
 
-      places.forEach((place) : void => {
+  useEffect(() => {
+    if (map) {
+      layer.current.clearLayers();
+      places.forEach((place) => {
         leaflet
           .marker({
             lat: place.location.latitude,
@@ -45,11 +50,10 @@ function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps
           }, {
             icon: place.id === activePlaceId ? currentCustomIcon : defaultCustomIcon,
           })
-          .addTo(map);
+          .addTo(layer.current);
       });
     }
-  }, [activePlaceId, map, places, city]);
-
+  }, [activePlaceId, map, places]);
 
   return (
     <section className={`${className} map`} ref={mapContainerRef}></section>

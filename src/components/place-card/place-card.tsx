@@ -1,10 +1,11 @@
 import { Link, generatePath } from 'react-router-dom';
 import { PlaceCardSample } from '../../types/offer/offer';
 import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
+import FavoriteButton from '../favorite-button/favorite-button';
 import { AppRoute } from '../../const';
 
 const FAVORITE_CLASS_NAME = 'favorites';
-const OFFER_CLASS_NAME = 'offer';
+//const OFFER_CLASS_NAME = 'offer';
 
 type PlaceCardProps = {
   place: PlaceCardSample;
@@ -14,15 +15,14 @@ type PlaceCardProps = {
 }
 
 function PlaceCard({className = 'cities', place, onCardMouseOnHandler, onCardMouseLeaveHandler} : PlaceCardProps): JSX.Element {
-  const {price, type, title, previewImage, id, rating, isFavorite, isPremium} = place;
+  const {price, type, title, previewImage, id, rating, isPremium} = place;
   const url = generatePath(AppRoute.OfferPage, { id });
 
   const imgWidth = className === FAVORITE_CLASS_NAME ? 150 : 260 ;
   const imgHeight = className === FAVORITE_CLASS_NAME ? 110 : 200;
-  const imgWidthBtn = className === OFFER_CLASS_NAME ? 31 : 18 ;
-  const imgHeightBtn = className === OFFER_CLASS_NAME ? 33 : 19;
+  const imgWidthBtn = 18;
+  const imgHeightBtn = 19;
   const cardInfoClassName = className === FAVORITE_CLASS_NAME ? 'favorites__card-info' : '';
-  const isFavoriteClassName = isFavorite ? 'place-card__bookmark-button--active' : '';
 
   const handleCardOnMouse = () => {
     if(onCardMouseOnHandler) {
@@ -53,12 +53,7 @@ function PlaceCard({className = 'cities', place, onCardMouseOnHandler, onCardMou
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button ${isFavoriteClassName} button`} type="button">
-            <svg className="place-card__bookmark-icon" width={imgWidthBtn} height={imgHeightBtn}>
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">{isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
-          </button>
+          <FavoriteButton bemBlock="place-card" offerId={id} width={imgWidthBtn} height = {imgHeightBtn} />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

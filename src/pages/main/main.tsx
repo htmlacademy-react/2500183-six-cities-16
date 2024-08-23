@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import classNames from 'classnames';
 import Header from '../../components/header/header';
 import CitiesList from '../../components/cities/cities-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -9,16 +10,14 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { sortOffers } from '../../utils/place-card';
 import { selectFilteredOffers, selectMainCity, selectMainSorting } from '../../store/selectors';
 
-type MainPageProps = {
-  favoritesNumber: number;
-}
-
-function Main({favoritesNumber}: MainPageProps): JSX.Element {
+function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const currentCity = useAppSelector(selectMainCity);
   const currentSortType = useAppSelector(selectMainSorting);
   const filteredCityOffers = useAppSelector(selectFilteredOffers);
   const currentPlacesCard = sortOffers(filteredCityOffers,currentSortType);
+  const isEmpty = currentPlacesCard.length === 0;
+
 
   const handleCardMouseOn = (placeId: string): void => {
     setActiveCard(placeId);
@@ -35,9 +34,12 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
         <title>6 cities</title>
       </Helmet>
 
-      <Header favoritesNumber={favoritesNumber}/>
+      <Header/>
 
-      <main className="page__main page__main--index">
+      <main className={classNames('page__main', 'page__main--index', {
+        'page__main--index-empty': isEmpty,
+      })}
+      >
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -49,7 +51,7 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{currentPlacesCard.length} places to stay in {currentCity}</b>
+                <b className="places__found">{currentPlacesCard.length} place{currentPlacesCard.length > 1 && 's'} to stay in {currentCity}</b>
                 <PlacesSorting/>
                 <PlaceList className={'cities__places-list'} classNameCard= {'cities'} placesMock={currentPlacesCard} onCardMouseOnHandler={handleCardMouseOn} onCardMouseLeaveHandler={handleCardMouseLeave}/>
               </section>
@@ -63,7 +65,9 @@ function Main({favoritesNumber}: MainPageProps): JSX.Element {
               <section className="cities__no-places">
                 <div className="cities__status-wrapper tabs__content">
                   <b className="cities__status">No places to stay available</b>
-                  <p className="cities__status-description">We could not find any property available at the moment in Dusseldorf</p>
+                  <p className="cities__status-description">
+                   We could not find any property available at the moment in {currentCity}
+                  </p>
                 </div>
               </section>
               <div className="cities__right-section"></div>
