@@ -55,28 +55,6 @@ function Map ({className = 'offer__map', places, activePlaceId, city} : MapProps
     }
   }, [activePlaceId, map, places]);
 
-  /*
-  useEffect(() : void => {
-    if (map) {
-
-      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
-      layer.current.addTo(map);
-      layer.current.clearLayers();
-
-      places.forEach((place) : void => {
-        leaflet
-          .marker({
-            lat: place.location.latitude,
-            lng: place.location.longitude,
-          }, {
-            icon: place.id === activePlaceId ? currentCustomIcon : defaultCustomIcon,
-          })
-          .addTo(map);
-      });
-    }
-  }, [activePlaceId, map, places, city]);
-
-*/
   return (
     <section className={`${className} map`} ref={mapContainerRef}></section>
   );
