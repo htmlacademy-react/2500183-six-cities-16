@@ -3,7 +3,7 @@ import { PlaceCardSample } from '../../types/offer/offer';
 import { DEFAULT_CITY } from '../../const';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchOffers} from '../thunks/main';
-import { UserData } from '../../types/user/auth';
+import { UserData } from '../../types/auth/auth';
 
 type InitialState = {
   city: string;

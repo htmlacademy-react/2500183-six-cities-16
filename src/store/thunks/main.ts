@@ -3,7 +3,7 @@ import { AxiosInstance } from 'axios';
 import { State, Dispatch } from '../../types/state/state';
 import { ApiRoute } from '../../const';
 import { PlaceCardSample } from '../../types/offer/offer';
-import { UserData, AuthData } from '../../types/user/auth';
+import { UserData, AuthData } from '../../types/auth/auth';
 import { saveToken, dropToken } from '../../services/token';
 
 

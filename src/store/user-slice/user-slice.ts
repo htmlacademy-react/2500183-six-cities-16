@@ -1,4 +1,4 @@
-import { UserData } from '../../types/user/auth';
+import { UserData } from '../../types/auth/auth';
 import { AuthorizationStatus } from '../../const';
 import { createSlice} from '@reduxjs/toolkit';
 import {loginUser, logout, checkAuthorization } from '../thunks/main';
