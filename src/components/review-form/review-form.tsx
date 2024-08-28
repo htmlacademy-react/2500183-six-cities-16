@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { selectReviewStatus } from '../../store/selectors';
 import { ToastifyErrorMessage} from '../../const';
-import { RATINGS, RequestStatus } from '../../const';
+import { Ratings, RequestStatus } from '../../const';
 
 import { ReviewLength } from '../../const';
 
@@ -67,7 +67,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
     <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {RATINGS.map(({ value, label }) => (
+        {Ratings.map(({ value, label }) => (
           <Fragment key={value}>
             <input
               className="form__rating-input visually-hidden"

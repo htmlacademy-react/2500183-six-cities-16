@@ -57,7 +57,7 @@ enum ToastifyErrorMessage{
   Removed = 0
 }
 
-const RATINGS = [
+const Ratings = [
   { value: 5, label: 'perfect' },
   { value: 4, label: 'good' },
   { value: 3, label: 'not bad' },
@@ -80,5 +80,5 @@ export { CITIES,
   RequestStatus,
   ToastifyErrorMessage,
   FavoritesStatus,
-  RATINGS
+  Ratings
 };
