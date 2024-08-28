@@ -1,4 +1,5 @@
 import { FormEvent, ReactEventHandler, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
@@ -93,9 +94,9 @@ function Login () : JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to="#">
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>
