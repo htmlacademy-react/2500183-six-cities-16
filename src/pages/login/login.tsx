@@ -5,7 +5,7 @@ import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { userActions } from '../../store/user-slice/user-slice';
 import { toast } from 'react-toastify';
-import { TOASTIFY_ERROR_MESSAGE } from '../../const';
+import { TOASTIFY_ERROR_MESSAGE, AppRoute } from '../../const';
 
 
 type HTMLLoginForm = HTMLFormElement & {
@@ -94,7 +94,7 @@ function Login () : JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link className="locations__item-link" to="#">
+              <Link className="locations__item-link" to={AppRoute.MainPage}>
                 <span>Amsterdam</span>
               </Link>
             </div>
