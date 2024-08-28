@@ -15,7 +15,7 @@ type ReviewsListProps = {
 function ReviewsList ({reviews} :ReviewsListProps) : JSX.Element {
   const sortedReviews = reviews
     .map((review) => ({ ...review, date: new Date(review.date) }))
-    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .sort((firstReview, secondReview) => secondReview.date.getTime() - firstReview.date.getTime())
     .slice(ReviewCount.MIN, ReviewCount.MAX);
   return (
     <ul className="reviews__list">
