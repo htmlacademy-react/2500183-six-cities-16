@@ -43,7 +43,7 @@ const favoritesSlice = createSlice({
     });
   },
   initialState,
-  name: 'favorites',
+  name: 'Favorites',
   reducers: {},
 });
 

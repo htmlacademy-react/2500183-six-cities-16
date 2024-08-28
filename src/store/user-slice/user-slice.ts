@@ -17,7 +17,7 @@ const initialState : InitialState = {
 };
 
 const userSlice = createSlice({
-  name: 'UserProcess',
+  name: 'User',
   initialState,
   reducers: {},
   extraReducers(builder) {
