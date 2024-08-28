@@ -3,8 +3,8 @@ import { Reviews } from '../../types/reviews/reviews';
 const RATING_WIDTH_STEP = 20;
 
 enum ReviewCount {
-  MIN = 0,
-  MAX = 10
+  Min = 0,
+  Max = 10
 }
 
 type ReviewsListProps = {
@@ -16,7 +16,7 @@ function ReviewsList ({reviews} :ReviewsListProps) : JSX.Element {
   const sortedReviews = reviews
     .map((review) => ({ ...review, date: new Date(review.date) }))
     .sort((firstReview, secondReview) => secondReview.date.getTime() - firstReview.date.getTime())
-    .slice(ReviewCount.MIN, ReviewCount.MAX);
+    .slice(ReviewCount.Min, ReviewCount.Max);
   return (
     <ul className="reviews__list">
       {sortedReviews.map(({ user: { avatarUrl, name }, comment, date, rating }) => (
