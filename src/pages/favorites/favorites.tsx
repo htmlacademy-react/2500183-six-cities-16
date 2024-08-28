@@ -7,7 +7,7 @@ import FavoritesEmpty from '../../components/favorite-empty/favorites-empty';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { toast } from 'react-toastify';
-import { TOASTIFY_ERROR_MESSAGE, AppRoute } from '../../const';
+import { ToastifyErrorMessage, AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { selectFavoriteOffer } from '../../store/selectors';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ function Favorites () : JSX.Element {
     fetchFavorites()
       .unwrap()
       .catch(() => {
-        toast.error(TOASTIFY_ERROR_MESSAGE.UploadOffer);
+        toast.error(ToastifyErrorMessage.UploadOffer);
       });
 
   }, [fetchFavorites]);

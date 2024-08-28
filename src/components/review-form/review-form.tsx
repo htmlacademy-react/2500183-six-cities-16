@@ -4,7 +4,7 @@ import { useActionCreators} from '../../hooks/use-action-creators';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { selectReviewStatus } from '../../store/selectors';
-import { TOASTIFY_ERROR_MESSAGE} from '../../const';
+import { ToastifyErrorMessage} from '../../const';
 import { RATINGS, RequestStatus } from '../../const';
 
 import { ReviewLength } from '../../const';
@@ -59,7 +59,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
         setFormData({ rating: 0, review: '' });
       })
       .catch(() => {
-        toast.error(TOASTIFY_ERROR_MESSAGE.ValidateReview);
+        toast.error(ToastifyErrorMessage.ValidateReview);
       });
   };
 

@@ -5,7 +5,7 @@ import HeaderLogo from '../../components/header/header-logo';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { userActions } from '../../store/user-slice/user-slice';
 import { toast } from 'react-toastify';
-import { TOASTIFY_ERROR_MESSAGE, AppRoute } from '../../const';
+import { ToastifyErrorMessage, AppRoute } from '../../const';
 
 
 type HTMLLoginForm = HTMLFormElement & {
@@ -41,7 +41,7 @@ function Login () : JSX.Element {
   function handleSubmit(event: FormEvent<HTMLLoginForm>) {
     event.preventDefault();
     if (!validatePassword(formData.password)) {
-      toast.error(TOASTIFY_ERROR_MESSAGE.ValidatePassword);
+      toast.error(ToastifyErrorMessage.ValidatePassword);
       return;
     }
     loginUser(formData).unwrap()
