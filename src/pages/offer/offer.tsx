@@ -26,8 +26,8 @@ const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
 enum SliceNearOffersLength {
-  MIN = 0,
-  MAX = 3
+  Min = 0,
+  Max = 3
 }
 
 enum ImageLength {
@@ -48,7 +48,7 @@ function Offer(): JSX.Element {
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
   const { fetchComments } = useActionCreators(reviewActions);
 
-  const slicedNearOffersList = nearbyOffers.slice(SliceNearOffersLength.MIN, SliceNearOffersLength.MAX);
+  const slicedNearOffersList = nearbyOffers.slice(SliceNearOffersLength.Min, SliceNearOffersLength.Max);
 
   const shortNearOffersListWithCurrent = [...slicedNearOffersList, ...currentOfferPreview];
 
