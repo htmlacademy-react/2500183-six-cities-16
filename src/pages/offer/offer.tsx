@@ -25,12 +25,12 @@ const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
-enum sliceNearOffersLength {
+enum SliceNearOffersLength {
   MIN = 0,
   MAX = 3
 }
 
-enum imageLength {
+enum ImageLength {
   Min = 0,
   Max = 6
 }
@@ -48,7 +48,7 @@ function Offer(): JSX.Element {
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
   const { fetchComments } = useActionCreators(reviewActions);
 
-  const slicedNearOffersList = nearbyOffers.slice(sliceNearOffersLength.MIN, sliceNearOffersLength.MAX);
+  const slicedNearOffersList = nearbyOffers.slice(SliceNearOffersLength.MIN, SliceNearOffersLength.MAX);
 
   const shortNearOffersListWithCurrent = [...slicedNearOffersList, ...currentOfferPreview];
 
@@ -86,7 +86,7 @@ function Offer(): JSX.Element {
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className ="offer__gallery">
-              {images.slice(imageLength.Min,imageLength.Max).map((srcImage : string) => (
+              {images.slice(ImageLength.Min, ImageLength.Max).map((srcImage : string) => (
                 <OfferImage imageSrc={srcImage} key={crypto.randomUUID()} />
               ))}
             </div>
