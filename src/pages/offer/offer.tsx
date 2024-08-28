@@ -17,7 +17,7 @@ import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { RequestStatus, AuthorizationStatus } from '../../const';
 import { selectReviewItem } from '../../store/selectors';
 import Spiner from '../../components/spiner/spiner';
-import { upFirstLetter } from '../../utils/place-card';
+import { capitalizeFirstLetter } from '../../utils/place-card';
 import FavoriteButton from '../../components/favorite-button/favorite-button';
 
 
@@ -119,7 +119,7 @@ function Offer(): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {upFirstLetter(type)}
+                  {capitalizeFirstLetter(type)}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   {bedrooms}
