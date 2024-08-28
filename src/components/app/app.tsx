@@ -17,7 +17,7 @@ import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { getToken } from '../../services/token';
 import { selectIsLoading } from '../../store/selectors';
-import { TOASTIFY_ERROR_MESSAGE } from '../../const';
+import { ToastifyErrorMessage } from '../../const';
 
 function App(): JSX.Element {
 
@@ -29,7 +29,7 @@ function App(): JSX.Element {
     fetchOffers()
       .unwrap()
       .catch(() => {
-        toast.error(TOASTIFY_ERROR_MESSAGE.UploadOffer);
+        toast.error(ToastifyErrorMessage.UploadOffer);
       });
 
   }, [fetchOffers]);

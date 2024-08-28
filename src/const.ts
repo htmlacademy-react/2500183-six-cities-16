@@ -46,7 +46,7 @@ enum ApiRoute {
   Logout = '/logout',
 }
 
-enum TOASTIFY_ERROR_MESSAGE {
+enum ToastifyErrorMessage{
   UploadOffer = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу',
   ValidatePassword = 'Пароль должен содержать минимум одну цифру и одну латинскую букву',
   ValidateReview = 'Не удалось выполнить отправку комментария. Проверьте подключение'
@@ -78,7 +78,7 @@ export { CITIES,
   AuthorizationStatus,
   ApiRoute,
   RequestStatus,
-  TOASTIFY_ERROR_MESSAGE,
+  ToastifyErrorMessage,
   FavoritesStatus,
   RATINGS
 };
