@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import PlaceList from '../../components/place-list/place-list';
-import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
+import FavoritesEmpty from '../../components/favorite-empty/favorites-empty';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { toast } from 'react-toastify';
