@@ -23,9 +23,9 @@ enum Sorting {
 }
 
 
-const REVIEW_LENGTH = {
-  MIN: 50,
-  MAX: 300,
+const ReviewLength = {
+  Min: 50,
+  Max: 300,
 } as const;
 
 const IconOptions = {
@@ -70,7 +70,7 @@ const enum RequestStatus { Idle, Loading, Success, Failed }
 
 export { CITIES,
   DEFAULT_CITY,
-  REVIEW_LENGTH,
+  ReviewLength,
   IconOptions,
   TitleLauerUrl,
   Sorting,
