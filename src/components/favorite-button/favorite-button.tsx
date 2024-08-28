@@ -35,26 +35,24 @@ function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: Favor
 
   const { changeFavorite, fetchFavorites } = useActionCreators(favoritesActions);
 
-  function handleClick() {
-    (async () => {
-      try {
-        if (authorizationStatus !== AuthorizationStatus.Auth) {
-          navigate(AppRoute.LoginPage);
-          return;
-        }
-        await changeFavorite({
-          offerId,
-          status: Number(!isFavorite)
-        }).unwrap();
-        fetchFavorites();
-      } catch (error) {
+  function handleButtonClick() {
+    if (authorizationStatus !== AuthorizationStatus.Auth) {
+      navigate(AppRoute.LoginPage);
+      return;
+    }
+    changeFavorite({
+      offerId,
+      status: Number(!isFavorite)
+    })
+      .unwrap()
+      .then(() => fetchFavorites())
+      .catch(() => {
         toast.error(TOASTIFY_ERROR_MESSAGE.UploadOffer);
-      }
-    })();
+      });
   }
 
   return (
-    <button className={favoriteClass} type="button" onClick={handleClick}>
+    <button className={favoriteClass} type="button" onClick={handleButtonClick}>
       <svg className={`${bemBlock}__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
