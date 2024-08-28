@@ -33,7 +33,7 @@ export const offerSlice = createSlice({
     });
   },
   initialState,
-  name: 'offer',
+  name: 'Offer',
   reducers: {
     clear(state) {
       state.info = null;
