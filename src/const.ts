@@ -33,7 +33,7 @@ const IconOptions = {
   ActiveIconUrl: 'img/pin-active.svg',
 } as const;
 
-const TITLE_LAYER_URL = {
+const TitleLauerUrl = {
   PATTERN: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
@@ -72,7 +72,7 @@ export { CITIES,
   DEFAULT_CITY,
   REVIEW_LENGTH,
   IconOptions,
-  TITLE_LAYER_URL,
+  TitleLauerUrl,
   Sorting,
   AppRoute,
   AuthorizationStatus,
