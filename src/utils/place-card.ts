@@ -4,7 +4,7 @@ const MAX_RATING = 5;
 
 export const calculateRatingWidth = (rating: number): string => `${ Math.round(rating) * 100 / MAX_RATING}%`;
 
-export const upFirstLetter = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;
+export const capitalizeFirstLetter = (value: string) => `${value[0].toUpperCase()}${value.slice(1)}`;
 
 export const sortOffers = (initialOffers: PlaceCardSample[], sortType: Sorting) : PlaceCardSample[] => {
   const offers = [...initialOffers];

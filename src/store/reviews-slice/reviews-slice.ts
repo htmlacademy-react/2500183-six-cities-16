@@ -42,7 +42,7 @@ export const reviewSlice = createSlice({
     });
   },
   initialState,
-  name: 'reviews',
+  name: 'Reviews',
   reducers: {},
 });
 

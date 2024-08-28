@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import Header from '../../components/header/header';
 import PlaceList from '../../components/place-list/place-list';
-import OfferImage from '../../components/offer-page/offer-gallery';
-import OfferInsideList from '../../components/offer-page/offer-inside-list';
+import OfferImage from '../../components/offer-gallery/offer-gallery';
+import OfferInsideList from '../../components/offer-inside-list/offer-inside-list';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
 import Page404 from '../page404/page404';
@@ -17,7 +17,7 @@ import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { RequestStatus, AuthorizationStatus } from '../../const';
 import { selectReviewItem } from '../../store/selectors';
 import Spiner from '../../components/spiner/spiner';
-import { upFirstLetter } from '../../utils/place-card';
+import { capitalizeFirstLetter } from '../../utils/place-card';
 import FavoriteButton from '../../components/favorite-button/favorite-button';
 
 
@@ -25,12 +25,12 @@ const MIN_BEDROOMS_COUNT = 1;
 const MIN_ADULTS_COUNT = 1;
 const RATING_WIDTH_STEP = 20;
 
-enum sliceNearOffersLength {
+enum SliceNearOffersLength {
   MIN = 0,
   MAX = 3
 }
 
-enum imageLength {
+enum ImageLength {
   Min = 0,
   Max = 6
 }
@@ -48,7 +48,7 @@ function Offer(): JSX.Element {
   const { fetchNearBy, fetchOffer } = useActionCreators(offerActions);
   const { fetchComments } = useActionCreators(reviewActions);
 
-  const slicedNearOffersList = nearbyOffers.slice(sliceNearOffersLength.MIN, sliceNearOffersLength.MAX);
+  const slicedNearOffersList = nearbyOffers.slice(SliceNearOffersLength.MIN, SliceNearOffersLength.MAX);
 
   const shortNearOffersListWithCurrent = [...slicedNearOffersList, ...currentOfferPreview];
 
@@ -86,7 +86,7 @@ function Offer(): JSX.Element {
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className ="offer__gallery">
-              {images.slice(imageLength.Min,imageLength.Max).map((srcImage : string) => (
+              {images.slice(ImageLength.Min, ImageLength.Max).map((srcImage : string) => (
                 <OfferImage imageSrc={srcImage} key={crypto.randomUUID()} />
               ))}
             </div>
@@ -119,7 +119,7 @@ function Offer(): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {upFirstLetter(type)}
+                  {capitalizeFirstLetter(type)}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   {bedrooms}

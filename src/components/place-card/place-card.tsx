@@ -1,11 +1,10 @@
 import { Link, generatePath } from 'react-router-dom';
 import { PlaceCardSample } from '../../types/offer/offer';
-import { upFirstLetter, calculateRatingWidth } from '../../utils/place-card';
+import { capitalizeFirstLetter, calculateRatingWidth } from '../../utils/place-card';
 import FavoriteButton from '../favorite-button/favorite-button';
 import { AppRoute } from '../../const';
 
 const FAVORITE_CLASS_NAME = 'favorites';
-//const OFFER_CLASS_NAME = 'offer';
 
 type PlaceCardProps = {
   place: PlaceCardSample;
@@ -64,7 +63,7 @@ function PlaceCard({className = 'cities', place, onCardMouseOnHandler, onCardMou
         <h2 className="place-card__name">
           <Link to= {url}>Beautiful &amp; {title}</Link>
         </h2>
-        <p className="place-card__type">{upFirstLetter(type)}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
     </article>
   );

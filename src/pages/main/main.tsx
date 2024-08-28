@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import classNames from 'classnames';
 import Header from '../../components/header/header';
-import CitiesList from '../../components/cities/cities-list';
+import CitiesList from '../../components/cities-list/cities-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';

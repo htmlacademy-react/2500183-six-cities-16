@@ -3,13 +3,14 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import PlaceList from '../../components/place-list/place-list';
-import FavoritesEmpty from '../../components/favorite-page/favorites-empty';
+import FavoritesEmpty from '../../components/favorite-empty/favorites-empty';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { toast } from 'react-toastify';
 import { TOASTIFY_ERROR_MESSAGE } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { selectFavoriteOffer } from '../../store/selectors';
+import { Link } from 'react-router-dom';
 
 function Favorites () : JSX.Element {
   const { fetchFavorites } = useActionCreators(favoritesActions);
@@ -51,9 +52,9 @@ function Favorites () : JSX.Element {
                       <li className="favorites__locations-items" key={city}>
                         <div className="favorites__locations locations locations--current">
                           <div className="locations__item">
-                            <a className="locations__item-link" href="#">
+                            <Link className="locations__item-link" to="#">
                               <span>{city}</span>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                         <PlaceList className={'favorites__places'} classNameCard={'favorites'} places={cityOffers} />

@@ -8,8 +8,14 @@ import { selectAuthorizationStatus, selectUserInfo } from '../../store/selectors
 import { selectFavoriteOffer } from '../../store/selectors';
 import React from 'react';
 
+type PathnameType = typeof AppRoute[keyof typeof AppRoute];
+
 
 function Header() : JSX.Element {
+
+  const url = location.pathname as PathnameType === AppRoute.FavoritesPage
+    ? AppRoute.LoginPage
+    : AppRoute.MainPage;
 
   const authorizationStatus = useAppSelector(selectAuthorizationStatus);
   const userData = useAppSelector(selectUserInfo);
@@ -41,7 +47,7 @@ function Header() : JSX.Element {
                         </Link>
                       </li>
                       <li className="header__nav-item">
-                        <Link className="header__nav-link" to={AppRoute.MainPage}>
+                        <Link className="header__nav-link" to={url}>
                           <span className="header__signout" onClick={handleSignoutClick}>Sign out</span>
                         </Link>
                       </li>

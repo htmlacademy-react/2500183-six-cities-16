@@ -1,7 +1,7 @@
 import {useEffect, useState, useRef} from 'react';
 import leaflet, {Map as LeafletMap} from 'leaflet';
 import {Location} from '../types/offer/offer.ts';
-import { TITLE_LAYER_URL } from '../const.ts';
+import { TitleLauerUrl } from '../const.ts';
 
 type UseMapProps = {
   location: Location;
@@ -23,8 +23,8 @@ function useMap({location, containerRef}: UseMapProps) : leaflet.Map | null {
       });
 
       leaflet
-        .tileLayer(TITLE_LAYER_URL.PATTERN, {
-          attribution: TITLE_LAYER_URL.ATTRIBUTION,
+        .tileLayer(TitleLauerUrl.PATTERN, {
+          attribution: TitleLauerUrl.ATTRIBUTION,
         })
         .addTo(instance);
 
