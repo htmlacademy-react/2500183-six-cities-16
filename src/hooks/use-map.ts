@@ -23,8 +23,8 @@ function useMap({location, containerRef}: UseMapProps) : leaflet.Map | null {
       });
 
       leaflet
-        .tileLayer(TitleLauerUrl.PATTERN, {
-          attribution: TitleLauerUrl.ATTRIBUTION,
+        .tileLayer(TitleLauerUrl.Pattern, {
+          attribution: TitleLauerUrl.Attribution,
         })
         .addTo(instance);
 

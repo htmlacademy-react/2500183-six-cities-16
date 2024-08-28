@@ -4,10 +4,10 @@ import { useActionCreators} from '../../hooks/use-action-creators';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { selectReviewStatus } from '../../store/selectors';
-import { TOASTIFY_ERROR_MESSAGE} from '../../const';
+import { ToastifyErrorMessage} from '../../const';
 import { RATINGS, RequestStatus } from '../../const';
 
-import { REVIEW_LENGTH } from '../../const';
+import { ReviewLength } from '../../const';
 
 type FormData = {
   rating: number;
@@ -37,7 +37,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
   };
 
 
-  const isValid = formData.review.length >= REVIEW_LENGTH.MIN && formData.review.length <= REVIEW_LENGTH.MAX && formData.rating !== 0;
+  const isValid = formData.review.length >= ReviewLength.Min && formData.review.length <= ReviewLength.Max && formData.rating !== 0;
 
 
   const { postComment } = useActionCreators(reviewActions);
@@ -59,7 +59,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
         setFormData({ rating: 0, review: '' });
       })
       .catch(() => {
-        toast.error(TOASTIFY_ERROR_MESSAGE.ValidateReview);
+        toast.error(ToastifyErrorMessage.ValidateReview);
       });
   };
 
@@ -95,7 +95,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
       <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={reviewChangeHandler} value={formData.review} disabled={isLoading}></textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-        To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{REVIEW_LENGTH.MIN} characters</b>.
+        To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.Min} characters</b>.
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={!isValid || isLoading}>Submit</button>
       </div>

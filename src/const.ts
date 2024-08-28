@@ -23,9 +23,9 @@ enum Sorting {
 }
 
 
-const REVIEW_LENGTH = {
-  MIN: 50,
-  MAX: 300,
+const ReviewLength = {
+  Min: 50,
+  Max: 300,
 } as const;
 
 const IconOptions = {
@@ -34,8 +34,8 @@ const IconOptions = {
 } as const;
 
 const TitleLauerUrl = {
-  PATTERN: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-  ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  Pattern: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  Attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
 
 enum ApiRoute {
@@ -46,7 +46,7 @@ enum ApiRoute {
   Logout = '/logout',
 }
 
-enum TOASTIFY_ERROR_MESSAGE {
+enum ToastifyErrorMessage{
   UploadOffer = 'Не удалось загрузить предложения. Попробуйте перезагрузить страницу',
   ValidatePassword = 'Пароль должен содержать минимум одну цифру и одну латинскую букву',
   ValidateReview = 'Не удалось выполнить отправку комментария. Проверьте подключение'
@@ -70,7 +70,7 @@ const enum RequestStatus { Idle, Loading, Success, Failed }
 
 export { CITIES,
   DEFAULT_CITY,
-  REVIEW_LENGTH,
+  ReviewLength,
   IconOptions,
   TitleLauerUrl,
   Sorting,
@@ -78,7 +78,7 @@ export { CITIES,
   AuthorizationStatus,
   ApiRoute,
   RequestStatus,
-  TOASTIFY_ERROR_MESSAGE,
+  ToastifyErrorMessage,
   FavoritesStatus,
   RATINGS
 };

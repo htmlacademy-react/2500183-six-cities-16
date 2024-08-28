@@ -22,7 +22,7 @@ const initialState : InitialState = {
 };
 
 const mainSlice = createSlice({
-  name: 'MainProcess',
+  name: 'Main',
   initialState,
   reducers: {
     changeSortBy: (state, action: PayloadAction<{sorting: Sorting}>) => {

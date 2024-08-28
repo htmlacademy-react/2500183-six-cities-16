@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppSelector } from '../../hooks/use-app-dispatch';
 import { selectAuthorizationStatus } from '../../store/selectors';
-import { AuthorizationStatus, AppRoute, TOASTIFY_ERROR_MESSAGE } from '../../const';
+import { AuthorizationStatus, AppRoute, ToastifyErrorMessage } from '../../const';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { selectFavoriteOffer } from '../../store/selectors';
@@ -47,7 +47,7 @@ function FavoriteButton({bemBlock = 'place-card',width, height, offerId }: Favor
       .unwrap()
       .then(() => fetchFavorites())
       .catch(() => {
-        toast.error(TOASTIFY_ERROR_MESSAGE.UploadOffer);
+        toast.error(ToastifyErrorMessage.UploadOffer);
       });
   }
 
