@@ -5,7 +5,6 @@ import FavoriteButton from '../favorite-button/favorite-button';
 import { AppRoute } from '../../const';
 
 const FAVORITE_CLASS_NAME = 'favorites';
-//const OFFER_CLASS_NAME = 'offer';
 
 type PlaceCardProps = {
   place: PlaceCardSample;
