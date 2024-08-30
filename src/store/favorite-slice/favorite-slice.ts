@@ -26,13 +26,11 @@ const favoritesSlice = createSlice({
       state.status = RequestStatus.Loading;
     });
     builder.addCase(changeFavorite.fulfilled, (state, action) => {
-      const index = state.items.findIndex((item) => item.id === action.payload.offer.id);
-      if (index >= 0) {
-        state.items[index] = action.payload.offer;
-      } else {
-        if (action.payload.status === FavoritesStatus.Added) {
-          state.items.push(action.payload.offer);
-        }
+      if (action.payload.status === FavoritesStatus.Added) {
+        state.items.push(action.payload.offer);
+      }
+      if (action.payload.status === FavoritesStatus.Removed) {
+        state.items = state.items.filter((item) => item.id !== action.payload.offer.id);
       }
     });
     builder.addCase(changeFavorite.rejected, (state) => {
