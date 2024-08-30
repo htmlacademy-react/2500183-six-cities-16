@@ -24,13 +24,13 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
     review: ''
   });
 
-  const raitingChangeHandler = ({target}: ChangeEvent<HTMLInputElement>) => {
+  const handleRaitingChange = ({target}: ChangeEvent<HTMLInputElement>) => {
     if (target.tagName === 'INPUT') {
       setFormData({...formData, rating: parseInt(target.value, 10)});
     }
   };
 
-  const reviewChangeHandler = ({target}: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleReviewChange = ({target}: ChangeEvent<HTMLTextAreaElement>) => {
     if (target.tagName === 'TEXTAREA') {
       setFormData({...formData, review: target.value});
     }
@@ -75,7 +75,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
               defaultValue={value}
               id={`${value}-stars`}
               type="radio"
-              onChange={raitingChangeHandler}
+              onChange={handleRaitingChange}
               checked={Number(formData.rating) === value}
               disabled={isLoading}
             />
@@ -92,7 +92,7 @@ function ReviewForm({ offerId }: ReviewFormProps): JSX.Element {
         ))}
 
       </div>
-      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={reviewChangeHandler} value={formData.review} disabled={isLoading}></textarea>
+      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" onChange={handleReviewChange} value={formData.review} disabled={isLoading}></textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
         To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{ReviewLength.Min} characters</b>.
