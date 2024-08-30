@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../hooks/use-app-dispatch';
+import {useAppDispatch } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { CITIES, AppRoute } from '../../const';
 import { changeCity } from '../../store/main-slice/main-slice';
 import { selectMainCity } from '../../store/selectors';

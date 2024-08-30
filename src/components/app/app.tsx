@@ -9,7 +9,7 @@ import Offer from '../../pages/offer/offer';
 import Page404 from '../../pages/page404/page404';
 import ProtectedRoute from '../protected-route/protected-route';
 import { AppRoute } from '../../const';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import Spiner from '../spiner/spiner';
 import { offerAction } from '../../store/main-slice/main-slice';
 import { userActions } from '../../store/user-slice/user-slice';

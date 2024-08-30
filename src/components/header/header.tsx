@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import HeaderLogo from '../header/header-logo';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { userActions } from '../../store/user-slice/user-slice';
 import { useActionCreators } from '../../hooks/use-action-creators';
 import { selectAuthorizationStatus, selectUserInfo } from '../../store/selectors';

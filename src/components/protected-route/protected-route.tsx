@@ -5,7 +5,7 @@ import { selectUserInfo } from '../../store/selectors';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { AppRoute } from '../../const';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 
 
 type ProtectedRouteProps = {

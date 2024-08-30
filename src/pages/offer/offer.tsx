@@ -8,7 +8,7 @@ import OfferInsideList from '../../components/offer-inside-list/offer-inside-lis
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import ReviewForm from '../../components/review-form/review-form';
 import Page404 from '../page404/page404';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import Map from '../../components/map/map';
 import { selectOfferInfo, selectOfferNerby, selectOfferStatus, selectAuthorizationStatus, selectOffersPreviewByID } from '../../store/selectors';
 import { useActionCreators } from '../../hooks/use-action-creators';

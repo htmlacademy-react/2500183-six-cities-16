@@ -6,7 +6,7 @@ import CitiesList from '../../components/cities-list/cities-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
 import PlaceList from '../../components/place-list/place-list';
 import Map from '../../components/map/map';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { sortOffers } from '../../utils/place-card';
 import { selectFilteredOffers, selectMainCity, selectMainSorting } from '../../store/selectors';
 

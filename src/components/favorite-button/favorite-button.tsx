@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { selectAuthorizationStatus } from '../../store/selectors';
 import { AuthorizationStatus, AppRoute, ToastifyErrorMessage } from '../../const';
 import { useActionCreators } from '../../hooks/use-action-creators';
