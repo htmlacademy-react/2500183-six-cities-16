@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, FormEvent, Fragment } from 'react';
 import { toast } from 'react-toastify';
 import { useActionCreators} from '../../hooks/use-action-creators';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { reviewActions } from '../../store/reviews-slice/reviews-slice';
 import { selectReviewStatus } from '../../store/selectors';
 import { ToastifyErrorMessage} from '../../const';

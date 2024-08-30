@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { changeSortBy } from '../../store/main-slice/main-slice';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { Sorting } from '../../const';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { selectMainSorting } from '../../store/selectors';
 
 function PlacesSorting () : JSX.Element {

@@ -8,7 +8,7 @@ import { useActionCreators } from '../../hooks/use-action-creators';
 import { favoritesActions } from '../../store/favorite-slice/favorite-slice';
 import { toast } from 'react-toastify';
 import { ToastifyErrorMessage, AppRoute } from '../../const';
-import { useAppSelector } from '../../hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/use-app-selector';
 import { selectFavoriteOffer } from '../../store/selectors';
 import { Link } from 'react-router-dom';
 
